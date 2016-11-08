@@ -63,9 +63,9 @@
   padding: 10px 16px;
   width: 100%;
   outline: 0;
-  border: 1px solid #373277;
+  border: 1px solid rgb(202, 211, 211);
   border-radius: 0;
-  background: #373277;
+  background: rgb(202, 211, 211);
   color: #fff;
   text-align: center;
   text-decoration: none;

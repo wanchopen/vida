@@ -17,6 +17,7 @@ import login from './login';
 import register from './register';
 import content from './content';
 import notFound from './notFound';
+import flow from './flow';
 
 export default {
 
@@ -28,6 +29,7 @@ export default {
     contact,
     login,
     register,
+    flow,
 
     // place new routes before...
     content,
