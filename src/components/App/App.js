@@ -13,6 +13,11 @@ import s from './App.css';
 import Header from '../Header';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 class App extends Component {
 
@@ -30,6 +35,7 @@ class App extends Component {
     insertCss: PropTypes.func.isRequired,
     setTitle: PropTypes.func.isRequired,
     setMeta: PropTypes.func.isRequired,
+    muiTheme: React.PropTypes.object.isRequired,
   };
 
   getChildContext() {
@@ -38,6 +44,7 @@ class App extends Component {
       insertCss: context.insertCss || emptyFunction,
       setTitle: context.setTitle || emptyFunction,
       setMeta: context.setMeta || emptyFunction,
+      muiTheme: getMuiTheme(baseTheme)
     };
   }
 
