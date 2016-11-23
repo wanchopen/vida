@@ -12,6 +12,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Header.css';
 import Link from '../Link';
 import Navigation from '../Navigation';
+import LeftNavigation from '../LeftNavigation';
 import logoUrl from './logo-small.png';
 
 function Header() {
@@ -24,7 +25,7 @@ function Header() {
           <span className={s.brandTxt}>Vida</span>
         </Link>
         <div className={s.banner}>
-          <h1 className={s.bannerTitle}>Stories of your life in one store</h1>
+          <h1 className={s.bannerTitle}>Your Stories in One Store</h1>
         </div>
       </div>
     </div>

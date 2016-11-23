@@ -83,6 +83,10 @@
     box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);
 }
 
+.icon {
+    margin-right: 16px;
+}
+
 .facebook {
     border-color: #3b5998;
     background: #3b5998;

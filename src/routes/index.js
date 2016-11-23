@@ -49,7 +49,7 @@ export default {
       ...route,
 
       // Override the result of child route with extensions
-      title: `${route.title || 'Untitled Page'} - www.reactstarterkit.com`,
+      title: `${route.title || 'Untitled Page'}`,
       description: route.description || '',
       component: <App context={context}>{route.component}</App>,
     };
