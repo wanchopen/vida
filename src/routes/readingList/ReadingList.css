@@ -1,0 +1,24 @@
+@import '../../components/variables.css';
+
+.root {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 0 40px;
+    max-width: 800px;
+}
+
+.readingListContainer {
+    width: 300px;
+    display: inline-block;
+    float: left;
+}
+
+.cardContainer {
+    max-width: calc( 100% - 320px );
+    display: inline-block;
+    padding-left: 10px;
+}
