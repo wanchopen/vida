@@ -10,6 +10,7 @@
 import 'babel-polyfill';
 import path from 'path';
 import express from 'express';
+import ReactStormpath, { Router, AuthenticatedRoute, LoginLink } from 'react-stormpath';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import expressJwt from 'express-jwt';
@@ -45,6 +46,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+//
+// Authentication with Stormpath
+// -----------------------------------------------------------------------------
+
+/*app.use(stormpath.init(app, {
+  web: {
+    produces: ['application/json']
+  }
+}));
+
+app.on('stormpath.ready', function () {
+  app.listen(3000, 'localhost', function (err) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log('Listening at http://localhost:3000');
+  });
+});*/
 
 //
 // Authentication

@@ -22,9 +22,9 @@ function Flow({ title }) {
     return (
         <div className={s.root}>
             <div className={s.container}>
-                <h1>{title}</h1>
-                <p className={s.lead}>We neatly collected the issues, based on your favourites. We hope you're
-                    having a great day so far</p>
+                <div className={s.flowContainer}>
+                <p className={s.flowSubHeading}>We neatly collected the issues, based on your favourites. We hope you're
+                    having a great day so far.</p>
                 <h2>Photo Story of the Day</h2>
 
                 <Card>
@@ -54,14 +54,21 @@ function Flow({ title }) {
                     <Divider />
 
                     <CardActions>
-                        <RaisedButton label="Add to Reading List"
-                                      icon={<ActionBook />}
-                        />
-
-                        <RaisedButton label="105 views"
-                                      icon={<ActionVisibility />}
-                        />
-
+                        <IconButton tooltip="Add to Reading List"
+                                    tooltipPosition="bottom-right">
+                            <ActionBook className={s.viewsIcon} />
+                        </IconButton>
+                        <IconButton tooltip="Views"
+                                    tooltipPosition="bottom-center"
+                                    className={s.postViewsIcon}
+                        >
+                            <ActionVisibility className={s.viewsIcon}/>
+                            <Badge
+                                badgeContent={49}
+                                primary={true}
+                                className={s.badgeViews}
+                            />
+                        </IconButton>
                     </CardActions>
                 </Card>
 
@@ -86,16 +93,21 @@ function Flow({ title }) {
                     <Divider />
 
                     <CardActions>
-                        <BottomNavigation>
-                            <BottomNavigationItem
-                                label="Add to Reading List"
-                                icon={actionBook}
+                        <IconButton tooltip="Add to Reading List"
+                                    tooltipPosition="bottom-right">
+                            <ActionBook className={s.viewsIcon} />
+                        </IconButton>
+                        <IconButton tooltip="Views"
+                                    tooltipPosition="bottom-center"
+                                    className={s.postViewsIcon}
+                        >
+                            <ActionVisibility className={s.viewsIcon}/>
+                            <Badge
+                                badgeContent={97}
+                                primary={true}
+                                className={s.badgeViews}
                             />
-                            <BottomNavigationItem
-                                label="105 views"
-                                icon={actionVisibility}
-                            />
-                        </BottomNavigation>
+                        </IconButton>
                     </CardActions>
                 </Card>
 
@@ -134,21 +146,23 @@ function Flow({ title }) {
                     <CardActions>
                         <IconButton tooltip="Add to Reading List"
                                     tooltipPosition="bottom-right">
-                            <ActionBook className={s.icon} />
+                            <ActionBook className={s.viewsIcon}/>
                         </IconButton>
-                        <Badge
-                            badgeContent={105}
-                            primary={true}
-                            badgeStyle={{top: 12, right: 12}}
+                        <IconButton tooltip="Views"
+                                    tooltipPosition="bottom-center"
+                                    className={s.postViewsIcon}
                         >
-                            <IconButton tooltip="Views" tooltipPosition="bottom-right">
-                                <ActionVisibility />
-                            </IconButton>
-                        </Badge>
+                            <ActionVisibility className={s.viewsIcon}/>
+                            <Badge
+                                badgeContent={105}
+                                primary={true}
+                                className={s.badgeViews}
+                            />
+                        </IconButton>
                     </CardActions>
                 </Card>
 
-
+                </div>
             </div>
         </div>
     );

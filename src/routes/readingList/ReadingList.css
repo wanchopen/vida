@@ -1,30 +1,67 @@
 @import '../../components/variables.css';
 
 .root {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 0 50px !important;
+    min-height: calc(100vh - 60px) !important;
+    flex: 1 !important;
 }
 
 .container {
-    margin: 0 auto;
-    padding: 0 0 40px;
-    max-width: 800px;
-    min-height: 100%;
-    display: inline-block;
+    max-width: 995px;
+    border: none !important;
+    margin: 30px auto -10px !important;
 }
 
 .readingListContainer {
-    width: 300px;
+    width: 30%;
     display: inline-block;
+    position: relative;
     float: left;
 }
 
 .cardContainer {
-    max-width: calc( 100% - 330px );
+    width: 60%;
     display: inline-block;
-    padding-left: 10px;
+    background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
+
 .cardSelected {
-    background-color: #b3d4fc;
+    background-color: #b3d4fc !important;
+    border: 1px solid rgb(0, 188, 212) !important;
+}
+
+.card {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9) !important;
+}
+
+.card:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.cardMenuIcon {
+    display: none !important;
+}
+
+.card:hover .cardMenuIcon {
+    display: block !important;
+}
+
+.badgeViews {
+    display: none !important;
+    padding: 20px 48px 12px 12px !important;
+}
+
+.postViewsIcon {
+    position: relative !important;
+    height: inherit;
+}
+
+.viewsIcon {
+    position: absolute !important;
+    bottom: 10px;
+}
+
+.postViewsIcon:hover .badgeViews {
+    display: block !important;
 }

@@ -1,26 +1,55 @@
-
-
 .menuPaper {
-    display: inline-block;
     float: left;
-    margin: 16px 32px 16px 0;
-    background: rgb(255, 250, 250);
+    width: 18%;
+    margin-top: 50px;
+    margin-left: 35px;
+}
+
+.subMenu {
+    font-weight: inherit !important;
+    width: 90% !important;
+}
+
+.menuSubheader {
+    border-bottom: 1px solid rgba(64, 64, 64, 0.4) !important;
 }
 
 .menuItem {
-    line-height: 30px;
-    display: inline-block;
-    padding: 3px 8px;
-    text-decoration: none;
-    font-size: 1.125em; /* ~18px */
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9) !important;
 }
 
-.menuItem,
-.menuItem:active,
-.menuItem:visited {
-    color: rgba(119, 136, 153, 0.6);
+.menuItem:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.link {
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(64, 64, 64, 0.4);
+    font-size: 1.125em; /* ~18px */
+    cursor: pointer;
+    margin-left: -15px;
 }
 
 .link:hover {
-    color: rgba(119, 136, 153, 1);
+    color: rgba(64, 64, 64, 0.4);
+}
+
+.menuIcon {
+    display: none !important;
+    padding-right: 20px !important;
+
+}
+
+.menuItem:hover {
+    border-bottom: 1px solid rgba(64, 64, 64, 0.4) !important;
+}
+
+.menuItem:hover .menuIcon {
+    display: block !important;
+}
+
+.menuItem:hover .link {
+    color: rgba(64, 64, 64, 0.4) !important;
 }

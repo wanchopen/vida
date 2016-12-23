@@ -14,7 +14,7 @@ function Html({ title, description, style, script, children }) {
         {style && <style id="css" dangerouslySetInnerHTML={{ __html: style }} />}
       </head>
       <body>
-        <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
+        <div id="app" style={{marginTop: '-22px'}} dangerouslySetInnerHTML={{ __html: children }} />
         {script && <script src={script} />}
         {analytics.google.trackingId &&
           <script

@@ -12,6 +12,7 @@ import emptyFunction from 'fbjs/lib/emptyFunction';
 import s from './App.css';
 import Header from '../Header';
 import LeftNavigation from '../LeftNavigation';
+import Navigation from '../Navigation';
 import Footer from '../Footer';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -60,7 +61,6 @@ class App extends Component {
   render() {
     return !this.props.error ? (
       <div>
-        <Header />
         <LeftNavigation/>
         {this.props.children}
         <Footer />
