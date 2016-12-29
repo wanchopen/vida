@@ -11,7 +11,7 @@ import React, { Component, PropTypes } from 'react';
 import emptyFunction from 'fbjs/lib/emptyFunction';
 import s from './App.css';
 import Header from '../Header';
-import LeftNavigation from '../LeftNavigation';
+import LeftColumn from '../LeftColumn';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -61,7 +61,7 @@ class App extends Component {
   render() {
     return !this.props.error ? (
       <div>
-        <LeftNavigation/>
+        <LeftColumn/>
         {this.props.children}
         <Footer />
       </div>

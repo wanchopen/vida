@@ -1,0 +1,17 @@
+.root {
+    width: 85%;
+    padding-left: 40px;
+}
+
+.userArea {
+    margin-top: -0.4em;
+}
+
+.userAvatar {
+    margin: 5px !important;
+}
+
+.userName {
+    display: table-cell;
+    padding: 16px 20px;
+}

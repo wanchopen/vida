@@ -13,6 +13,7 @@
   background: rgb(202, 211, 211);
   color: #fff;
   height: 50px;
+  clear: both;
 }
 
 .container {

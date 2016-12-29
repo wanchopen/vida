@@ -1,13 +1,14 @@
 .menuPaper {
-    float: left;
-    width: 18%;
-    margin-top: 50px;
-    margin-left: 35px;
+    margin-top: 15px;
+    margin-left: 40px;
+    display: inline-block;
+    width: 85%;
 }
 
 .subMenu {
     font-weight: inherit !important;
-    width: 90% !important;
+    width: 95% !important;
+    padding: 0;
 }
 
 .menuSubheader {

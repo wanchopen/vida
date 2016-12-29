@@ -136,35 +136,33 @@ const rightIconMenu = (
 );
 
 class CardsPreview extends Component {
-
-    state = {
-        showRightIcon: false,
-        backgroundColor: '#fff',
-        isSelected: false,
-    };
-
-    handleClick(card) {
+    handleClick = (card) => {
         this.props.changeSelectedCard(card);
-        this.setState({
-            isSelected: true,
-        });
-    }
+    };
 
     render() {
 
         return (
             <List >
-                <Subheader>Today</Subheader>
+                <Subheader className={s.cardsListSubHeading}>
+                    <span>Today</span>
+                    <ContentSort color={cyan500} className={s.listSubHeadingIcon}/>
+                </Subheader>
                 {this.props.cardsPreviewData.map((card) => (
                     <ListItem
                         key={card.idPost}
                         id={card.idPost}
-                        onClick={this.handleClick.bind(this, card)}
                         className={s.card}
                         leftAvatar={<Avatar src={card.avatar} />}
                         rightIconButton={rightIconMenu}
                         title={card.userName}
-                        primaryText={card.primaryText}
+                        primaryText={
+                            <div className={s.cardHeading} onClick={this.handleClick.bind(this, card)}>
+                                <span>
+                                    {card.primaryText}
+                                </span>
+                            </div>
+                        }
                         secondaryText={
                             <div style={{
                                 height: '24px',
@@ -190,13 +188,11 @@ class ReadingList extends Component {
     state = {
         cards: cardsData,
         selectedCard: 1,
-        isSelected: false,
     };
 
     changeSelectedCard = (card) => {
         this.setState({
             selectedCard: card.idPost,
-            isSelected: true,
         });
     };
 
@@ -257,7 +253,6 @@ class ReadingList extends Component {
                             selectedCard={this.state.selectedCard}
                             cardsPreviewData={this.state.cards}
                             changeSelectedCard={this.changeSelectedCard}
-                            isSelected={this.state.isSelected}
                         />
                     </Paper>
                     <div className={s.cardContainer}>
