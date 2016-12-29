@@ -1,21 +1,15 @@
 ## Documentation
 
-### General
+###Getting started
 
-* [Getting Started](./getting-started.md)
-* [React Style Guide](./react-style-guide.md)
-* [How to configure text editors and IDEs](./how-to-configure-text-editors.md)
-* [Data fetching with WHATWG Fetch](./data-fetching.md)
-* [Testing your application](./testing-your-application.md)
+* Clone repository from https://github.com/wanchopen/vida.git 
+* Run npm install. This will install both run-time project dependencies and developer tools listed in package.json file.
+* Run npm start
 
-### Questions
+This command will build the app from the source files (/src) into the output /build folder. As soon as the initial build completes, it will start the Node.js server (node build/server.js) and Browsersync with HMR on top of it.
 
-* [Which module bundler should I use?](https://github.com/kriasoft/react-starter-kit/issues/3)
-* [Which Flux implementation should I use?](https://github.com/kriasoft/react-starter-kit/issues/22)
+### Additional libraries
 
-### Recipes
+* [Material UI](http://www.material-ui.com/)
 
-* [How to Implement Routing and Navigation](./recipes/how-to-implement-routing.md)
-* [How to Integrate Redux](./recipes/how-to-integrate-redux.md)
-* [How to Integrate React Intl](./recipes/how-to-integrate-react-intl.md)
-* [How to Integrate Disqus](./recipes/how-to-integrate-disqus.md)
+You can install it as[npm package](https://www.npmjs.com/package/material-ui)
