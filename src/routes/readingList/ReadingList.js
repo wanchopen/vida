@@ -146,7 +146,7 @@ class CardsPreview extends Component {
             <List >
                 <Subheader className={s.cardsListSubHeading}>
                     <span>Today</span>
-                    <ContentSort color={cyan500} className={s.listSubHeadingIcon}/>
+
                 </Subheader>
                 {this.props.cardsPreviewData.map((card) => (
                     <ListItem

@@ -15,7 +15,7 @@ function ProfileInfo () {
                     leftAvatar={
                         <Avatar
                             src={AvatarImage}
-                            size={65}
+                            size={60}
                             className={s.userAvatar}
                         />
                     }
