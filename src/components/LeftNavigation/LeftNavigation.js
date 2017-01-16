@@ -3,9 +3,10 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './LeftNavigation.css';
 import cx from 'classnames';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
-import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
+import KeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
+import IconButton from 'material-ui/IconButton';
 import ActionBook from 'material-ui/svg-icons/action/book';
 import PlacesAllInclusive from 'material-ui/svg-icons/places/all-inclusive';
 import ImageEdit from 'material-ui/svg-icons/image/edit';
@@ -14,6 +15,12 @@ import CommunicationContactMail from 'material-ui/svg-icons/communication/contac
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import CommunicationMailOutline from 'material-ui/svg-icons/communication/mail-outline';
 import Link from '../Link';
+
+const rightIconElement = (
+    <IconButton className={s.rightMenuIcon}>
+        <KeyboardArrowDown color={cyan500}/>
+    </IconButton>
+);
 
 class MyCupOfTea extends Component {
     constructor(props) {
@@ -37,6 +44,7 @@ class MyCupOfTea extends Component {
                         initiallyOpen={false}
                         primaryTogglesNestedList={true}
                         className={cx(s.menuSubheader, s.menuItem)}
+                        rightIcon={rightIconElement}
                         nestedItems={[
                             <ListItem
                                 key={1}
@@ -97,6 +105,7 @@ class MailBox extends Component {
                         initiallyOpen={false}
                         primaryTogglesNestedList={true}
                         className={cx(s.menuSubheader, s.menuItem)}
+                        rightIcon={rightIconElement}
                         nestedItems={[
                             <ListItem
                                 key={1}

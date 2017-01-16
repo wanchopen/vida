@@ -45,7 +45,7 @@ class App extends Component {
       insertCss: context.insertCss || emptyFunction,
       setTitle: context.setTitle || emptyFunction,
       setMeta: context.setMeta || emptyFunction,
-      muiTheme: getMuiTheme(baseTheme)
+      muiTheme: getMuiTheme(baseTheme),
     };
   }
 
