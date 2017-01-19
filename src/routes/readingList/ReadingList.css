@@ -28,7 +28,7 @@
 }
 
 .cardsListSubHeading {
-    margin-bottom: 1.5em;
+    /*margin-bottom: 1.5em;*/
     cursor: pointer;
     font-size: 1em !important;
     font-weight: 100 !important;
@@ -36,14 +36,9 @@
     padding-top: 0.8em;
 }
 
-.listSubHeadingIcon {
-    display: none !important;
+.sortingSelect {
+    width: 150px !important;
 }
-
-.cardsListSubHeading:hover .listSubHeadingIcon {
-    display: inline-block !important;
-}
-
 
 .cardSelected {
     background-color: #b3d4fc !important;

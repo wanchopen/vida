@@ -5,6 +5,7 @@ import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
+import SelectField from 'material-ui/SelectField';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
@@ -135,6 +136,34 @@ const rightIconMenu = (
     </IconMenu>
 );
 
+const styles = {
+    color: 'green',
+};
+
+class SelectToSort extends Component {
+
+    state = {
+        value: 1,
+    };
+
+    handleChange = (event, index, value) => this.setState({value});
+
+    render() {
+        return (
+            <SelectField
+                value={this.state.value}
+                onChange={this.handleChange}
+                className={s.sortingSelect}
+                autoWidth={false}
+            >
+                <MenuItem value={1} primaryText="By date" />
+                <MenuItem value={2} primaryText="By theme" />
+                <MenuItem value={3} primaryText="All issues" />
+            </SelectField>
+        );
+    }
+}
+
 class CardsPreview extends Component {
     handleClick = (card) => {
         this.props.changeSelectedCard(card);
@@ -145,7 +174,7 @@ class CardsPreview extends Component {
         return (
             <List >
                 <Subheader className={s.cardsListSubHeading}>
-                    <span>Today</span>
+                    <SelectToSort/>
 
                 </Subheader>
                 {this.props.cardsPreviewData.map((card) => (
