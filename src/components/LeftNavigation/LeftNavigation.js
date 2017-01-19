@@ -11,6 +11,7 @@ import ActionBook from 'material-ui/svg-icons/action/book';
 import PlacesAllInclusive from 'material-ui/svg-icons/places/all-inclusive';
 import ImageEdit from 'material-ui/svg-icons/image/edit';
 import CommunicationChat from 'material-ui/svg-icons/communication/chat';
+import SocialPublic from 'material-ui/svg-icons/social/public';
 import CommunicationContactMail from 'material-ui/svg-icons/communication/contact-mail';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import CommunicationMailOutline from 'material-ui/svg-icons/communication/mail-outline';
@@ -71,8 +72,8 @@ class MyCupOfTea extends Component {
                             <ListItem
                                 key={4}
                                 value={4}
-                                primaryText={<Link to="/#" className={s.link}>Carpool</Link>}
-                                leftIcon={<CommunicationChat className={s.menuIcon} color={cyan500}/>}
+                                primaryText={<Link to="/#" className={s.link}>NewsBeats</Link>}
+                                leftIcon={<SocialPublic className={s.menuIcon} color={cyan500}/>}
                                 className={s.menuItem}
                             />
                                 ]}
