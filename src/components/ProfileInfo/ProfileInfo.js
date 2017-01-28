@@ -15,13 +15,10 @@ function ProfileInfo () {
                     leftAvatar={
                         <Avatar
                             src={AvatarImage}
-                            size={60}
                             className={s.userAvatar}
                         />
                     }
-                    primaryText={
-                        <span className={s.userName}>Chris Martin</span>
-                    }
+
                 />
             </List>
         </div>

@@ -16,7 +16,7 @@ import MenuItem from 'material-ui/MenuItem';
 import ActionVisibility from 'material-ui/svg-icons/action/visibility';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ContentForward from 'material-ui/svg-icons/content/forward';
-import ContentSort from 'material-ui/svg-icons/content/sort';
+import SocialShare from 'material-ui/svg-icons/social/share';
 import avatarChris from './images/chris.jpg';
 import avatarHuw from './images/huw.jpg';
 import avatarDev from './images/dev.jpg';
@@ -131,7 +131,7 @@ const rightIconMenu = (
         iconButtonElement={iconButtonElement}
     >
         <MenuItem leftIcon={<ContentForward/>}>Recommend</MenuItem>
-        <MenuItem leftIcon={<ContentSort/>}>Sort By</MenuItem>
+        <MenuItem leftIcon={<SocialShare/>}>Share</MenuItem>
         <MenuItem leftIcon={<ActionDelete/>}>Delete</MenuItem>
     </IconMenu>
 );
@@ -156,9 +156,10 @@ class SelectToSort extends Component {
                 className={s.sortingSelect}
                 autoWidth={false}
             >
-                <MenuItem value={1} primaryText="By date" />
-                <MenuItem value={2} primaryText="By theme" />
-                <MenuItem value={3} primaryText="All issues" />
+                <MenuItem value={1} primaryText="Today" />
+                <MenuItem value={2} primaryText="Choose date" />
+                <MenuItem value={3} primaryText="Choose theme" />
+                <MenuItem value={4} primaryText="All issues" />
             </SelectField>
         );
     }
@@ -182,7 +183,7 @@ class CardsPreview extends Component {
                         key={card.idPost}
                         id={card.idPost}
                         className={s.card}
-                        leftAvatar={<Avatar src={card.avatar} />}
+                        leftAvatar={<Avatar size={50} src={card.avatar} />}
                         rightIconButton={rightIconMenu}
                         title={card.userName}
                         primaryText={
@@ -196,10 +197,7 @@ class CardsPreview extends Component {
                             <div style={{
                                 height: '24px',
                             }}>
-                                <span style={{
-                                    fontStyle: 'italic',
-                                }}
-                                >
+                                <span>
                                     {card.postTheme}
                                 </span>
                             </div>
@@ -256,9 +254,7 @@ class ReadingList extends Component {
                                         tooltipPosition="bottom-right">
                                 <ContentForward className={s.viewsIcon}/>
                             </IconButton>
-                            <IconButton tooltip="Views"
-                                        tooltipPosition="bottom-center"
-                                        className={s.postViewsIcon}
+                            <IconButton className={s.postViewsIcon}
                             >
                                 <ActionVisibility className={s.viewsIcon}/>
                                 <Badge
@@ -266,6 +262,10 @@ class ReadingList extends Component {
                                     primary={true}
                                     className={s.badgeViews}
                                 />
+                            </IconButton>
+                            <IconButton tooltip="Share"
+                                        tooltipPosition="bottom-center">
+                                <SocialShare className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>

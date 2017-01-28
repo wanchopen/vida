@@ -16,6 +16,7 @@ import CommunicationContactMail from 'material-ui/svg-icons/communication/contac
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import CommunicationMailOutline from 'material-ui/svg-icons/communication/mail-outline';
 import Link from '../Link';
+import history from '../../core/history';
 
 const rightIconElement = (
     <IconButton className={s.rightMenuIcon}>
@@ -23,11 +24,15 @@ const rightIconElement = (
     </IconButton>
 );
 
+let currentPath = (history.location) ? history.location.pathname : 'none';
+console.log(currentPath);
+
 class MyCupOfTea extends Component {
     constructor(props) {
         super(props);
         this.state = {
             open: false,
+            selected: '',
         };
     }
     handleNestedListToggle = (item) => {
@@ -35,6 +40,15 @@ class MyCupOfTea extends Component {
             open: item.state.open,
         });
     };
+    setCurrentPageStyle = (menuItem) => {
+        this.setState({selected: menuItem});
+    };
+    componentWillMount() {
+        this.setState({selected: 'flow'});
+        currentPath = history.getCurrentLocation().pathname;
+        console.log("it is working", currentPath);
+    }
+
     render() {
 
         return (
@@ -50,17 +64,18 @@ class MyCupOfTea extends Component {
                             <ListItem
                                 key={1}
                                 value={1}
-                                onClick={this.handleCLick}
                                 primaryText={<Link to="/flow" className={s.link}>Flow</Link>}
                                 leftIcon={<PlacesAllInclusive className={s.menuIcon} color={cyan500}/>}
-                                className={s.menuItem}
+                                className={this.state.selected === 'flow' ? s.activeLink : s.menuitem}
+                                onClick={this.setCurrentPageStyle.bind(this, 'flow')}
                             />,
                             <ListItem
                                 key={2}
                                 value={2}
                                 primaryText={<Link to="/reading_list" className={s.link}>Reading List</Link>}
                                 leftIcon={<ActionBook className={s.menuIcon} color={cyan500}/>}
-                                className={s.menuItem}
+                                className={this.state.selected === 'reading_list' ? s.activeLink : s.menuitem}
+                                onClick={this.setCurrentPageStyle.bind(this, 'reading_list')}
                             />,
                             <ListItem
                                 key={3}
@@ -89,6 +104,7 @@ class MailBox extends Component {
         super(props);
         this.state = {
             open: false,
+            selected: ''
         };
     }
     handleNestedListToggle = (item) => {
@@ -97,7 +113,6 @@ class MailBox extends Component {
         });
     };
     render() {
-
         return (
             <List>
                 <Subheader className={s.subMenu}>
@@ -111,7 +126,6 @@ class MailBox extends Component {
                             <ListItem
                                 key={1}
                                 value={1}
-                                onClick={this.handleCLick}
                                 primaryText={<Link to="/#" className={s.link}>Messages</Link>}
                                 leftIcon={<CommunicationContactMail className={s.menuIcon} color={cyan500}/>}
                                 className={s.menuItem}
@@ -140,32 +154,11 @@ class MailBox extends Component {
 
 class LeftNavigation extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            background: lightBlack,
-            title: "My Cup Of Tea",
-            isSelected: false,
-        };
-    }
-    changeColor = (selectedItem) => {
-        this.setState({
-            background: grey400,
-            title: 'it is alright!',
-            isSelected: true,
-        });
-        console.log(selectedItem);
-    };
     render() {
         return (
             <div className={s.menuPaper}>
-                <MyCupOfTea
-                    title={this.state.title}
-                    background={this.state.background}
-                    changeColor={this.changeColor.bind(this)}
-                    isSelected={this.state.isSelected}
-                />
-                <MailBox/>
+                <MyCupOfTea />
+                <MailBox />
             </div>
         );
     }
