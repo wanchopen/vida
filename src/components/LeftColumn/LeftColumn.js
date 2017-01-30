@@ -6,6 +6,8 @@ import IconButton from 'material-ui/IconButton';
 import MenuNavigation from 'material-ui/svg-icons/navigation/menu';
 import ProfileInfo from '../ProfileInfo';
 import LeftNavigation from '../LeftNavigation';
+import Avatar from 'material-ui/Avatar';
+import AvatarImage from './images/chrismartin.jpg';
 
 class LeftColumn extends Component {
 
