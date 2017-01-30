@@ -6,6 +6,7 @@ import {List, ListItem, makeSelectable} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import KeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
+import KeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 import IconButton from 'material-ui/IconButton';
 import ActionBook from 'material-ui/svg-icons/action/book';
 import PlacesAllInclusive from 'material-ui/svg-icons/places/all-inclusive';
@@ -18,11 +19,16 @@ import CommunicationMailOutline from 'material-ui/svg-icons/communication/mail-o
 import Link from '../Link';
 import history from '../../core/history';
 
-const rightIconElement = (
+const rightIconDown = (
     <IconButton className={s.rightMenuIcon}>
         <KeyboardArrowDown color={cyan500}/>
     </IconButton>
-);
+),
+    rightIconUp = (
+        <IconButton className={s.rightMenuIcon}>
+            <KeyboardArrowUp color={cyan500}/>
+        </IconButton>
+    );
 
 let currentPath = (history.location) ? history.location.pathname : 'none';
 console.log(currentPath);
@@ -58,8 +64,9 @@ class MyCupOfTea extends Component {
                         primaryText="My Cup Of Tea"
                         initiallyOpen={false}
                         primaryTogglesNestedList={true}
+                        onNestedListToggle={this.handleNestedListToggle}
                         className={cx(s.menuSubheader, s.menuItem)}
-                        rightIcon={rightIconElement}
+                        rightIcon={this.state.open === false ? rightIconDown : rightIconUp}
                         nestedItems={[
                             <ListItem
                                 key={1}
@@ -120,8 +127,9 @@ class MailBox extends Component {
                         primaryText="Mail"
                         initiallyOpen={false}
                         primaryTogglesNestedList={true}
+                        onNestedListToggle={this.handleNestedListToggle}
                         className={cx(s.menuSubheader, s.menuItem)}
-                        rightIcon={rightIconElement}
+                        rightIcon={this.state.open === false ? rightIconDown : rightIconUp}
                         nestedItems={[
                             <ListItem
                                 key={1}
