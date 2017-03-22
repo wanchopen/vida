@@ -1,12 +1,13 @@
 import React, { PropTypes, Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './ReadingList.css';
+import s from './Entries.css';
 import cx from 'classnames';
 import Paper from 'material-ui/Paper';
-import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
+import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import SelectField from 'material-ui/SelectField';
+import Checkbox from 'material-ui/Checkbox';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -15,6 +16,8 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
+import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle';
+import RadioButtonUnchecked from 'material-ui/svg-icons/toggle/radio-button-unchecked';
 import ContentForward from 'material-ui/svg-icons/content/forward';
 import SocialShare from 'material-ui/svg-icons/social/share';
 import avatarChris from './images/chris.jpg';
@@ -28,8 +31,6 @@ import imageEnterShikari from './images/entershikari.jpg';
 import imageNinaNesbitt from './images/ninanesbitt.jpg';
 import imageWolfAlice from './images/wolfalice.jpg';
 import imageGordonLewitt from './images/gordonlewitt.jpg';
-
-
 
 const cardsData = [
     {
@@ -134,8 +135,8 @@ const rightIconMenu = (
         animated={false}
     >
         <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Recommend</MenuItem>
-        <MenuItem leftIcon={<SocialShare className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Share</MenuItem>
-        <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Move to Trash</MenuItem>
+        <MenuItem leftIcon={<SocialShare className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Share</MenuItem>
+        <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Move to Trash</MenuItem>
     </IconMenu>
 );
 
@@ -152,7 +153,7 @@ class SelectToSort extends Component {
             <SelectField
                 value={this.state.value}
                 onChange={this.handleChange}
-                className={cx(s.sortingSelect, s.rightMenuItem)}
+                className={cx(s.sortingSelect, s.rightMenuItem, (this.props.visible ? s.visible : ''))}
                 autoWidth={false}
             >
                 <MenuItem value={1}
@@ -179,16 +180,19 @@ class SelectToSort extends Component {
 }
 
 class CardsPreview extends Component {
-    handleClick = (card) => {
+
+    changeSelectedCard = (card) => {
         this.props.changeSelectedCard(card);
+    };
+    showFilter = () => {
+        this.props.showFilter();
     };
 
     render() {
-
         return (
-            <List >
+            <List className={s.cardsList}>
                 <Subheader className={s.cardsListSubHeading}>
-                    <SelectToSort/>
+                    <SelectToSort visible={this.props.isVisibleFilter} />
 
                 </Subheader>
                 {this.props.cardsPreviewData.map((card) => (
@@ -196,38 +200,43 @@ class CardsPreview extends Component {
                         key={card.idPost}
                         id={card.idPost}
                         className={s.card}
-                        leftAvatar={<Avatar src={card.avatar} />}
+                        leftCheckbox={<Checkbox
+                            checkedIcon={<ActionCheckCircle />}
+                            uncheckedIcon={<RadioButtonUnchecked />}
+                        />}
                         rightIconButton={rightIconMenu}
                         title={card.userName}
                         primaryText={
-                            <div className={s.cardHeading} onClick={this.handleClick.bind(this, card)}>
-                                <span>
-                                    {card.primaryText}
-                                </span>
+                            <div className={s.cardHeading} onClick={this.changeSelectedCard.bind(this, card)}>
+                            <span>
+                                {card.primaryText}
+                            </span>
                             </div>
                         }
                         secondaryText={
                             <div style={{
                                 height: '24px',
                             }}>
-                                <span>
-                                    {card.postTheme}
-                                </span>
+                            <span>
+                                {card.postTheme}
+                            </span>
                             </div>
                         }
                         secondaryTextLines={2}
                     />
                 ))}
             </List>
-        )
+        );
     }
+
 }
 
-class ReadingList extends Component {
-
+class Entries extends Component {
     state = {
         cards: cardsData,
         selectedCard: 1,
+        checkedCards: [],
+        isVisible: false,
     };
 
     changeSelectedCard = (card) => {
@@ -236,8 +245,13 @@ class ReadingList extends Component {
         });
     };
 
-    render() {
+    showFilter = () => {
+        this.setState({
+            isVisible: true,
+        });
+    };
 
+    render() {
         const selectedId = this.state.selectedCard;
         let fullPost;
         cardsData.forEach(function (item) {
@@ -291,6 +305,8 @@ class ReadingList extends Component {
                             selectedCard={this.state.selectedCard}
                             cardsPreviewData={this.state.cards}
                             changeSelectedCard={this.changeSelectedCard}
+                            showFilter={this.showFilter}
+                            isVisibleFilter={this.state.isVisible}
                         />
                     </Paper>
                     <div className={s.cardContainer}>
@@ -302,6 +318,6 @@ class ReadingList extends Component {
     }
 }
 
-ReadingList.propTypes = { title: PropTypes.string.isRequired };
+Entries.propTypes = { title: PropTypes.string.isRequired };
 
-export default withStyles(s)(ReadingList);
+export default withStyles(s)(Entries);

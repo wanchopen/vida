@@ -21,6 +21,11 @@
     float: left;
 }
 
+.cardsList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .cardContainer {
     max-width: 70%;
     display: inline-block;
@@ -34,7 +39,6 @@
     font-weight: 100 !important;
     color: inherit !important;
     padding-top: 0.8em;
-    margin-bottom: -1em;
 }
 
 .sortingSelect {
@@ -42,7 +46,7 @@
     visibility: hidden !important;
 }
 
-.readingListContainer:hover .sortingSelect {
+.visible {
     visibility: visible !important;
 }
 

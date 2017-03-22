@@ -30,9 +30,19 @@
     margin: 0;
 }
 
+.flowHeading {
+    font-weight: 400;
+}
+
+.cardHeader {
+    font-weight: 100 !important;
+}
+
 .badgeViews {
     display: none !important;
-    padding: 20px 48px 12px 12px !important;
+    padding: 12px 50px 12px 12px !important;
+    position: absolute !important;
+    top: 0;
 }
 
 .postViewsIcon {

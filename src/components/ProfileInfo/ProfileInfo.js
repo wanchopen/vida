@@ -5,6 +5,9 @@ import Avatar from 'material-ui/Avatar';
 import AvatarImage from './images/chrismartin.jpg';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
+import IconButton from 'material-ui/IconButton';
+import Badge from 'material-ui/Badge';
+import Link from '../Link';
 
 function ProfileInfo () {
     return (
@@ -12,15 +15,23 @@ function ProfileInfo () {
             <List className={s.userArea}>
                 <ListItem
                     disabled={true}
-                    leftAvatar={
-                        <Avatar
-                            src={AvatarImage}
-                            className={s.userAvatar}
-                        />
-                    }
+                    leftIcon={<IconButton>
+                        <Link to="/user_overview">
+                            <Avatar
+                                src={AvatarImage}
+                                className={s.userAvatar}
+                            />
+                            <Badge
+                                badgeContent={2}
+                                primary={true}
+                                className={s.badge}
+                            />
+                        </Link>
+                    </IconButton>}
 
                 />
             </List>
+
         </div>
     );
 }

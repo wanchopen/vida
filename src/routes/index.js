@@ -18,6 +18,10 @@ import content from './content';
 import notFound from './notFound';
 import flow from './flow';
 import readingList from './readingList';
+import entries from './entries';
+import drafts from './drafts';
+import newsbeats from './newsbeats';
+import userOverview from './userOverview';
 
 export default {
 
@@ -30,6 +34,10 @@ export default {
     register,
     flow,
     readingList,
+    entries,
+    drafts,
+    newsbeats,
+    userOverview,
 
     // place new routes before...
     content,

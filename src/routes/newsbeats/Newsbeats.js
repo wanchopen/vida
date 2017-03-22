@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './ReadingList.css';
+import s from './Newsbeats.css';
 import cx from 'classnames';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
@@ -14,9 +14,11 @@ import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
-import ActionDelete from 'material-ui/svg-icons/action/delete';
-import ContentForward from 'material-ui/svg-icons/content/forward';
+import Badge from 'material-ui/Badge';
+import ActionVisibility from 'material-ui/svg-icons/action/visibility';
+import ActionBook from 'material-ui/svg-icons/action/book';
 import SocialShare from 'material-ui/svg-icons/social/share';
+import ContentForward from 'material-ui/svg-icons/content/forward';
 import avatarChris from './images/chris.jpg';
 import avatarHuw from './images/huw.jpg';
 import avatarDev from './images/dev.jpg';
@@ -135,7 +137,7 @@ const rightIconMenu = (
     >
         <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Recommend</MenuItem>
         <MenuItem leftIcon={<SocialShare className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Share</MenuItem>
-        <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Move to Trash</MenuItem>
+        <MenuItem leftIcon={<ActionBook className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Add to Reading List</MenuItem>
     </IconMenu>
 );
 
@@ -223,7 +225,7 @@ class CardsPreview extends Component {
     }
 }
 
-class ReadingList extends Component {
+class Newsbeats extends Component {
 
     state = {
         cards: cardsData,
@@ -272,9 +274,20 @@ class ReadingList extends Component {
                                         tooltipPosition="bottom-center">
                                 <SocialShare className={s.viewsIcon}/>
                             </IconButton>
-                            <IconButton tooltip="Move to Trash"
+                            <IconButton tooltip="Add to Reading List"
                                         tooltipPosition="bottom-center">
-                                <ActionDelete className={s.viewsIcon}/>
+                                <ActionBook className={s.viewsIcon}/>
+                            </IconButton>
+                            <IconButton tooltip="Views"
+                                        tooltipPosition="bottom-center"
+                                        className={s.postViewsIcon}
+                            >
+                                <ActionVisibility className={s.viewsIcon}/>
+                                <Badge
+                                    badgeContent={card.views}
+                                    primary={true}
+                                    className={s.badgeViews}
+                                />
                             </IconButton>
                         </CardActions>
                     </Card>
@@ -286,7 +299,7 @@ class ReadingList extends Component {
         return (
             <div className={s.root}>
                 <div className={s.container}>
-                    <Paper className={s.readingListContainer}>
+                    <Paper className={s.newsbeatsContainer}>
                         <CardsPreview
                             selectedCard={this.state.selectedCard}
                             cardsPreviewData={this.state.cards}
@@ -302,6 +315,6 @@ class ReadingList extends Component {
     }
 }
 
-ReadingList.propTypes = { title: PropTypes.string.isRequired };
+Newsbeats.propTypes = { title: PropTypes.string.isRequired };
 
-export default withStyles(s)(ReadingList);
+export default withStyles(s)(Newsbeats);

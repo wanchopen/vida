@@ -14,11 +14,26 @@
     float: left;
 }
 
-.readingListContainer {
+.newsbeatsContainer {
     width: 30%;
     display: inline-block;
     position: relative;
     float: left;
+}
+
+.sortingSelect {
+    width: 150px !important;
+    visibility: hidden !important;
+}
+
+.newsbeatsContainer:hover .sortingSelect {
+    visibility: visible !important;
+}
+
+
+.cardsList {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .cardContainer {
@@ -34,16 +49,6 @@
     font-weight: 100 !important;
     color: inherit !important;
     padding-top: 0.8em;
-    margin-bottom: -1em;
-}
-
-.sortingSelect {
-    width: 150px !important;
-    visibility: hidden !important;
-}
-
-.readingListContainer:hover .sortingSelect {
-    visibility: visible !important;
 }
 
 .cardSelected {

@@ -1,0 +1,40 @@
+@import '../../components/variables.css';
+
+.root {
+    min-height: calc(100vh - 60px) !important;
+    flex: 1 !important;
+    margin: -0.5em !important;
+}
+
+.container {
+    max-width: 64% !important;
+    margin: 0 auto !important;
+    padding: 0 0 40px !important;
+    border: none !important;
+    float: left;
+}
+
+.userOverviewContainer {
+    padding: 16px;
+    line-height: 1 !important;
+}
+
+.userOverviewHeader {
+    float: left;
+}
+
+.userOverviewHeading {
+    font-weight: 400;
+}
+
+.gridContainer {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-around !important;
+}
+
+.gridList {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+}

@@ -5,13 +5,28 @@
 
 .userArea {
     margin-top: -0.4em;
+    margin-left: 1.5em;
 }
 
 .userAvatar {
     margin: 5px !important;
+    position: absolute;
+    top: -0.2em;
+    left: -1em;
 }
 
 .userName {
     display: table-cell;
     padding: 0.5em 0.5em 0.5em 1.5em;
+}
+
+.badge {
+    padding: 12px 50px 12px 12px !important;
+    position: absolute !important;
+    top: 0;
+    right: -8px;
+}
+
+.requestIcon {
+    position: absolute !important;
 }

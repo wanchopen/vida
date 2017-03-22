@@ -3,9 +3,9 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Flow.css';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import ActionVisibility from 'material-ui/svg-icons/action/visibility';
 import ActionBook from 'material-ui/svg-icons/action/book';
+import SocialShare from 'material-ui/svg-icons/social/share';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Badge from 'material-ui/Badge';
 import Divider from 'material-ui/Divider';
@@ -25,13 +25,14 @@ function Flow({ title }) {
                 <div className={s.flowContainer}>
                 <p className={s.flowSubHeading}>We neatly collected the issues, based on your favourites. We hope you're
                     having a great day so far.</p>
-                <h2>Photo Story of the Day</h2>
+                <h2 className={s.flowHeading}>Photo Story of the Day</h2>
 
                 <Card>
                     <CardHeader
                         title="Chris Martin"
                         subtitle="Singer, songwriter, record producer"
                         avatar= {avatarChris}
+                        className={s.cardHeader}
                     />
                     <CardMedia
                         overlay={<CardTitle title="Call it magic" subtitle="Their love of cliches may be comical at
@@ -69,16 +70,21 @@ function Flow({ title }) {
                                 className={s.badgeViews}
                             />
                         </IconButton>
+                        <IconButton tooltip="Share"
+                                    tooltipPosition="bottom-center">
+                            <SocialShare className={s.viewsIcon}/>
+                        </IconButton>
                     </CardActions>
                 </Card>
 
-                <h2>Track of the Day</h2>
+                <h2 className={s.flowHeading}>Track of the Day</h2>
 
                 <Card>
                     <CardHeader
                         title="Clara Amfo"
                         subtitle="Host of Radio 1's mid-morning show, the Live Lounge"
                         avatar= {avatarClara}
+                        className={s.cardHeader}
                     />
                     <CardTitle title="Freazy" subtitle="Wolf Alice" />
                     <iframe scrolling="no" allowTransparency="true"
@@ -108,16 +114,21 @@ function Flow({ title }) {
                                 className={s.badgeViews}
                             />
                         </IconButton>
+                        <IconButton tooltip="Share"
+                                    tooltipPosition="bottom-center">
+                            <SocialShare className={s.viewsIcon}/>
+                        </IconButton>
                     </CardActions>
                 </Card>
 
-                <h2>Post of the Day</h2>
+                <h2 className={s.flowHeading}>Post of the Day</h2>
 
                 <Card>
                     <CardHeader
                         title="Sam McTrusty"
                         subtitle="Twin Atlantic frontman"
                         avatar= {avatarSam}
+                        className={s.cardHeader}
                     />
                     <CardMedia
                         overlay={<CardTitle title="Do you want to knit a cat a scarf?" subtitle="From magic beans to
@@ -158,6 +169,10 @@ function Flow({ title }) {
                                 primary={true}
                                 className={s.badgeViews}
                             />
+                        </IconButton>
+                        <IconButton tooltip="Share"
+                                    tooltipPosition="bottom-center">
+                            <SocialShare className={s.viewsIcon}/>
                         </IconButton>
                     </CardActions>
                 </Card>
