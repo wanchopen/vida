@@ -5,6 +5,7 @@
     "npm": ">=3.3 <4"
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "babel-polyfill": "6.13.0",
     "babel-runtime": "6.11.6",
     "bluebird": "3.4.6",
@@ -181,6 +182,6 @@
     "build": "babel-node tools/run build",
     "deploy": "babel-node tools/run deploy",
     "render": "babel-node tools/run render",
-    "start": "babel-node tools/run start"
+    "start": "./node_modules/.bin/babel-node index.js"
   }
 }
