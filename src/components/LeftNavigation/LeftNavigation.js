@@ -19,10 +19,11 @@ import CommunicationContactMail from 'material-ui/svg-icons/communication/contac
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import CommunicationMailOutline from 'material-ui/svg-icons/communication/mail-outline';
 import ActionEvent from 'material-ui/svg-icons/action/event';
-import ActionAccountCircle from 'material-ui/svg-icons/action/account-circle';
+import ActionSettings from 'material-ui/svg-icons/action/settings';
 import ActionBook from 'material-ui/svg-icons/action/book';
+import ActionFace from 'material-ui/svg-icons/action/face';
+import ActionLoyalty from 'material-ui/svg-icons/action/loyalty';
 import Link from '../Link';
-import history from '../../core/history';
 
 const rightIconDown = (
     <IconButton className={s.rightMenuIcon}>
@@ -32,6 +33,11 @@ const rightIconDown = (
     rightIconUp = (
         <IconButton className={s.rightMenuIcon}>
             <KeyboardArrowUp color={cyan500}/>
+        </IconButton>
+    ),
+    settingsIcon = (
+        <IconButton className={s.menuSettingsIcon}>
+            <ActionSettings color={grey400}/>
         </IconButton>
     ),
     facebookIcon = (
@@ -72,6 +78,7 @@ class MyCupOfTea extends Component {
                                 value={1}
                                 primaryText={<Link to="/reading_list" className={s.link}>Reading List</Link>}
                                 leftIcon={<ActionBook className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={this.props.currentPage === 'reading_list' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'reading_list')}
                             />,
@@ -80,6 +87,7 @@ class MyCupOfTea extends Component {
                                 value={2}
                                 primaryText={<Link to="/entries" className={s.link}>Entries</Link>}
                                 leftIcon={<ImageEdit className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={this.props.currentPage === 'entries' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'entries')}
                             />,
@@ -88,6 +96,7 @@ class MyCupOfTea extends Component {
                                 value={3}
                                 primaryText={<Link to="/drafts" className={s.link}>Drafts</Link>}
                                 leftIcon={<ContentDrafts className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={this.props.currentPage === 'drafts' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'drafts')}
                             />
@@ -127,22 +136,41 @@ class MailBox extends Component {
                             <ListItem
                                 key={1}
                                 value={1}
-                                primaryText={<Link to="/#" className={s.link}>Messages</Link>}
-                                leftIcon={<CommunicationContactMail className={s.menuIcon} color={cyan500}/>}
+                                primaryText={<Link to="/#" className={s.link}>Requests</Link>}
+                                leftIcon={<ActionFace className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={s.menuItem}
                             />,
                             <ListItem
                                 key={2}
                                 value={2}
-                                primaryText={<Link to="/#" className={s.link}>Facebook</Link>}
-                                leftIcon={facebookIcon}
+                                primaryText={<Link to="/#" className={s.link}>Recommendations</Link>}
+                                leftIcon={<ActionLoyalty className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={s.menuItem}
                             />,
                             <ListItem
                                 key={3}
                                 value={3}
+                                primaryText={<Link to="/#" className={s.link}>Messages</Link>}
+                                leftIcon={<CommunicationContactMail className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
+                                className={s.menuItem}
+                            />,
+                            <ListItem
+                                key={4}
+                                value={4}
+                                primaryText={<Link to="/#" className={s.link}>Facebook</Link>}
+                                leftIcon={facebookIcon}
+                                rightIcon={settingsIcon}
+                                className={s.menuItem}
+                            />,
+                            <ListItem
+                                key={5}
+                                value={5}
                                 primaryText={<Link to="/#" className={s.link}>Gmail</Link>}
                                 leftIcon={<CommunicationMailOutline className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={s.menuItem}
                             />
                         ]}
@@ -185,6 +213,7 @@ class GoingsOn extends Component {
                                 value={1}
                                 primaryText={<Link to="/flow" className={s.link}>Flow</Link>}
                                 leftIcon={<PlacesAllInclusive className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={this.props.currentPage === 'flow' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'flow')}
                             />,
@@ -193,6 +222,7 @@ class GoingsOn extends Component {
                                 value={2}
                                 primaryText={<Link to="/newsbeats" className={s.link}>NewsBeats</Link>}
                                 leftIcon={<SocialPublic className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={this.props.currentPage === 'newsbeats' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'newsbeats')}
                             />,
@@ -201,6 +231,7 @@ class GoingsOn extends Component {
                                 value={3}
                                 primaryText={<Link to="/#" className={s.link}>Events</Link>}
                                 leftIcon={<ActionEvent className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={s.menuItem}
                             />
                         ]}
@@ -241,6 +272,7 @@ class Media extends Component {
                                 value={1}
                                 primaryText={<Link to="/#" className={s.link}>Photo Stories</Link>}
                                 leftIcon={<ImagePhotoLibrary className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={s.menuItem}
                             />,
                             <ListItem
@@ -248,6 +280,7 @@ class Media extends Component {
                                 value={2}
                                 primaryText={<Link to="/#" className={s.link}>Videos</Link>}
                                 leftIcon={<AVVideoLibrary className={s.menuIcon} color={cyan500} />}
+                                rightIcon={settingsIcon}
                                 className={s.menuItem}
                             />,
                             <ListItem
@@ -255,6 +288,7 @@ class Media extends Component {
                                 value={3}
                                 primaryText={<Link to="/#" className={s.link}>Music</Link>}
                                 leftIcon={<AVLibraryMusic className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={settingsIcon}
                                 className={s.menuItem}
                             />
                         ]}

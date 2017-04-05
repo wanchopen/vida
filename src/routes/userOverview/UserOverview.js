@@ -28,39 +28,11 @@ import imageNinaNesbitt from './images/ninanesbitt.jpg';
 import imageWolfAlice from './images/wolfalice.jpg';
 import imageGordonLewitt from './images/gordonlewitt.jpg';
 
-const tilesData = [
-    {
-        img: imageManchester,
-        title: 'Manchester',
-        author: 'jill111',
-    },
-    {
-        img: imageNinaNesbitt,
-        title: 'Nina Nesbitt',
-        author: 'pashminu',
-    },
-    {
-        img: imageEnterShikari,
-        title: 'Enter Shikari',
-        author: 'Danson67',
-    },
-    {
-        img: imageGordonLewitt,
-        title: 'Gordon Lewitt and Alice Levine',
-        author: 'fancycrave1',
-    },
-    {
-        img: imageWolfAlice,
-        title: 'Wolf Alice',
-        author: 'Hans',
-    },
-];
-
 const lastUserEntry = {
         idPost: 2,
-        userName: 'Huw Stephens',
-        userProfession: 'Welsh radio presenter',
-        avatar: avatarHuw,
+        userName: 'Chris Martin',
+        userProfession: 'Singer, songwriter, record producer',
+        avatar: avatarChris,
         primaryText: 'Huw Rocks with Enter Shikari',
         date: 'Wed 16 Nov 2016 22:00',
         postTheme: 'Live Lounge',
@@ -73,9 +45,9 @@ const lastUserEntry = {
     },
     lastUserReadingItem = {
         idPost: 3,
-        userName: 'Dev',
-        userProfession: 'British actor, radio presenter and DJ',
-        avatar: avatarDev,
+        userName: 'Huw Stephens',
+        userProfession: 'Singer, songwriter, record producer',
+        avatar: avatarHuw,
         primaryText: 'Nina Nesbitt in the Live Lounge',
         date: 'Sun 4 Dec 2016 6:00',
         postTheme: 'Weekends radio show',
@@ -86,22 +58,74 @@ const lastUserEntry = {
         'day to sit in for Huw!',
         views: '367',
     },
-    lastUserPhotoStory = {
-        idPost: 4,
-        userName: 'Clara Amfo',
-        userProfession: 'Radio presenter in the mid-morning show on BBC Radio 1',
-        avatar: avatarClara,
-        primaryText: 'Wolf Alice in the Live Lounge',
-        date: 'Tue 23 Jun 2015 10:00',
-        postTheme: 'Live Lounge',
-        overlayTitle: 'Ellie Rowsell of Wolf Alice sings in the Radio 1 Live Lounge',
-        overlaySubtitle: 'Presenting their new single \'Bros\'',
-        featuredImg: imageWolfAlice,
-        cardText: 'Wolf Alice are in the Radio 1 Live Lounge for Clara, performing their new single \'Bros\' and a ' +
-        'cover of Years & Years\' \'Desire\'. More live music from LA Priest who was in session for Huw Stephen\'s ' +
-        'last night.',
-        views: '763',
-    };
+    lastUserPhotoStory = [{
+            idPost: 4,
+            userName: 'Chris Martin',
+            userProfession: 'Singer, songwriter, record producer',
+            avatar: avatarChris,
+            primaryText: 'Wolf Alice in the Live Lounge',
+            date: 'Tue 23 Jun 2015 10:00',
+            postTheme: 'Live Lounge',
+            overlayTitle: 'Ellie Rowsell of Wolf Alice sings in the Radio 1 Live Lounge',
+            overlaySubtitle: 'Presenting their new single \'Bros\'',
+            featuredImg: imageWolfAlice,
+            cardText: 'Wolf Alice are in the Radio 1 Live Lounge for Clara, performing their new single \'Bros\' and a ' +
+            'cover of Years & Years\' \'Desire\'. More live music from LA Priest who was in session for Huw Stephen\'s ' +
+            'last night.',
+            views: '763',
+        },
+        {
+            idPost: 5,
+            userName: 'Chris Martin',
+            userProfession: 'Singer, songwriter, record producer',
+            avatar: avatarChris,
+            primaryText: 'Coldplay in Manchester - Visual treats and infectious niceness',
+            date: 'Sun 5 Jun 2016 12:08',
+            postTheme: 'Concerts',
+            overlayTitle: 'Call it magic',
+            overlaySubtitle: 'Their love of cliches may be comical at times, but band prove there are few serious ' +
+            'challengers to their own heavyweight title',
+            featuredImg: imageManchester,
+            cardText: 'Halfway through Coldplay’s two-hour extravaganza, the band are on the time-honoured stadium rock ' +
+            'trudge to a smaller stage in the middle of the audience, when they turn back to see the image of Muhammad ' +
+            'Ali making one of his old speeches. On the day The Greatest died, to hear him say, “When I die, if there’s ' +
+            'a heaven, I’m going to see it” provides a genuine lump-in-the-throat moment. The stadium erupts with ' +
+            'spontaneous applause; Coldplay haven’t got where they are today without being able to capture personal ' +
+            'intimacy and make it work on a grand scale.',
+            views: '105',
+        },
+        {
+            idPost: 6,
+            userName: 'Chris Martin',
+            userProfession: 'Singer, songwriter, record producer',
+            avatar: avatarChris,
+            primaryText: 'Gordon Lewitt and Alice Levine',
+            date: 'Tue 23 Jun 2015 10:00',
+            postTheme: 'Live Lounge',
+            overlayTitle: 'Saturday\'s Special',
+            overlaySubtitle: 'Alice chats Joseph Gordon-Levitt about the new Edward Snowden film.',
+            featuredImg: imageGordonLewitt,
+            cardText: 'Wolf Alice are in the Radio 1 Live Lounge for Clara, performing their new single \'Bros\' and a ' +
+            'cover of Years & Years\' \'Desire\'. More live music from LA Priest who was in session for Huw Stephen\'s ' +
+            'last night.',
+            views: '763',
+        },
+        {
+            idPost: 7,
+            userName: 'Chris Martin',
+            userProfession: 'Singer, songwriter, record producer',
+            avatar: avatarChris,
+            primaryText: 'Huw Rocks with Enter Shikari',
+            date: 'Wed 16 Nov 2016 22:00',
+            postTheme: 'Live Lounge',
+            overlayTitle: 'Don\'t get lost in the wires, Rou!',
+            overlaySubtitle: 'Enter Shikari in the Live Lounge',
+            featuredImg: imageEnterShikari,
+            cardText: 'Enter Shikari are in the Radio 1 Live Lounge for a special performance ahead of Radio 1 Rocks! ' +
+            'There\'s also new music from Laura Welsh and Swim Deep!',
+            views: '156',
+        },
+    ];
 
 function UserOverview() {
     return (
@@ -109,17 +133,24 @@ function UserOverview() {
             <div className={s.container}>
                 <div className={s.userOverviewContainer}>
 
-                    <Avatar src={avatarChris} size={90}/>
+                    <Paper zDepth={1} className={s.userOverviewHeader}>
+                        <List className={s.userAvatar}>
+                            <ListItem leftAvatar={<Avatar src={avatarChris} size={90}/>}
+                                      className={s.userAvatarLabel}><span>Chris Martin</span></ListItem>
+                        </List>
 
+                        <List className={s.userInfo}>
+                            <ListItem primaryText="City"
+                                      secondaryText="London"/>
+                            <ListItem primaryText="Work"
+                                      secondaryText="Singer, songwriter, record producer" />
+                            <ListItem primaryText="5 things I can't live without"
+                                      secondaryText="Music, Ocean, Indian food, Big city, Studio" />
+                        </List>
+                    </Paper>
 
                     <h2 className={s.userOverviewHeading}>Entries</h2>
                     <Card>
-                        <CardHeader
-                            title={lastUserEntry.userName}
-                            subtitle={lastUserEntry.userProfession}
-                            avatar= {lastUserEntry.avatar}
-                            className={s.cardHeader}
-                        />
                         <CardMedia
                             overlay={<CardTitle title={lastUserEntry.overlayTitle}
                                                 subtitle={lastUserEntry.overlaySubtitle} />}
@@ -156,36 +187,122 @@ function UserOverview() {
                         </CardActions>
                     </Card>
 
-                    <div className={s.gridContainer}>
-                        <GridList className={s.gridList} cols={2.2}>
-                            {tilesData.map((tile) => (
-                                <GridTile
-                                    key={tile.img}
-                                    title={tile.title}
-                                    titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-                                >
-                                    <img src={tile.img} />
-                                </GridTile>
-                            ))}
-                        </GridList>
-                    </div>
-                    <Divider />
-
                     <h2 className={s.userOverviewHeading}>Reading List</h2>
-                    <div className={s.gridContainer}>
-                        <GridList className={s.gridList} cols={2.2}>
-                            {tilesData.map((tile) => (
-                                <GridTile
-                                    key={tile.img}
-                                    title={tile.title}
-                                    titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-                                >
-                                    <img src={tile.img} />
-                                </GridTile>
-                            ))}
-                        </GridList>
-                    </div>
-                    <Divider />
+                    <Card>
+                        <CardHeader
+                            title={lastUserReadingItem.userName}
+                            subtitle={lastUserReadingItem.userProfession}
+                            avatar= {lastUserReadingItem.avatar}
+                            className={s.cardHeader}
+                        />
+                        <CardMedia
+                            overlay={<CardTitle title={lastUserReadingItem.overlayTitle}
+                                                subtitle={lastUserReadingItem.overlaySubtitle} />}
+                        >
+                            <img src= {lastUserReadingItem.featuredImg} />
+                        </CardMedia>
+                        <CardTitle title={lastUserReadingItem.primaryText} />
+                        <CardText>
+                            {lastUserReadingItem.cardText}
+                        </CardText>
+
+                        <Divider />
+
+                        <CardActions>
+                            <IconButton tooltip="Add to Reading List"
+                                        tooltipPosition="bottom-right">
+                                <ActionBook className={s.viewsIcon} />
+                            </IconButton>
+                            <IconButton tooltip="Views"
+                                        tooltipPosition="bottom-center"
+                                        className={s.postViewsIcon}
+                            >
+                                <ActionVisibility className={s.viewsIcon}/>
+                                <Badge
+                                    badgeContent={49}
+                                    primary={true}
+                                    className={s.badgeViews}
+                                />
+                            </IconButton>
+                            <IconButton tooltip="Share"
+                                        tooltipPosition="bottom-center">
+                                <SocialShare className={s.viewsIcon}/>
+                            </IconButton>
+                        </CardActions>
+                    </Card>
+
+                    <h2 className={s.userOverviewHeading}>Photo stories</h2>
+
+                    <Card>
+
+                        <CardMedia
+                            overlay={<CardTitle title={lastUserPhotoStory[0].overlayTitle}
+                                                subtitle={lastUserPhotoStory[0].overlaySubtitle} />}
+                        >
+                            <img src= {lastUserPhotoStory[0].featuredImg} />
+                        </CardMedia>
+
+                        <Divider />
+
+                        <CardActions>
+                            <IconButton tooltip="Add to Reading List"
+                                        tooltipPosition="bottom-right">
+                                <ActionBook className={s.viewsIcon} />
+                            </IconButton>
+                            <IconButton tooltip="Views"
+                                        tooltipPosition="bottom-center"
+                                        className={s.postViewsIcon}
+                            >
+                                <ActionVisibility className={s.viewsIcon}/>
+                                <Badge
+                                    badgeContent={49}
+                                    primary={true}
+                                    className={s.badgeViews}
+                                />
+                            </IconButton>
+                            <IconButton tooltip="Share"
+                                        tooltipPosition="bottom-center">
+                                <SocialShare className={s.viewsIcon}/>
+                            </IconButton>
+                        </CardActions>
+                    </Card>
+
+                    <h2 className={s.userOverviewHeading}>Videos</h2>
+
+                    <Card>
+                        <CardMedia>
+                            <iframe width="560"
+                                    height="315"
+                                    src="https://www.youtube.com/embed/5APeY5qeGQE"
+                                    frameBorder="0" allowFullScreen>
+                            </iframe>
+                        </CardMedia>
+
+                        <Divider />
+
+                        <CardActions>
+                            <IconButton tooltip="Add to Reading List"
+                                        tooltipPosition="bottom-right">
+                                <ActionBook className={s.viewsIcon} />
+                            </IconButton>
+                            <IconButton tooltip="Views"
+                                        tooltipPosition="bottom-center"
+                                        className={s.postViewsIcon}
+                            >
+                                <ActionVisibility className={s.viewsIcon}/>
+                                <Badge
+                                    badgeContent={49}
+                                    primary={true}
+                                    className={s.badgeViews}
+                                />
+                            </IconButton>
+                            <IconButton tooltip="Share"
+                                        tooltipPosition="bottom-center">
+                                <SocialShare className={s.viewsIcon}/>
+                            </IconButton>
+                        </CardActions>
+                    </Card>
+
                 </div>
 
             </div>

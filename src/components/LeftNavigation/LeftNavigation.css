@@ -73,7 +73,7 @@ a.link {
     width: 100%;
     height: 100%;
     top: 0;
-    left: 0;
+    left: -1em !important;
     z-index: 100;
     padding-left: 4em;
 
@@ -83,11 +83,18 @@ a.link {
     display: none !important;
     padding-right: 20px !important;
     top: -1em !important;
-    left: 0 !important;
+    left: -1em !important;
+}
+
+.menuSettingsIcon {
+    display: none !important;
+    top: -26px !important;
 }
 
 .menuItem:hover .menuIcon,
-.activeLink:hover .menuIcon {
+.activeLink:hover .menuIcon,
+.menuItem:hover .menuSettingsIcon,
+.activeLink:hover .menuSettingsIcon {
     display: block !important;
 }
 

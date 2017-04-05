@@ -15,16 +15,64 @@
 }
 
 .userOverviewContainer {
-    padding: 16px;
+    padding: 0 16px 16px 16px;
     line-height: 1 !important;
 }
 
 .userOverviewHeader {
+    position: relative;
+    height: 14em;
+}
+
+.userAvatar {
     float: left;
+    width: 10em;
+}
+
+.userAvatarLabel span {
+    position: absolute;
+    top: 7em;
+    left: 1em;
+    font-weight: 100 !important;
+}
+
+.userInfo {
+    float: left;
+    padding-left: 5em;
+}
+
+.userAvatar:hover, .userInfo:hover, .userAvatarLabel span:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    cursor: inherit !important;
 }
 
 .userOverviewHeading {
     font-weight: 400;
+}
+
+.cardHeader {
+    font-weight: 100 !important;
+}
+
+.badgeViews {
+    display: none !important;
+    padding: 12px 50px 12px 12px !important;
+    position: absolute !important;
+    top: 0;
+}
+
+.postViewsIcon {
+    position: relative !important;
+    height: inherit;
+}
+
+.viewsIcon {
+    position: absolute !important;
+    bottom: 10px;
+}
+
+.postViewsIcon:hover .badgeViews {
+    display: block !important;
 }
 
 .gridContainer {

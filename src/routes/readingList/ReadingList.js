@@ -10,13 +10,17 @@ import SelectField from 'material-ui/SelectField';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import ContentSort from 'material-ui/svg-icons/content/sort';
 import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
+import Dialog from 'material-ui/Dialog';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ContentForward from 'material-ui/svg-icons/content/forward';
 import SocialShare from 'material-ui/svg-icons/social/share';
+import ActionSettings from 'material-ui/svg-icons/action/settings';
+import FlatButton from 'material-ui/FlatButton';
 import avatarChris from './images/chris.jpg';
 import avatarHuw from './images/huw.jpg';
 import avatarDev from './images/dev.jpg';
@@ -142,38 +146,48 @@ const rightIconMenu = (
 class SelectToSort extends Component {
 
     state = {
-        value: 1,
+        open: false,
     };
 
-    handleChange = (event, index, value) => this.setState({value});
+    handleOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
 
     render() {
+        const actions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+                label="Submit"
+                primary={true}
+                keyboardFocused={true}
+                onTouchTap={this.handleClose}
+            />,
+        ];
+
         return (
-            <SelectField
-                value={this.state.value}
-                onChange={this.handleChange}
-                className={cx(s.sortingSelect, s.rightMenuItem)}
-                autoWidth={false}
+        <div>
+            <ContentSort color={grey400}
+                            className={s.sortingSelect}
+                            onTouchTap={this.handleOpen} />
+            <Dialog
+                title="Dialog With Actions"
+                actions={actions}
+                modal={false}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
             >
-                <MenuItem value={1}
-                          primaryText="By Date"
-                          className={s.rightMenuItem}
-                />
-                <MenuItem value={2}
-                          primaryText="By Theme"
-                          className={s.rightMenuItem}
-                          rightIcon={<ArrowDropRight />}
-                          menuItems={[
-                              <MenuItem primaryText="Concerts" />,
-                              <MenuItem primaryText="Live Lounge" />,
-                              <MenuItem primaryText="Weekends radio show" />,
-                          ]}
-                />
-                <MenuItem value={3}
-                          primaryText="All issues"
-                          className={s.rightMenuItem}
-                />
-            </SelectField>
+                The actions in this window were passed in as an array of React objects.
+            </Dialog>
+        </div>
         );
     }
 }

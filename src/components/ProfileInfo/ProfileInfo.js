@@ -21,11 +21,6 @@ function ProfileInfo () {
                                 src={AvatarImage}
                                 className={s.userAvatar}
                             />
-                            <Badge
-                                badgeContent={2}
-                                primary={true}
-                                className={s.badge}
-                            />
                         </Link>
                     </IconButton>}
 
