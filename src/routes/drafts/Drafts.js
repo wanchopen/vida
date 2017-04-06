@@ -8,7 +8,6 @@ import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import SelectField from 'material-ui/SelectField';
 import Checkbox from 'material-ui/Checkbox';
-import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
