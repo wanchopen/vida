@@ -8,6 +8,10 @@ import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import SelectField from 'material-ui/SelectField';
 import Checkbox from 'material-ui/Checkbox';
+import Avatar from 'material-ui/Avatar';
+import FlatButton from 'material-ui/FlatButton';
+import Dialog from 'material-ui/Dialog';
+import ContentSort from 'material-ui/svg-icons/content/sort';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
@@ -53,9 +57,9 @@ const cardsData = [
     },
     {
         idPost: 2,
-        userName: 'Huw Stephens',
-        userProfession: 'Welsh radio presenter',
-        avatar: avatarHuw,
+        userName: 'Chris Martin',
+        userProfession: 'British singer, songwriter, record producer',
+        avatar: avatarChris,
         primaryText: 'Huw Rocks with Enter Shikari',
         date: 'Wed 16 Nov 2016 22:00',
         postTheme: 'Live Lounge',
@@ -68,9 +72,9 @@ const cardsData = [
     },
     {
         idPost: 3,
-        userName: 'Dev',
-        userProfession: 'British actor, radio presenter and DJ',
-        avatar: avatarDev,
+        userName: 'Chris Martin',
+        userProfession: 'British singer, songwriter, record producer',
+        avatar: avatarChris,
         primaryText: 'Nina Nesbitt in the Live Lounge',
         date: 'Sun 4 Dec 2016 6:00',
         postTheme: 'Weekends radio show',
@@ -83,9 +87,9 @@ const cardsData = [
     },
     {
         idPost: 4,
-        userName: 'Clara Amfo',
-        userProfession: 'Radio presenter in the mid-morning show on BBC Radio 1',
-        avatar: avatarClara,
+        userName: 'Chris Martin',
+        userProfession: 'British singer, songwriter, record producer',
+        avatar: avatarChris,
         primaryText: 'Wolf Alice in the Live Lounge',
         date: 'Tue 23 Jun 2015 10:00',
         postTheme: 'Live Lounge',
@@ -99,9 +103,9 @@ const cardsData = [
     },
     {
         idPost: 5,
-        userName: 'Alice Levine',
-        userProfession: 'English television and radio presenter',
-        avatar: avatarAlice,
+        userName: 'Chris Martin',
+        userProfession: 'British singer, songwriter, record producer',
+        avatar: avatarChris,
         primaryText: 'Alice Levine with Joseph Gordon-Levitt',
         date: 'Tue 23 Jun 2015 10:00',
         postTheme: 'Weekends radio show',
@@ -140,38 +144,48 @@ const rightIconMenu = (
 class SelectToSort extends Component {
 
     state = {
-        value: 1,
+        open: false,
     };
 
-    handleChange = (event, index, value) => this.setState({value});
+    handleOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
 
     render() {
+        const actions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+                label="Submit"
+                primary={true}
+                keyboardFocused={true}
+                onTouchTap={this.handleClose}
+            />,
+        ];
+
         return (
-            <SelectField
-                value={this.state.value}
-                onChange={this.handleChange}
-                className={cx(s.sortingSelect, s.rightMenuItem)}
-                autoWidth={false}
-            >
-                <MenuItem value={1}
-                          primaryText="By Date"
-                          className={s.rightMenuItem}
-                />
-                <MenuItem value={2}
-                          primaryText="By Theme"
-                          className={s.rightMenuItem}
-                          rightIcon={<ArrowDropRight />}
-                          menuItems={[
-                              <MenuItem primaryText="Concerts" />,
-                              <MenuItem primaryText="Live Lounge" />,
-                              <MenuItem primaryText="Weekends radio show" />,
-                          ]}
-                />
-                <MenuItem value={3}
-                          primaryText="All issues"
-                          className={s.rightMenuItem}
-                />
-            </SelectField>
+            <div>
+                <ContentSort color={grey400}
+                             className={s.sortingSelect}
+                             onTouchTap={this.handleOpen} />
+                <Dialog
+                    title="Dialog With Actions"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                >
+                    The actions in this window were passed in as an array of React objects.
+                </Dialog>
+            </div>
         );
     }
 }
@@ -193,10 +207,6 @@ class CardsPreview extends Component {
                         key={card.idPost}
                         id={card.idPost}
                         className={s.card}
-                        leftCheckbox={<Checkbox
-                            checkedIcon={<ActionCheckCircle />}
-                            uncheckedIcon={<RadioButtonUnchecked />}
-                        />}
                         rightIconButton={rightIconMenu}
                         title={card.userName}
                         primaryText={

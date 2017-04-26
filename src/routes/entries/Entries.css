@@ -42,11 +42,10 @@
 }
 
 .sortingSelect {
-    width: 150px !important;
     visibility: hidden !important;
 }
 
-.visible {
+.readingListContainer:hover .sortingSelect {
     visibility: visible !important;
 }
 

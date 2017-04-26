@@ -42,7 +42,11 @@
 }
 
 .sortingSelect {
-    width: 150px !important;
+    visibility: hidden !important;
+}
+
+.readingListContainer:hover .sortingSelect {
+    visibility: visible !important;
 }
 
 .cardSelected {
