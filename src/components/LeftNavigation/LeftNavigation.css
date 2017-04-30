@@ -95,7 +95,6 @@ a.link {
 
 .menuItem:hover .menuIcon,
 .activeLink:hover .menuIcon,
-.menuItem:hover .menuSettingsIcon,
 .activeLink:hover .menuSettingsIcon {
     display: block !important;
 }

@@ -105,6 +105,14 @@
     color: #00bcd4 !important;
 }
 
+.fullPostActions {
+    visibility: hidden;
+}
+
+.fullPost:hover .fullPostActions {
+    visibility: visible;
+}
+
 .rightMenuItem {
     font-weight: inherit !important;
     font-style: italic;

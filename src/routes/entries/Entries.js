@@ -213,7 +213,6 @@ class CardsPreview extends Component {
                         key={card.idPost}
                         id={card.idPost}
                         className={s.card}
-                        leftAvatar={<Avatar src={card.avatar} />}
                         rightIconButton={rightIconMenu}
                         title={card.userName}
                         primaryText={
@@ -268,7 +267,7 @@ class Entries extends Component {
             if (item.idPost == selectedId) {
                 const card = Object.assign({}, item);
                 fullPost = (
-                    <Card key={card.idPost}>
+                    <Card key={card.idPost} className={s.fullPost}>
                         <CardHeader
                             title={card.userName}
                             subtitle={card.userProfession}
@@ -287,18 +286,18 @@ class Entries extends Component {
 
                         <Divider />
 
-                        <CardActions>
+                        <CardActions className={s.fullPostActions}>
                             <IconButton tooltip="Recommend"
                                         tooltipPosition="bottom-right">
-                                <ContentForward className={s.viewsIcon}/>
+                                <ContentForward color={cyan500} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="bottom-center">
-                                <SocialShare className={s.viewsIcon}/>
+                                <SocialShare color={cyan500} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Move to Trash"
                                         tooltipPosition="bottom-center">
-                                <ActionDelete className={s.viewsIcon}/>
+                                <ActionDelete color={cyan500} className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>
