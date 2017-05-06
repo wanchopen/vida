@@ -105,6 +105,10 @@
     color: #00bcd4 !important;
 }
 
+.avatar {
+    filter: opacity(30%);
+}
+
 .fullPostActions {
     visibility: hidden;
 }

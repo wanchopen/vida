@@ -4,6 +4,11 @@ import s from './LeftNavigation.css';
 import cx from 'classnames';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
+import FlatButton from 'material-ui/FlatButton';
+import Dialog from 'material-ui/Dialog';
+import Checkbox from 'material-ui/Checkbox';
+import Toggle from 'material-ui/Toggle';
+import Divider from 'material-ui/Divider';
 import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import KeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import KeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
@@ -35,14 +40,74 @@ const rightIconDown = (
             <KeyboardArrowUp color={cyan500}/>
         </IconButton>
     ),
-    settingsIcon = (
-        <IconButton className={s.menuSettingsIcon}>
-            <ActionSettings color={grey400}/>
-        </IconButton>
-    ),
     facebookIcon = (
         <IconButton iconClassName="muidocs-icon-custom-github" color={cyan500} />
     );
+
+class SettingsIcon extends Component {
+    state = {
+        open: false,
+    };
+
+    handleOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+    render() {
+        const actions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+                label="Submit"
+                primary={true}
+                keyboardFocused={true}
+                onTouchTap={this.handleClose}
+            />,
+        ];
+
+        return (
+            <div>
+                <ActionSettings color={grey400} className={s.settingsIcon} onTouchTap={this.handleOpen}/>
+                <Dialog
+                    title={this.props.title + ' Settings'}
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    autoScrollBodyContent={true}
+                    className={s.settingsDialog}
+                >
+                    <List>
+                        <ListItem
+                            primaryText="When calls and notifications arrive"
+                            secondaryText="Always interrupt"
+                        />
+                    </List>
+                    <Divider />
+                    <List>
+                        <Subheader>Priority Interruptions</Subheader>
+                        <ListItem primaryText="Events and reminders" rightToggle={<Toggle />} />
+                        <ListItem primaryText="Calls" rightToggle={<Toggle />} />
+                        <ListItem primaryText="Messages" rightToggle={<Toggle />} />
+                    </List>
+                    <Divider />
+                    <List>
+                        <Subheader>Hangout Notifications</Subheader>
+                        <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                        <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                        <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                    </List>
+                </Dialog>
+            </div>
+        );
+    }
+}
 
 class MyCupOfTea extends Component {
     constructor(props) {
@@ -78,7 +143,7 @@ class MyCupOfTea extends Component {
                                 value={1}
                                 primaryText={<Link to="/reading_list" className={s.link}>Reading List</Link>}
                                 leftIcon={<ActionBook className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Reading List"/>}
                                 className={this.props.currentPage === 'reading_list' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'reading_list')}
                             />,
@@ -87,7 +152,7 @@ class MyCupOfTea extends Component {
                                 value={2}
                                 primaryText={<Link to="/entries" className={s.link}>Entries</Link>}
                                 leftIcon={<ImageEdit className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Entries"/>}
                                 className={this.props.currentPage === 'entries' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'entries')}
                             />,
@@ -96,7 +161,7 @@ class MyCupOfTea extends Component {
                                 value={3}
                                 primaryText={<Link to="/drafts" className={s.link}>Drafts</Link>}
                                 leftIcon={<ContentDrafts className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Drafts"/>}
                                 className={this.props.currentPage === 'drafts' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'drafts')}
                             />
@@ -136,41 +201,31 @@ class MailBox extends Component {
                             <ListItem
                                 key={1}
                                 value={1}
-                                primaryText={<Link to="/#" className={s.link}>Requests</Link>}
+                                primaryText={<Link to="/#" className={s.link}>Recommended</Link>}
                                 leftIcon={<ActionFace className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Recommended"/>}
                                 className={s.menuItem}
                             />,
                             <ListItem
                                 key={2}
                                 value={2}
-                                primaryText={<Link to="/#" className={s.link}>Recommendations</Link>}
-                                leftIcon={<ActionLoyalty className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                primaryText={<Link to="/#" className={s.link}>Messages</Link>}
+                                leftIcon={<CommunicationContactMail className={s.menuIcon} color={cyan500}/>}
+                                rightIcon={<SettingsIcon title="Messages"/>}
                                 className={s.menuItem}
                             />,
                             <ListItem
                                 key={3}
                                 value={3}
-                                primaryText={<Link to="/#" className={s.link}>Messages</Link>}
-                                leftIcon={<CommunicationContactMail className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                primaryText={<Link to="/#" className={s.link}>Facebook</Link>}
+                                leftIcon={facebookIcon}
                                 className={s.menuItem}
                             />,
                             <ListItem
                                 key={4}
                                 value={4}
-                                primaryText={<Link to="/#" className={s.link}>Facebook</Link>}
-                                leftIcon={facebookIcon}
-                                rightIcon={settingsIcon}
-                                className={s.menuItem}
-                            />,
-                            <ListItem
-                                key={5}
-                                value={5}
                                 primaryText={<Link to="/#" className={s.link}>Gmail</Link>}
                                 leftIcon={<CommunicationMailOutline className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
                                 className={s.menuItem}
                             />
                         ]}
@@ -213,7 +268,7 @@ class GoingsOn extends Component {
                                 value={1}
                                 primaryText={<Link to="/flow" className={s.link}>Flow</Link>}
                                 leftIcon={<PlacesAllInclusive className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Flow"/>}
                                 className={this.props.currentPage === 'flow' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'flow')}
                             />,
@@ -222,7 +277,7 @@ class GoingsOn extends Component {
                                 value={2}
                                 primaryText={<Link to="/newsbeats" className={s.link}>NewsBeats</Link>}
                                 leftIcon={<SocialPublic className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="NewsBeats"/>}
                                 className={this.props.currentPage === 'newsbeats' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'newsbeats')}
                             />,
@@ -231,7 +286,7 @@ class GoingsOn extends Component {
                                 value={3}
                                 primaryText={<Link to="/#" className={s.link}>Events</Link>}
                                 leftIcon={<ActionEvent className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Events"/>}
                                 className={s.menuItem}
                             />
                         ]}
@@ -272,7 +327,7 @@ class Media extends Component {
                                 value={1}
                                 primaryText={<Link to="/#" className={s.link}>Photo Stories</Link>}
                                 leftIcon={<ImagePhotoLibrary className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Photo Stories"/>}
                                 className={s.menuItem}
                             />,
                             <ListItem
@@ -280,7 +335,7 @@ class Media extends Component {
                                 value={2}
                                 primaryText={<Link to="/#" className={s.link}>Videos</Link>}
                                 leftIcon={<AVVideoLibrary className={s.menuIcon} color={cyan500} />}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Videos"/>}
                                 className={s.menuItem}
                             />,
                             <ListItem
@@ -288,7 +343,7 @@ class Media extends Component {
                                 value={3}
                                 primaryText={<Link to="/#" className={s.link}>Music</Link>}
                                 leftIcon={<AVLibraryMusic className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={settingsIcon}
+                                rightIcon={<SettingsIcon title="Music"/>}
                                 className={s.menuItem}
                             />
                         ]}

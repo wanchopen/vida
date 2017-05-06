@@ -207,6 +207,7 @@ class CardsPreview extends Component {
                         key={card.idPost}
                         id={card.idPost}
                         className={s.card}
+                        leftAvatar={<Avatar src={card.avatar} className={s.avatar}/>}
                         rightIconButton={rightIconMenu}
                         title={card.userName}
                         primaryText={
@@ -274,11 +275,11 @@ class Drafts extends Component {
                         <CardActions className={s.fullPostActions}>
                             <IconButton tooltip="Publish"
                                         tooltipPosition="bottom-center">
-                                <EditorPublish color={cyan500} className={s.viewsIcon}/>
+                                <EditorPublish className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Move to Trash"
                                         tooltipPosition="bottom-center">
-                                <ActionDelete color={cyan500} className={s.viewsIcon}/>
+                                <ActionDelete className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>

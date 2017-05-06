@@ -9,10 +9,12 @@ import Subheader from 'material-ui/Subheader';
 import SelectField from 'material-ui/SelectField';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
+import Popover from 'material-ui/Popover';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import ContentSort from 'material-ui/svg-icons/content/sort';
 import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import IconMenu from 'material-ui/IconMenu';
+import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import Dialog from 'material-ui/Dialog';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
@@ -145,49 +147,54 @@ const rightIconMenu = (
 
 class SelectToSort extends Component {
 
-    state = {
-        open: false,
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            open: false,
+        };
+    }
+
+    handleTouchTap = (event) => {
+        // This prevents ghost click.
+        event.preventDefault();
+
+        this.setState({
+            open: true,
+            anchorEl: event.currentTarget,
+        });
     };
 
-    handleOpen = () => {
-        this.setState({open: true});
+    handleRequestClose = () => {
+        this.setState({
+            open: false,
+        });
     };
 
-    handleClose = () => {
-        this.setState({open: false});
-    };
 
 
     render() {
-        const actions = [
-            <FlatButton
-                label="Cancel"
-                primary={true}
-                onTouchTap={this.handleClose}
-            />,
-            <FlatButton
-                label="Submit"
-                primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.handleClose}
-            />,
-        ];
-
         return (
-        <div>
-            <ContentSort color={grey400}
-                            className={s.sortingSelect}
-                            onTouchTap={this.handleOpen} />
-            <Dialog
-                title="Dialog With Actions"
-                actions={actions}
-                modal={false}
-                open={this.state.open}
-                onRequestClose={this.handleClose}
-            >
-                The actions in this window were passed in as an array of React objects.
-            </Dialog>
-        </div>
+            <div>
+                <ContentSort color={grey400}
+                                className={s.sortingSelect}
+                                onTouchTap={this.handleTouchTap} />
+                <Popover
+                    open={this.state.open}
+                    anchorEl={this.state.anchorEl}
+                    anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                    targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                    onRequestClose={this.handleRequestClose}
+                >
+                    <Menu>
+                        <MenuItem primaryText="All items" />
+                        <MenuItem primaryText="Untagged items" />
+                        <MenuItem primaryText="#concerts    " />
+                        <MenuItem primaryText="#live lounge" />
+                        <MenuItem primaryText="#weekends radio" />
+                    </Menu>
+                </Popover>
+            </div>
         );
     }
 }
@@ -280,15 +287,15 @@ class ReadingList extends Component {
                         <CardActions className={s.fullPostActions}>
                             <IconButton tooltip="Recommend"
                                         tooltipPosition="bottom-right">
-                                <ContentForward color={cyan500} className={s.viewsIcon}/>
+                                <ContentForward className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="bottom-center">
-                                <SocialShare color={cyan500} className={s.viewsIcon}/>
+                                <SocialShare className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Move to Trash"
                                         tooltipPosition="bottom-center">
-                                <ActionDelete color={cyan500} className={s.viewsIcon}/>
+                                <ActionDelete className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>
