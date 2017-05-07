@@ -212,33 +212,35 @@ class CardsPreview extends Component {
                     <SelectToSort/>
 
                 </Subheader>
-                {this.props.cardsPreviewData.map((card) => (
-                    <ListItem
-                        key={card.idPost}
-                        id={card.idPost}
-                        className={s.card}
-                        leftAvatar={<Avatar src={card.avatar} />}
-                        rightIconButton={rightIconMenu}
-                        title={card.userName}
-                        primaryText={
-                            <div className={s.cardHeading} onClick={this.handleClick.bind(this, card)}>
+                <div className={s.cardsContainer}>
+                    {this.props.cardsPreviewData.map((card) => (
+                        <ListItem
+                            key={card.idPost}
+                            id={card.idPost}
+                            className={s.card}
+                            leftAvatar={<Avatar src={card.avatar} />}
+                            rightIconButton={rightIconMenu}
+                            title={card.userName}
+                            primaryText={
+                                <div className={s.cardHeading} onClick={this.handleClick.bind(this, card)}>
                                 <span>
                                     {card.primaryText}
                                 </span>
-                            </div>
-                        }
-                        secondaryText={
-                            <div style={{
-                                height: '24px',
-                            }}>
+                                </div>
+                            }
+                            secondaryText={
+                                <div style={{
+                                    height: '24px',
+                                }}>
                                 <span>
                                     {card.postTheme}
                                 </span>
-                            </div>
-                        }
-                        secondaryTextLines={2}
-                    />
-                ))}
+                                </div>
+                            }
+                            secondaryTextLines={2}
+                        />
+                    ))}
+                </div>
             </List>
         )
     }
@@ -314,7 +316,7 @@ class ReadingList extends Component {
                             changeSelectedCard={this.changeSelectedCard}
                         />
                     </Paper>
-                    <div className={s.cardContainer}>
+                    <div className={s.fullPostContainer}>
                         {fullPost}
                     </div>
                 </div>

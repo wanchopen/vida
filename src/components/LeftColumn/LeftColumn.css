@@ -1,4 +1,4 @@
 .root {
     float: left;
-    width: 18%;
+    min-width: 18%;
 }
