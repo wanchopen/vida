@@ -15,7 +15,7 @@ function Home({ news }) {
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <h1 className={s.title}>React.js News</h1>
+        <h1 className={s.title}>La-vida - build your story in one store</h1>
         <ul className={s.news}>
           {news.map((item, index) => (
             <li key={index} className={s.newsItem}>

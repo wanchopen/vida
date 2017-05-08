@@ -8,7 +8,7 @@
 
 .container {
     max-width: 64% !important;
-    margin: 0 auto !important;
+    margin-left: 16em;
     padding: 0 0 40px !important;
     border: none !important;
     float: left;
