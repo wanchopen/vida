@@ -34,6 +34,7 @@ import imageEnterShikari from './images/entershikari.jpg';
 import imageNinaNesbitt from './images/ninanesbitt.jpg';
 import imageWolfAlice from './images/wolfalice.jpg';
 import imageGordonLewitt from './images/gordonlewitt.jpg';
+import imageRadio1Academy from './images/radio1academy.jpg';
 
 
 
@@ -121,6 +122,34 @@ const cardsData = [
         'himself.',
         views: '763',
     },
+    {
+        idPost: 6,
+        userName: 'Clara Amfo',
+        userProfession: 'Radio presenter in the mid-morning show on BBC Radio 1',
+        avatar: avatarClara,
+        primaryText: 'Radio 1’s Academy',
+        date: 'Tue 23 Jun 2015 10:00',
+        postTheme: 'Workshop',
+        overlayTitle: 'How do I book a place?',
+        overlaySubtitle: 'Radio 1’s Academy will be coming to The Albemarle Music Centre in Hull between 21st - 25th May 2017',
+        featuredImg: imageRadio1Academy,
+        cardText: (
+            <div>
+                <p>
+                    If you are 16-19 years old, you can apply to attend all sessions and workshops, for free, online.
+                </p>
+                <p>
+                    Unfortunately, because of huge demand, we can’t guarantee everyone who applies a place - so make
+                    sure you book early! Tickets are available from 11am on the 6 May 2017 if you live in Hull, and
+                    then available to the rest of the UK from the 8th June.
+                </p>
+                <p>
+                    You can sign up to as many sessions as you like and remember - it's all free.
+                </p>
+            </div>
+        ),
+        views: '763',
+    }
 ];
 
 const iconButtonElement = (
@@ -288,15 +317,15 @@ class ReadingList extends Component {
 
                         <CardActions className={s.fullPostActions}>
                             <IconButton tooltip="Recommend"
-                                        tooltipPosition="bottom-right">
+                                        tooltipPosition="top-right">
                                 <ContentForward className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Share"
-                                        tooltipPosition="bottom-center">
+                                        tooltipPosition="top-center">
                                 <SocialShare className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Move to Trash"
-                                        tooltipPosition="bottom-center">
+                                        tooltipPosition="top-center">
                                 <ActionDelete className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
@@ -316,9 +345,7 @@ class ReadingList extends Component {
                             changeSelectedCard={this.changeSelectedCard}
                         />
                     </Paper>
-                    <div className={s.fullPostContainer}>
-                        {fullPost}
-                    </div>
+                    {fullPost}
                 </div>
             </div>
         );

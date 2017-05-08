@@ -9,7 +9,7 @@
 @import '../../components/variables.css';
 
 .root {
-    min-height: calc(100vh - 60px) !important;
+    min-height: 100%;
     flex: 1 !important;
     margin: -0.5em;
 }
@@ -24,6 +24,8 @@
 .flowContainer {
     padding: 16px;
     line-height: 1 !important;
+    height: 500px;
+    overflow: scroll;
 }
 
 .flowSubHeading {
