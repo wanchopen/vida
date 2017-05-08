@@ -9,10 +9,10 @@
 }
 
 .container {
-    height: 600px !important;
-    min-height: 400px;
+    height: 100% !important;
+    min-height: 100%;
     max-width: 64% !important;
-    margin: 0 auto !important;
+    margin-left: 16em;
     padding: 0 0 40px !important;
     border: none !important;
     float: left;
@@ -119,9 +119,9 @@
 
 .fullPost {
     max-width: 70%;
-    height: 100%;
-    overflow: scroll;
-    overflow-x: hidden;
+    /*height: 100%;*/
+    /*overflow: scroll;*/
+    /*overflow-x: hidden;*/
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.9) !important;
 }

@@ -16,7 +16,7 @@
 
 .container {
     max-width: 65% !important;
-    margin: 0 auto !important;
+    margin-left: 16em;
     padding: 0 0 40px !important;
     float: left;
 }
@@ -24,8 +24,8 @@
 .flowContainer {
     padding: 16px;
     line-height: 1 !important;
-    height: 500px;
-    overflow: scroll;
+    /*height: 500px;*/
+    /*overflow: scroll;*/
 }
 
 .flowSubHeading {
