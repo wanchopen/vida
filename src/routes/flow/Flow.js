@@ -14,6 +14,7 @@ import avatarChris from './images/chris.jpg';
 import avatarSam from './images/mctrusty.jpg';
 import imagePhotoOfTheDay from './images/manchester.jpg';
 import imagePostOfTheDay from './images/catinscarf.jpg';
+import UserAvatar from './../../components/UI/UserAvatar';
 
 const actionBook = <ActionBook />,
       actionVisibility = <ActionVisibility />;
@@ -31,7 +32,7 @@ function Flow({ title }) {
                     <CardHeader
                         title="Chris Martin"
                         subtitle="Singer, songwriter, record producer"
-                        avatar= {avatarChris}
+                        avatar={<UserAvatar />}
                         className={s.cardHeader}
                     />
                     <CardMedia

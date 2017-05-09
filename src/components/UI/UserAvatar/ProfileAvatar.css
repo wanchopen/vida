@@ -1,0 +1,15 @@
+.userAvatar {
+    cursor: pointer;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    float: left;
+}
+
+.actionIcon {
+    color: rgb(0, 188, 212) !important;
+}
+
+.actionIcon:hover {
+    color: rgba(0, 188, 212, 0.5) !important;
+}
+

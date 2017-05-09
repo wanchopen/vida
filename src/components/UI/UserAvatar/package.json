@@ -1,0 +1,6 @@
+{
+  "name": "ProfileAvatar",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./ProfileAvatar.js"
+}
