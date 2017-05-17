@@ -1,8 +1,34 @@
 .userAvatar {
-    cursor: pointer;
+    cursor: pointer !important;
     margin-right: 16px;
     margin-bottom: 16px;
     float: left;
+}
+
+.actionsContainer {
+    text-align: center !important;
+}
+
+.avatar {
+    float: left;
+    width: 10em;
+}
+
+.userAvatarLabel span {
+    position: absolute;
+    top: 7em;
+    left: 1em;
+    font-weight: 100 !important;
+}
+
+.userInfo {
+    float: left;
+    padding-left: 5em;
+}
+
+.userAvatar:hover, .userInfo:hover, .userAvatarLabel span:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    cursor: inherit !important;
 }
 
 .actionIcon {

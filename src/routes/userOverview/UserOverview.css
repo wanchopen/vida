@@ -42,7 +42,7 @@
 }
 
 .userAvatar:hover, .userInfo:hover, .userAvatarLabel span:hover {
-    background-color: rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
     cursor: inherit !important;
 }
 

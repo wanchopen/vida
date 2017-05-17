@@ -7,7 +7,7 @@ import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import {cyan500} from 'material-ui/styles/colors';
+import {grey400, cyan500} from 'material-ui/styles/colors';
 import Profession from 'material-ui/svg-icons/action/build';
 import Age from 'material-ui/svg-icons/action/date-range';
 import PlaceOnMap from 'material-ui/svg-icons/maps/place';
@@ -34,13 +34,11 @@ class ProfileAvatar extends Component {
     render() {
         const actions = [
             <RaisedButton
-                label="Send a request"
                 labelColor={cyan500}
                 icon={<Request color={cyan500}/>}
                 onTouchTap={this.handleClose}
             />,
             <RaisedButton
-                label="Write a message"
                 labelColor={cyan500}
                 icon={<Message color={cyan500}/>}
                 onTouchTap={this.handleClose}
@@ -49,37 +47,45 @@ class ProfileAvatar extends Component {
 
         return (
             <div>
-                <Avatar src={AvatarImage} onTouchTap={this.handleOpen} className={s.userAvatar}/>
+                <Avatar color={grey400} src={AvatarImage} onTouchTap={this.handleOpen} className={s.userAvatar}/>
                 <Dialog
                     title="Chris Martin Info"
                     modal={false}
                     open={this.state.open}
                     actions={actions}
+                    autoScrollBodyContent={true}
+                    actionsContainerClassName={s.actionsContainer}
                     onRequestClose={this.handleClose}
                 >
-                    <List>
+                    <List className={s.avatar}>
                         <ListItem
-                            primaryText="Chris Martin"
-                            leftAvatar={<Avatar src={AvatarImage}/>}
-                        />
+                            leftAvatar={<Avatar src={AvatarImage} size={90}/>}
+                            className={s.userAvatarLabel}
+                        >
+                            <span>Chris Martin</span>
+                        </ListItem>
                     </List>
-                    <Divider inset={true} />
-                    <ListItem
-                        leftIcon={<Age />}
-                        primaryText="40 years old"
-                    />
-                    <List>
+
+                    <List className={s.userInfo}>
+                        <ListItem
+                            leftIcon={<Age />}
+                            primaryText="Age"
+                            secondaryText="40 years old"
+                        />
                         <ListItem leftIcon={<Profession />}
-                                  primaryText="Singer, songwriter, record producer"
+                                  primaryText="Work"
+                                  secondaryText="Singer, songwriter, record producer"
                         />
                         <ListItem leftIcon={<PlaceOnMap />}
-                                  primaryText="London"
+                                  primaryText="City"
+                                  secondaryText="London"
+                        />
+                        <ListItem
+                            leftIcon={<Essentials />}
+                            primaryText="Essentials"
+                            secondaryText="Music, Ocean, Indian food, Big city, Studio"
                         />
                     </List>
-                    <ListItem
-                        leftIcon={<Essentials />}
-                        primaryText="Music, Ocean, Indian food, Big city, Studio"
-                    />
                 </Dialog>
             </div>
         );
