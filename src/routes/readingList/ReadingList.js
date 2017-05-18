@@ -12,7 +12,7 @@ import IconButton from 'material-ui/IconButton';
 import Popover from 'material-ui/Popover';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import ContentSort from 'material-ui/svg-icons/content/sort';
-import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
+import {grey400, cyan500} from 'material-ui/styles/colors';
 import IconMenu from 'material-ui/IconMenu';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -216,11 +216,20 @@ class SelectToSort extends Component {
                     onRequestClose={this.handleRequestClose}
                 >
                     <Menu>
+                        <MenuItem primaryText="By Date" />
+                        <MenuItem primaryText="By Author" />
+                        <MenuItem primaryText="By Tag"
+                                  rightIcon={<ArrowDropRight />}
+                                  menuItems={[
+                                      <MenuItem primaryText="#concerts" />,
+                                      <MenuItem primaryText="#live lounge" />,
+                                      <MenuItem primaryText="#weekends radio" />,
+                                      <Divider />,
+                                      <MenuItem primaryText="Untagged items" />,
+                                  ]}
+                        />
+                        <Divider />
                         <MenuItem primaryText="All items" />
-                        <MenuItem primaryText="Untagged items" />
-                        <MenuItem primaryText="#concerts    " />
-                        <MenuItem primaryText="#live lounge" />
-                        <MenuItem primaryText="#weekends radio" />
                     </Menu>
                 </Popover>
             </div>
