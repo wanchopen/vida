@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ProfileAvatar.css';
 import Avatar from 'material-ui/Avatar';
-import AvatarImage from './images/chrismartin.jpg';
+import AvatarImage from './images/chris.jpg';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import {List, ListItem} from 'material-ui/List';

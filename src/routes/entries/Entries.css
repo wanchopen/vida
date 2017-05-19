@@ -39,13 +39,14 @@
     font-weight: 100 !important;
     color: inherit !important;
     padding-top: 0.8em;
-}
-
-.sortingSelect {
     visibility: hidden !important;
 }
 
-.readingListContainer:hover .sortingSelect {
+.avatar {
+    filter: opacity(30%);
+}
+
+.readingListContainer:hover .cardsListSubHeading {
     visibility: visible !important;
 }
 

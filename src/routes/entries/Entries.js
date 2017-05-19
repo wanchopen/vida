@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Entries.css';
 import cx from 'classnames';
+import SortingSelect from './../../components/UI/SortingSelect';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import {List, ListItem} from 'material-ui/List';
@@ -205,7 +206,7 @@ class CardsPreview extends Component {
         return (
             <List className={s.cardsList}>
                 <Subheader className={s.cardsListSubHeading}>
-                    <SelectToSort visible={this.props.isVisibleFilter} />
+                    <SortingSelect />
 
                 </Subheader>
                 {this.props.cardsPreviewData.map((card) => (
@@ -213,6 +214,7 @@ class CardsPreview extends Component {
                         key={card.idPost}
                         id={card.idPost}
                         className={s.card}
+                        leftAvatar={<Avatar src={card.avatar} className={s.avatar}/>}
                         rightIconButton={rightIconMenu}
                         title={card.userName}
                         primaryText={

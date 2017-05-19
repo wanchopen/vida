@@ -33,13 +33,10 @@
     font-weight: 100 !important;
     color: inherit !important;
     padding-top: 0.8em;
-}
-
-.sortingSelect {
     visibility: hidden !important;
 }
 
-.readingListContainer:hover .sortingSelect {
+.readingListContainer:hover .cardsListSubHeading {
     visibility: visible !important;
 }
 
@@ -156,5 +153,18 @@
 }
 
 .rightMenuItem:hover .menuIcon {
+    display: block !important;
+}
+
+.sortingSelectItem {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.sortLeftIcon {
+    display: none !important;
+}
+
+.sortingSelectItem:hover .sortLeftIcon {
     display: block !important;
 }

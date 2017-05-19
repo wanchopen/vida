@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Newsbeats.css';
 import cx from 'classnames';
+import SortingSelect from './../../components/UI/SortingSelect';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
@@ -141,45 +142,6 @@ const rightIconMenu = (
     </IconMenu>
 );
 
-class SelectToSort extends Component {
-
-    state = {
-        value: 1,
-    };
-
-    handleChange = (event, index, value) => this.setState({value});
-
-    render() {
-        return (
-            <SelectField
-                value={this.state.value}
-                onChange={this.handleChange}
-                className={cx(s.sortingSelect, s.rightMenuItem)}
-                autoWidth={false}
-            >
-                <MenuItem value={1}
-                          primaryText="By Date"
-                          className={s.rightMenuItem}
-                />
-                <MenuItem value={2}
-                          primaryText="By Theme"
-                          className={s.rightMenuItem}
-                          rightIcon={<ArrowDropRight />}
-                          menuItems={[
-                              <MenuItem primaryText="Concerts" />,
-                              <MenuItem primaryText="Live Lounge" />,
-                              <MenuItem primaryText="Weekends radio show" />,
-                          ]}
-                />
-                <MenuItem value={3}
-                          primaryText="All issues"
-                          className={s.rightMenuItem}
-                />
-            </SelectField>
-        );
-    }
-}
-
 class CardsPreview extends Component {
     handleClick = (card) => {
         this.props.changeSelectedCard(card);
@@ -190,7 +152,7 @@ class CardsPreview extends Component {
         return (
             <List >
                 <Subheader className={s.cardsListSubHeading}>
-                    <SelectToSort/>
+                    <SortingSelect />
 
                 </Subheader>
                 {this.props.cardsPreviewData.map((card) => (

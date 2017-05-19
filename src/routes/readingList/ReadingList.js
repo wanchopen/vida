@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ReadingList.css';
 import cx from 'classnames';
+import SortingSelect from './../../components/UI/SortingSelect';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
@@ -21,6 +22,8 @@ import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ContentForward from 'material-ui/svg-icons/content/forward';
 import SocialShare from 'material-ui/svg-icons/social/share';
+import DateRange from 'material-ui/svg-icons/action/date-range';
+import PersonOutline from 'material-ui/svg-icons/social/people-outline';
 import ActionSettings from 'material-ui/svg-icons/action/settings';
 import FlatButton from 'material-ui/FlatButton';
 import avatarChris from './images/chris.jpg';
@@ -174,69 +177,6 @@ const rightIconMenu = (
     </IconMenu>
 );
 
-class SelectToSort extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            open: false,
-        };
-    }
-
-    handleTouchTap = (event) => {
-        // This prevents ghost click.
-        event.preventDefault();
-
-        this.setState({
-            open: true,
-            anchorEl: event.currentTarget,
-        });
-    };
-
-    handleRequestClose = () => {
-        this.setState({
-            open: false,
-        });
-    };
-
-
-
-    render() {
-        return (
-            <div>
-                <ContentSort color={grey400}
-                                className={s.sortingSelect}
-                                onTouchTap={this.handleTouchTap} />
-                <Popover
-                    open={this.state.open}
-                    anchorEl={this.state.anchorEl}
-                    anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-                    targetOrigin={{horizontal: 'left', vertical: 'top'}}
-                    onRequestClose={this.handleRequestClose}
-                >
-                    <Menu>
-                        <MenuItem primaryText="By Date" />
-                        <MenuItem primaryText="By Author" />
-                        <MenuItem primaryText="By Tag"
-                                  rightIcon={<ArrowDropRight />}
-                                  menuItems={[
-                                      <MenuItem primaryText="#concerts" />,
-                                      <MenuItem primaryText="#live lounge" />,
-                                      <MenuItem primaryText="#weekends radio" />,
-                                      <Divider />,
-                                      <MenuItem primaryText="Untagged items" />,
-                                  ]}
-                        />
-                        <Divider />
-                        <MenuItem primaryText="All items" />
-                    </Menu>
-                </Popover>
-            </div>
-        );
-    }
-}
-
 class CardsPreview extends Component {
     handleClick = (card) => {
         this.props.changeSelectedCard(card);
@@ -247,7 +187,7 @@ class CardsPreview extends Component {
         return (
             <List >
                 <Subheader className={s.cardsListSubHeading}>
-                    <SelectToSort/>
+                    <SortingSelect />
 
                 </Subheader>
                 <div className={s.cardsContainer}>

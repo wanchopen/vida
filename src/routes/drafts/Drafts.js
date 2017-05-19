@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Drafts.css';
 import cx from 'classnames';
+import SortingSelect from './../../components/UI/SortingSelect';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import {List, ListItem} from 'material-ui/List';
@@ -9,9 +10,6 @@ import Subheader from 'material-ui/Subheader';
 import SelectField from 'material-ui/SelectField';
 import Checkbox from 'material-ui/Checkbox';
 import Avatar from 'material-ui/Avatar';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
-import ContentSort from 'material-ui/svg-icons/content/sort';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import {grey400, cyan500, darkBlack, lightBlack} from 'material-ui/styles/colors';
@@ -141,55 +139,6 @@ const rightIconMenu = (
     </IconMenu>
 );
 
-class SelectToSort extends Component {
-
-    state = {
-        open: false,
-    };
-
-    handleOpen = () => {
-        this.setState({open: true});
-    };
-
-    handleClose = () => {
-        this.setState({open: false});
-    };
-
-
-    render() {
-        const actions = [
-            <FlatButton
-                label="Cancel"
-                primary={true}
-                onTouchTap={this.handleClose}
-            />,
-            <FlatButton
-                label="Submit"
-                primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.handleClose}
-            />,
-        ];
-
-        return (
-            <div>
-                <ContentSort color={grey400}
-                             className={s.sortingSelect}
-                             onTouchTap={this.handleOpen} />
-                <Dialog
-                    title="Dialog With Actions"
-                    actions={actions}
-                    modal={false}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}
-                >
-                    The actions in this window were passed in as an array of React objects.
-                </Dialog>
-            </div>
-        );
-    }
-}
-
 class CardsPreview extends Component {
     handleClick = (card) => {
         this.props.changeSelectedCard(card);
@@ -199,7 +148,7 @@ class CardsPreview extends Component {
         return (
             <List className={s.cardsList}>
                 <Subheader className={s.cardsListSubHeading}>
-                    <SelectToSort/>
+                    <SortingSelect />
 
                 </Subheader>
                 {this.props.cardsPreviewData.map((card) => (
