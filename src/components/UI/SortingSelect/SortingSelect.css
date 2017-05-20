@@ -10,3 +10,8 @@
 .sortingSelectItem:hover .sortLeftIcon {
     display: block !important;
 }
+
+.sortingSelectItem:hover .arrowRight {
+    color: rgba(0, 188, 212, 0.8) !important;
+    fill: rgb(0, 188, 212) !important;
+}

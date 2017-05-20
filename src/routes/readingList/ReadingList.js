@@ -7,25 +7,15 @@ import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
-import SelectField from 'material-ui/SelectField';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
-import Popover from 'material-ui/Popover';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import ContentSort from 'material-ui/svg-icons/content/sort';
 import {grey400, cyan500} from 'material-ui/styles/colors';
 import IconMenu from 'material-ui/IconMenu';
-import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import Dialog from 'material-ui/Dialog';
-import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ContentForward from 'material-ui/svg-icons/content/forward';
 import SocialShare from 'material-ui/svg-icons/social/share';
-import DateRange from 'material-ui/svg-icons/action/date-range';
-import PersonOutline from 'material-ui/svg-icons/social/people-outline';
-import ActionSettings from 'material-ui/svg-icons/action/settings';
-import FlatButton from 'material-ui/FlatButton';
 import avatarChris from './images/chris.jpg';
 import avatarHuw from './images/huw.jpg';
 import avatarDev from './images/dev.jpg';
@@ -267,15 +257,15 @@ class ReadingList extends Component {
                         <CardActions className={s.fullPostActions}>
                             <IconButton tooltip="Recommend"
                                         tooltipPosition="top-right">
-                                <ContentForward className={s.viewsIcon}/>
+                                <ContentForward color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="top-center">
-                                <SocialShare className={s.viewsIcon}/>
+                                <SocialShare color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Move to Trash"
                                         tooltipPosition="top-center">
-                                <ActionDelete className={s.viewsIcon}/>
+                                <ActionDelete color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>

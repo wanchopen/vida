@@ -60,7 +60,7 @@ class SortingSelect extends Component {
                         />
                         <MenuItem primaryText="By Tag"
                                   className={s.sortingSelectItem}
-                                  rightIcon={<ArrowDropRight />}
+                                  rightIcon={<ArrowDropRight className={s.arrowRight}/>}
                                   menuItems={[
                                       <MenuItem primaryText="#concerts" className={s.sortingSelectItem}/>,
                                       <MenuItem primaryText="#live lounge" className={s.sortingSelectItem}/>,

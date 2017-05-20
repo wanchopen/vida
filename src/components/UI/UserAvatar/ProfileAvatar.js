@@ -3,20 +3,18 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ProfileAvatar.css';
 import Avatar from 'material-ui/Avatar';
 import AvatarImage from './images/chris.jpg';
+import OverlayImage from './images/chris-martin-overlay.jpg';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import {grey400, cyan500} from 'material-ui/styles/colors';
-import Profession from 'material-ui/svg-icons/action/build';
-import Age from 'material-ui/svg-icons/action/date-range';
-import PlaceOnMap from 'material-ui/svg-icons/maps/place';
-import Essentials from 'material-ui/svg-icons/action/language';
 import Request from 'material-ui/svg-icons/social/person-add';
 import Message from 'material-ui/svg-icons/communication/email';
 import IconButton from 'material-ui/IconButton';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 
 class ProfileAvatar extends Component {
@@ -49,43 +47,31 @@ class ProfileAvatar extends Component {
             <div>
                 <Avatar color={grey400} src={AvatarImage} onTouchTap={this.handleOpen} className={s.userAvatar}/>
                 <Dialog
-                    title="Chris Martin Info"
                     modal={false}
                     open={this.state.open}
                     actions={actions}
                     autoScrollBodyContent={true}
+                    autoDetectWindowHeight={true}
                     actionsContainerClassName={s.actionsContainer}
                     onRequestClose={this.handleClose}
+                    className={s.dialogWindow}
                 >
-                    <List className={s.avatar}>
-                        <ListItem
-                            leftAvatar={<Avatar src={AvatarImage} size={90}/>}
-                            className={s.userAvatarLabel}
-                        >
-                            <span>Chris Martin</span>
-                        </ListItem>
-                    </List>
-
-                    <List className={s.userInfo}>
-                        <ListItem
-                            leftIcon={<Age />}
-                            primaryText="Age"
-                            secondaryText="40 years old"
+                    <Card>
+                        <CardHeader title="Chris Martin"
+                                    subtitle="Singer, songwriter, record producer"
+                                    avatar={AvatarImage}
                         />
-                        <ListItem leftIcon={<Profession />}
-                                  primaryText="Work"
-                                  secondaryText="Singer, songwriter, record producer"
-                        />
-                        <ListItem leftIcon={<PlaceOnMap />}
-                                  primaryText="City"
-                                  secondaryText="London"
-                        />
-                        <ListItem
-                            leftIcon={<Essentials />}
-                            primaryText="Essentials"
-                            secondaryText="Music, Ocean, Indian food, Big city, Studio"
-                        />
-                    </List>
+                        <CardMedia overlay={[
+                            <CardTitle title="Music, Ocean, Indian food, Big city, Studio"
+                                       subtitle="Essentials"/>,
+                            <CardTitle title="London"
+                                       subtitle="City"/>,
+                            <CardTitle title="40"
+                                       subtitle="Age"/>,
+                        ]}>
+                            <img src={OverlayImage} />
+                        </CardMedia>
+                    </Card>
                 </Dialog>
             </div>
         );

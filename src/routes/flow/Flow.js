@@ -7,7 +7,7 @@ import ActionVisibility from 'material-ui/svg-icons/action/visibility';
 import ActionBook from 'material-ui/svg-icons/action/book';
 import SocialShare from 'material-ui/svg-icons/social/share';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-import {cyan500} from 'material-ui/styles/colors';
+import {grey400, cyan500} from 'material-ui/styles/colors';
 import Badge from 'material-ui/Badge';
 import Divider from 'material-ui/Divider';
 import avatarClara from './images/clara.jpg';
@@ -59,13 +59,13 @@ function Flow({ title }) {
                     <CardActions>
                         <IconButton tooltip="Add to Reading List"
                                     tooltipPosition="bottom-right">
-                            <ActionBook className={s.viewsIcon} color={cyan500}/>
+                            <ActionBook className={s.viewsIcon} color={grey400}/>
                         </IconButton>
                         <IconButton tooltip="Views"
                                     tooltipPosition="bottom-center"
                                     className={s.postViewsIcon}
                         >
-                            <ActionVisibility className={s.viewsIcon} color={cyan500}/>
+                            <ActionVisibility className={s.viewsIcon} color={grey400}/>
                             <Badge
                                 badgeContent={49}
                                 primary={true}
@@ -74,7 +74,7 @@ function Flow({ title }) {
                         </IconButton>
                         <IconButton tooltip="Share"
                                     tooltipPosition="bottom-center">
-                            <SocialShare className={s.viewsIcon} color={cyan500}/>
+                            <SocialShare className={s.viewsIcon} color={grey400}/>
                         </IconButton>
                     </CardActions>
                 </Card>
@@ -103,13 +103,13 @@ function Flow({ title }) {
                     <CardActions>
                         <IconButton tooltip="Add to Reading List"
                                     tooltipPosition="bottom-right">
-                            <ActionBook className={s.viewsIcon} />
+                            <ActionBook className={s.viewsIcon} color={grey400}/>
                         </IconButton>
                         <IconButton tooltip="Views"
                                     tooltipPosition="bottom-center"
                                     className={s.postViewsIcon}
                         >
-                            <ActionVisibility className={s.viewsIcon}/>
+                            <ActionVisibility className={s.viewsIcon} color={grey400}/>
                             <Badge
                                 badgeContent={97}
                                 primary={true}
@@ -118,7 +118,7 @@ function Flow({ title }) {
                         </IconButton>
                         <IconButton tooltip="Share"
                                     tooltipPosition="bottom-center">
-                            <SocialShare className={s.viewsIcon}/>
+                            <SocialShare className={s.viewsIcon} color={grey400}/>
                         </IconButton>
                     </CardActions>
                 </Card>
@@ -159,13 +159,13 @@ function Flow({ title }) {
                     <CardActions>
                         <IconButton tooltip="Add to Reading List"
                                     tooltipPosition="bottom-right">
-                            <ActionBook className={s.viewsIcon}/>
+                            <ActionBook className={s.viewsIcon} color={grey400}/>
                         </IconButton>
                         <IconButton tooltip="Views"
                                     tooltipPosition="bottom-center"
                                     className={s.postViewsIcon}
                         >
-                            <ActionVisibility className={s.viewsIcon}/>
+                            <ActionVisibility className={s.viewsIcon} color={grey400}/>
                             <Badge
                                 badgeContent={105}
                                 primary={true}
@@ -174,7 +174,7 @@ function Flow({ title }) {
                         </IconButton>
                         <IconButton tooltip="Share"
                                     tooltipPosition="bottom-center">
-                            <SocialShare className={s.viewsIcon}/>
+                            <SocialShare className={s.viewsIcon} color={grey400}/>
                         </IconButton>
                     </CardActions>
                 </Card>
