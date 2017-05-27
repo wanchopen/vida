@@ -230,21 +230,21 @@ class Newsbeats extends Component {
                         <CardActions>
                             <IconButton tooltip="Recommend"
                                         tooltipPosition="bottom-right">
-                                <ContentForward className={s.viewsIcon}/>
+                                <ContentForward color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="bottom-center">
-                                <SocialShare className={s.viewsIcon}/>
+                                <SocialShare color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Add to Reading List"
                                         tooltipPosition="bottom-center">
-                                <ActionBook className={s.viewsIcon}/>
+                                <ActionBook color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Views"
                                         tooltipPosition="bottom-center"
                                         className={s.postViewsIcon}
                             >
-                                <ActionVisibility className={s.viewsIcon}/>
+                                <ActionVisibility color={grey400} className={s.viewsIcon}/>
                                 <Badge
                                     badgeContent={card.views}
                                     primary={true}

@@ -221,14 +221,14 @@ class Drafts extends Component {
 
                         <Divider />
 
-                        <CardActions className={s.fullPostActions}>
+                        <CardActions>
                             <IconButton tooltip="Publish"
                                         tooltipPosition="bottom-center">
-                                <EditorPublish className={s.viewsIcon}/>
+                                <EditorPublish color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Move to Trash"
                                         tooltipPosition="bottom-center">
-                                <ActionDelete className={s.viewsIcon}/>
+                                <ActionDelete color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>

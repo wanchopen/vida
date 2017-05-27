@@ -106,14 +106,6 @@
     font-style: italic;
 }
 
-.fullPostActions {
-    visibility: hidden;
-}
-
-.fullPost:hover .fullPostActions {
-    visibility: visible;
-}
-
 .fullPost {
     max-width: 70%;
     /*height: 100%;*/

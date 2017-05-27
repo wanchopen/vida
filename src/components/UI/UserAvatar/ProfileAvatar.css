@@ -9,14 +9,21 @@
     padding-top: 16px !important;
 }
 
+.imageContainer {
+    height: 20em;
+    overflow: hidden;
+}
+
 .actionsContainer {
-    text-align: center !important;
+    text-align: left !important;
 }
 
 .actionIcon {
-    color: rgb(0, 188, 212) !important;
+    position: absolute !important;
+    bottom: 10px;
 }
 
 .actionIcon:hover {
-    color: rgba(0, 188, 212, 0.5) !important;
+    color: rgba(0, 188, 212, 0.7) !important;
+    fill: rgba(0, 188, 212, 0.7) !important;
 }

@@ -288,18 +288,18 @@ class Entries extends Component {
 
                         <Divider />
 
-                        <CardActions className={s.fullPostActions}>
+                        <CardActions>
                             <IconButton tooltip="Recommend"
                                         tooltipPosition="bottom-right">
-                                <ContentForward color={cyan500} className={s.viewsIcon}/>
+                                <ContentForward color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="bottom-center">
-                                <SocialShare color={cyan500} className={s.viewsIcon}/>
+                                <SocialShare color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                             <IconButton tooltip="Move to Trash"
                                         tooltipPosition="bottom-center">
-                                <ActionDelete color={cyan500} className={s.viewsIcon}/>
+                                <ActionDelete color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>

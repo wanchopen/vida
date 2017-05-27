@@ -106,14 +106,6 @@
     color: #00bcd4 !important;
 }
 
-.fullPostActions {
-    visibility: hidden;
-}
-
-.fullPost:hover .fullPostActions {
-    visibility: visible;
-}
-
 .rightMenuItem {
     font-weight: inherit !important;
     font-style: italic;
@@ -131,13 +123,18 @@
     height: inherit;
 }
 
+.postViewsIcon:hover .badgeViews {
+    display: block !important;
+}
+
 .viewsIcon {
     position: absolute !important;
     bottom: 10px;
 }
 
-.postViewsIcon:hover .badgeViews {
-    display: block !important;
+.viewsIcon:hover {
+    color: rgba(0, 188, 212, 0.8) !important;
+    fill: rgb(0, 188, 212) !important;
 }
 
 .menuIcon {

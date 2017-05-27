@@ -254,7 +254,7 @@ class ReadingList extends Component {
 
                         <Divider />
 
-                        <CardActions className={s.fullPostActions}>
+                        <CardActions>
                             <IconButton tooltip="Recommend"
                                         tooltipPosition="top-right">
                                 <ContentForward color={grey400} className={s.viewsIcon}/>
