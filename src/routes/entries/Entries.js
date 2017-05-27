@@ -25,10 +25,7 @@ import RadioButtonUnchecked from 'material-ui/svg-icons/toggle/radio-button-unch
 import ContentForward from 'material-ui/svg-icons/content/forward';
 import SocialShare from 'material-ui/svg-icons/social/share';
 import avatarChris from './images/chris.jpg';
-import avatarHuw from './images/huw.jpg';
-import avatarDev from './images/dev.jpg';
-import avatarAlice from './images/alice.jpg';
-import avatarClara from './images/clara.jpg';
+import avatarEd from './images/ed_sheeran.jpeg';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import imageManchester from './images/manchester.jpg';
 import imageEnterShikari from './images/entershikari.jpg';
@@ -39,9 +36,9 @@ import imageGordonLewitt from './images/gordonlewitt.jpg';
 const cardsData = [
     {
         idPost: 1,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Coldplay in Manchester - Visual treats and infectious niceness',
         date: 'Sun 5 Jun 2016 12:08',
         postTheme: 'Concerts',
@@ -59,9 +56,9 @@ const cardsData = [
     },
     {
         idPost: 2,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Huw Rocks with Enter Shikari',
         date: 'Wed 16 Nov 2016 22:00',
         postTheme: 'Live Lounge',
@@ -74,9 +71,9 @@ const cardsData = [
     },
     {
         idPost: 3,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Nina Nesbitt in the Live Lounge',
         date: 'Sun 4 Dec 2016 6:00',
         postTheme: 'Weekends radio show',
@@ -89,9 +86,9 @@ const cardsData = [
     },
     {
         idPost: 4,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Wolf Alice in the Live Lounge',
         date: 'Tue 23 Jun 2015 10:00',
         postTheme: 'Live Lounge',
@@ -105,9 +102,9 @@ const cardsData = [
     },
     {
         idPost: 5,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Alice Levine with Joseph Gordon-Levitt',
         date: 'Tue 23 Jun 2015 10:00',
         postTheme: 'Weekends radio show',
@@ -143,55 +140,6 @@ const rightIconMenu = (
         <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Move to Trash</MenuItem>
     </IconMenu>
 );
-
-class SelectToSort extends Component {
-
-    state = {
-        open: false,
-    };
-
-    handleOpen = () => {
-        this.setState({open: true});
-    };
-
-    handleClose = () => {
-        this.setState({open: false});
-    };
-
-
-    render() {
-        const actions = [
-            <FlatButton
-                label="Cancel"
-                primary={true}
-                onTouchTap={this.handleClose}
-            />,
-            <FlatButton
-                label="Submit"
-                primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.handleClose}
-            />,
-        ];
-
-        return (
-            <div>
-                <ContentSort color={grey400}
-                             className={s.sortingSelect}
-                             onTouchTap={this.handleOpen} />
-                <Dialog
-                    title="Dialog With Actions"
-                    actions={actions}
-                    modal={false}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}
-                >
-                    The actions in this window were passed in as an array of React objects.
-                </Dialog>
-            </div>
-        );
-    }
-}
 
 class CardsPreview extends Component {
 

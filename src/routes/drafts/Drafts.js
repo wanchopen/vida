@@ -20,11 +20,7 @@ import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle';
 import RadioButtonUnchecked from 'material-ui/svg-icons/toggle/radio-button-unchecked';
 import EditorPublish from 'material-ui/svg-icons/editor/publish';
-import avatarChris from './images/chris.jpg';
-import avatarHuw from './images/huw.jpg';
-import avatarDev from './images/dev.jpg';
-import avatarAlice from './images/alice.jpg';
-import avatarClara from './images/clara.jpg';
+import avatarEd from './images/ed_sheeran.jpeg';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import imageManchester from './images/manchester.jpg';
 import imageEnterShikari from './images/entershikari.jpg';
@@ -35,9 +31,9 @@ import imageGordonLewitt from './images/gordonlewitt.jpg';
 const cardsData = [
     {
         idPost: 1,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Coldplay in Manchester - Visual treats and infectious niceness',
         date: 'Sun 5 Jun 2016 12:08',
         postTheme: 'Concerts',
@@ -55,9 +51,9 @@ const cardsData = [
     },
     {
         idPost: 2,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Huw Rocks with Enter Shikari',
         date: 'Wed 16 Nov 2016 22:00',
         postTheme: 'Live Lounge',
@@ -70,9 +66,9 @@ const cardsData = [
     },
     {
         idPost: 3,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Nina Nesbitt in the Live Lounge',
         date: 'Sun 4 Dec 2016 6:00',
         postTheme: 'Weekends radio show',
@@ -85,9 +81,9 @@ const cardsData = [
     },
     {
         idPost: 4,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Wolf Alice in the Live Lounge',
         date: 'Tue 23 Jun 2015 10:00',
         postTheme: 'Live Lounge',
@@ -101,9 +97,9 @@ const cardsData = [
     },
     {
         idPost: 5,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'British singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Alice Levine with Joseph Gordon-Levitt',
         date: 'Tue 23 Jun 2015 10:00',
         postTheme: 'Weekends radio show',

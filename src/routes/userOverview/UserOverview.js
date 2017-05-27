@@ -13,15 +13,13 @@ import Badge from 'material-ui/Badge';
 import SocialShare from 'material-ui/svg-icons/social/share';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Subheader from 'material-ui/Subheader';
+import {grey400, cyan500} from 'material-ui/styles/colors';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import avatarChris from './images/chris.jpg';
+import avatarEd from './images/ed_sheeran.jpeg';
 import avatarHuw from './images/huw.jpg';
-import avatarDev from './images/dev.jpg';
-import avatarAlice from './images/alice.jpg';
-import avatarClara from './images/clara.jpg';
 import Divider from 'material-ui/Divider';
-import {GridList, GridTile} from 'material-ui/GridList';
 import imageManchester from './images/manchester.jpg';
 import imageEnterShikari from './images/entershikari.jpg';
 import imageNinaNesbitt from './images/ninanesbitt.jpg';
@@ -30,9 +28,9 @@ import imageGordonLewitt from './images/gordonlewitt.jpg';
 
 const lastUserEntry = {
         idPost: 2,
-        userName: 'Chris Martin',
+        userName: 'Ed Sheeran',
         userProfession: 'Singer, songwriter, record producer',
-        avatar: avatarChris,
+        avatar: avatarEd,
         primaryText: 'Huw Rocks with Enter Shikari',
         date: 'Wed 16 Nov 2016 22:00',
         postTheme: 'Live Lounge',
@@ -60,9 +58,9 @@ const lastUserEntry = {
     },
     lastUserPhotoStory = [{
             idPost: 4,
-            userName: 'Chris Martin',
+            userName: 'Ed Sheeran',
             userProfession: 'Singer, songwriter, record producer',
-            avatar: avatarChris,
+            avatar: avatarEd,
             primaryText: 'Wolf Alice in the Live Lounge',
             date: 'Tue 23 Jun 2015 10:00',
             postTheme: 'Live Lounge',
@@ -135,8 +133,8 @@ function UserOverview() {
 
                     <Paper zDepth={1} className={s.userOverviewHeader}>
                         <List className={s.userAvatar}>
-                            <ListItem leftAvatar={<Avatar src={avatarChris} size={90}/>}
-                                      className={s.userAvatarLabel}><span>Chris Martin</span></ListItem>
+                            <ListItem leftAvatar={<Avatar src={avatarEd} size={90}/>}
+                                      className={s.userAvatarLabel}><span>Ed Sheeran</span></ListItem>
                         </List>
 
                         <List className={s.userInfo}>
@@ -144,8 +142,8 @@ function UserOverview() {
                                       secondaryText="London"/>
                             <ListItem primaryText="Work"
                                       secondaryText="Singer, songwriter, record producer" />
-                            <ListItem primaryText="5 things I can't live without"
-                                      secondaryText="Music, Ocean, Indian food, Big city, Studio" />
+                            <ListItem primaryText="Essentials"
+                                      secondaryText="Writing, touring, beer, pizza, love" />
                         </List>
                     </Paper>
 
@@ -167,13 +165,13 @@ function UserOverview() {
                         <CardActions>
                             <IconButton tooltip="Add to Reading List"
                                         tooltipPosition="bottom-right">
-                                <ActionBook className={s.viewsIcon} />
+                                <ActionBook color={grey400} className={s.viewsIcon} />
                             </IconButton>
                             <IconButton tooltip="Views"
                                         tooltipPosition="bottom-center"
                                         className={s.postViewsIcon}
                             >
-                                <ActionVisibility className={s.viewsIcon}/>
+                                <ActionVisibility color={grey400} className={s.viewsIcon}/>
                                 <Badge
                                     badgeContent={49}
                                     primary={true}
@@ -182,7 +180,7 @@ function UserOverview() {
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="bottom-center">
-                                <SocialShare className={s.viewsIcon}/>
+                                <SocialShare color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>
@@ -211,13 +209,13 @@ function UserOverview() {
                         <CardActions>
                             <IconButton tooltip="Add to Reading List"
                                         tooltipPosition="bottom-right">
-                                <ActionBook className={s.viewsIcon} />
+                                <ActionBook color={grey400} className={s.viewsIcon} />
                             </IconButton>
                             <IconButton tooltip="Views"
                                         tooltipPosition="bottom-center"
                                         className={s.postViewsIcon}
                             >
-                                <ActionVisibility className={s.viewsIcon}/>
+                                <ActionVisibility color={grey400} className={s.viewsIcon}/>
                                 <Badge
                                     badgeContent={49}
                                     primary={true}
@@ -226,7 +224,7 @@ function UserOverview() {
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="bottom-center">
-                                <SocialShare className={s.viewsIcon}/>
+                                <SocialShare color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>
@@ -247,13 +245,13 @@ function UserOverview() {
                         <CardActions>
                             <IconButton tooltip="Add to Reading List"
                                         tooltipPosition="bottom-right">
-                                <ActionBook className={s.viewsIcon} />
+                                <ActionBook color={grey400} className={s.viewsIcon} />
                             </IconButton>
                             <IconButton tooltip="Views"
                                         tooltipPosition="bottom-center"
                                         className={s.postViewsIcon}
                             >
-                                <ActionVisibility className={s.viewsIcon}/>
+                                <ActionVisibility color={grey400} className={s.viewsIcon}/>
                                 <Badge
                                     badgeContent={49}
                                     primary={true}
@@ -262,7 +260,7 @@ function UserOverview() {
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="bottom-center">
-                                <SocialShare className={s.viewsIcon}/>
+                                <SocialShare color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>
@@ -283,13 +281,13 @@ function UserOverview() {
                         <CardActions>
                             <IconButton tooltip="Add to Reading List"
                                         tooltipPosition="bottom-right">
-                                <ActionBook className={s.viewsIcon} />
+                                <ActionBook color={grey400} className={s.viewsIcon} />
                             </IconButton>
                             <IconButton tooltip="Views"
                                         tooltipPosition="bottom-center"
                                         className={s.postViewsIcon}
                             >
-                                <ActionVisibility className={s.viewsIcon}/>
+                                <ActionVisibility color={grey400} className={s.viewsIcon}/>
                                 <Badge
                                     badgeContent={49}
                                     primary={true}
@@ -298,7 +296,7 @@ function UserOverview() {
                             </IconButton>
                             <IconButton tooltip="Share"
                                         tooltipPosition="bottom-center">
-                                <SocialShare className={s.viewsIcon}/>
+                                <SocialShare color={grey400} className={s.viewsIcon}/>
                             </IconButton>
                         </CardActions>
                     </Card>
