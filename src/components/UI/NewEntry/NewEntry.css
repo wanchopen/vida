@@ -1,0 +1,31 @@
+.actionIcon {
+    position: absolute !important;
+    bottom: 10px;
+}
+
+.actionIcon:hover {
+    color: rgba(0, 188, 212, 0.7) !important;
+    fill: rgba(0, 188, 212, 0.7) !important;
+}
+
+.entryFormContainer {
+    width: 80%;
+}
+
+.dialogWindow {
+    width: 40em !important;
+}
+
+.actionsContainer {
+    text-align: left !important;
+}
+
+.viewsIcon {
+    position: absolute !important;
+    bottom: 10px;
+}
+
+.viewsIcon:hover {
+    color: rgba(0, 188, 212, 0.8) !important;
+    fill: rgb(0, 188, 212) !important;
+}

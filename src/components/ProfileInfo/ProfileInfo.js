@@ -7,24 +7,20 @@ import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import IconButton from 'material-ui/IconButton';
 import Link from '../Link';
+import NewEntry from '../UI/NewEntry';
 
 function ProfileInfo () {
     return (
         <div className={s.root}>
-            <List className={s.userArea}>
-                <ListItem
-                    disabled={true}
-                    leftIcon={<IconButton>
-                        <Link to="/user_overview">
-                            <Avatar
-                                src={AvatarImage}
-                                className={s.userAvatar}
-                            />
-                        </Link>
-                    </IconButton>}
-
-                />
-            </List>
+            <div className={s.userArea}>
+                <Link to="/user_overview">
+                    <Avatar
+                        src={AvatarImage}
+                        className={s.userAvatar}
+                    />
+                </Link>
+                <NewEntry/>
+            </div>
 
         </div>
     );
