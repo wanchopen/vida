@@ -19,7 +19,9 @@ function ProfileInfo () {
                         className={s.userAvatar}
                     />
                 </Link>
-                <NewEntry/>
+                <div className={s.newEntry}>
+                    <NewEntry/>
+                </div>
             </div>
 
         </div>

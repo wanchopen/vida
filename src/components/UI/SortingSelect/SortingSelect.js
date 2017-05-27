@@ -40,7 +40,7 @@ class SortingSelect extends Component {
         return (
             <div>
                 <ContentSort color={grey400}
-                             className={s.sortingSelect}
+                             className={s.sortingSelectButton}
                              onTouchTap={this.handleTouchTap} />
                 <Popover
                     open={this.state.open}

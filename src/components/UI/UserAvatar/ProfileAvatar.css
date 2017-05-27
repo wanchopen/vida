@@ -7,6 +7,16 @@
 
 .dialogWindow {
     padding-top: 16px !important;
+    position: relative;
+}
+
+.link {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.87);;
+}
+
+.link:hover {
+    color: rgba(0, 188, 212, 0.7) !important;
 }
 
 .imageContainer {
@@ -26,4 +36,13 @@
 .actionIcon:hover {
     color: rgba(0, 188, 212, 0.7) !important;
     fill: rgba(0, 188, 212, 0.7) !important;
+}
+
+.viewsIcon:hover {
+    color: rgba(0, 188, 212, 0.8) !important;
+    fill: rgb(0, 188, 212) !important;
+}
+
+.closeButton {
+    float: right;
 }

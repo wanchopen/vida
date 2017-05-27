@@ -1,3 +1,8 @@
+.sortingSelectButton:hover {
+    color: rgba(0, 188, 212, 0.8) !important;
+    fill: rgb(0, 188, 212) !important;
+}
+
 .sortingSelectItem {
     position: relative;
     background-color: rgba(255, 255, 255, 0.9) !important;

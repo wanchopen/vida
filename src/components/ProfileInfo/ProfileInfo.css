@@ -11,3 +11,7 @@
 .userAvatar {
     float: left;
 }
+
+.newEntry {
+    float: right;
+}
