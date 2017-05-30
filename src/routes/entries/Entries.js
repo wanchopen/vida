@@ -119,35 +119,16 @@ const cardsData = [
     },
 ];
 
-const iconButtonElement = (
-    <IconButton
-        touch={true}
-
-    >
-        <MoreVertIcon className={s.cardMenuIcon} />
-    </IconButton>
-);
-
-const rightIconMenu = (
-    <IconMenu
-        iconButtonElement={iconButtonElement}
-        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-        targetOrigin={{horizontal: 'left', vertical: 'top'}}
-        animated={false}
-    >
-        <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Recommend</MenuItem>
-        <MenuItem leftIcon={<SocialShare className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Share</MenuItem>
-        <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Move to Trash</MenuItem>
-    </IconMenu>
-);
-
 class CardsPreview extends Component {
 
     changeSelectedCard = (card) => {
         this.props.changeSelectedCard(card);
     };
-    showFilter = () => {
-        this.props.showFilter();
+    showActions = () => {
+        this.props.showActions();
+    };
+    checkCard = (card_id) => {
+        this.props.checkCard(card_id);
     };
 
     render() {
@@ -155,6 +136,21 @@ class CardsPreview extends Component {
             <List className={s.cardsList}>
                 <Subheader className={s.cardsListSubHeading}>
                     <SortingSelect />
+                    <IconMenu
+                        iconButtonElement={
+                            <IconButton touch={true}>
+                                <MoreVertIcon color={cyan500}
+                                              className={this.props.showActions() ? s.previewListActionsShow : s.previewListActionsHide} />
+                            </IconButton>
+                        }
+                        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+                        targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                        animated={false}
+                    >
+                        <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Recommend</MenuItem>
+                        <MenuItem leftIcon={<SocialShare className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Share</MenuItem>
+                        <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Move to Trash</MenuItem>
+                    </IconMenu>
 
                 </Subheader>
                 {this.props.cardsPreviewData.map((card) => (
@@ -162,8 +158,25 @@ class CardsPreview extends Component {
                         key={card.idPost}
                         id={card.idPost}
                         className={s.card}
-                        leftAvatar={<Avatar src={card.avatar} className={s.avatar}/>}
-                        rightIconButton={rightIconMenu}
+                        leftAvatar={<Avatar src={card.avatar}
+                                            className={this.props.isChecked(card.idPost) ? s.avatarChecked : s.avatar}
+                                            onClick={this.checkCard.bind(this, card.idPost)}/>}
+                        rightIconButton={
+                            <IconMenu
+                                iconButtonElement={
+                                    <IconButton touch={true}>
+                                        <MoreVertIcon className={this.props.showActions() ? s.cardMenuIconDisabled : s.cardMenuIcon} />
+                                    </IconButton>
+                                }
+                                anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+                                targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                                animated={false}
+                            >
+                                <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Recommend</MenuItem>
+                                <MenuItem leftIcon={<SocialShare className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Share</MenuItem>
+                                <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Move to Trash</MenuItem>
+                            </IconMenu>
+                        }
                         title={card.userName}
                         primaryText={
                             <div className={s.cardHeading} onClick={this.changeSelectedCard.bind(this, card)}>
@@ -195,7 +208,6 @@ class Entries extends Component {
         cards: cardsData,
         selectedCard: 1,
         checkedCards: [],
-        isVisible: false,
     };
 
     changeSelectedCard = (card) => {
@@ -204,10 +216,31 @@ class Entries extends Component {
         });
     };
 
-    showFilter = () => {
-        this.setState({
-            isVisible: true,
-        });
+    showActions = () => {
+        return this.state.checkedCards.length !== 0;
+    };
+
+    checkCard = (card_id) => {
+        let tempCheckedCards = this.state.checkedCards;
+        if(!this.state.checkedCards.includes(card_id)) {
+            tempCheckedCards.push(card_id);
+            this.setState({
+                checkedCards: tempCheckedCards
+            });
+        } else {
+            let index = this.state.checkedCards.indexOf(card_id);
+            tempCheckedCards.splice(index, 1);
+            this.setState({
+                checkedCards: tempCheckedCards
+            });
+        }
+        this.showActions();
+
+        console.log(this.state.checkedCards);
+    };
+
+    isChecked = (card_id) => {
+        return this.state.checkedCards.includes(card_id);
     };
 
     render() {
@@ -264,8 +297,10 @@ class Entries extends Component {
                             selectedCard={this.state.selectedCard}
                             cardsPreviewData={this.state.cards}
                             changeSelectedCard={this.changeSelectedCard}
-                            showFilter={this.showFilter}
-                            isVisibleFilter={this.state.isVisible}
+                            checkedCards={this.state.checkedCards}
+                            showActions={this.showActions}
+                            checkCard={this.checkCard}
+                            isChecked={this.isChecked}
                         />
                     </Paper>
                     <div className={s.cardContainer}>
