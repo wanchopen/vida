@@ -136,22 +136,6 @@ class CardsPreview extends Component {
             <List className={s.cardsList}>
                 <Subheader className={s.cardsListSubHeading}>
                     <SortingSelect />
-                    <IconMenu
-                        iconButtonElement={
-                            <IconButton touch={true}>
-                                <MoreVertIcon color={cyan500}
-                                              className={this.props.showActions() ? s.previewListActionsShow : s.previewListActionsHide} />
-                            </IconButton>
-                        }
-                        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-                        targetOrigin={{horizontal: 'left', vertical: 'top'}}
-                        animated={false}
-                    >
-                        <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Recommend</MenuItem>
-                        <MenuItem leftIcon={<SocialShare className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Share</MenuItem>
-                        <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Move to Trash</MenuItem>
-                    </IconMenu>
-
                 </Subheader>
                 {this.props.cardsPreviewData.map((card) => (
                     <ListItem
@@ -165,7 +149,9 @@ class CardsPreview extends Component {
                             <IconMenu
                                 iconButtonElement={
                                     <IconButton touch={true}>
-                                        <MoreVertIcon className={this.props.showActions() ? s.cardMenuIconDisabled : s.cardMenuIcon} />
+                                        <MoreVertIcon className={this.props.firstCheckedCard === card.idPost
+                                            ? s.previewListActionsShow : this.props.showActions()
+                                            ? s.cardMenuIconDisabled : s.cardMenuIcon} />
                                     </IconButton>
                                 }
                                 anchorOrigin={{horizontal: 'left', vertical: 'top'}}
@@ -208,6 +194,7 @@ class Entries extends Component {
         cards: cardsData,
         selectedCard: 1,
         checkedCards: [],
+        firstCheckedCard: null
     };
 
     changeSelectedCard = (card) => {
@@ -222,21 +209,31 @@ class Entries extends Component {
 
     checkCard = (card_id) => {
         let tempCheckedCards = this.state.checkedCards;
+        if(this.state.firstCheckedCard === null) {
+            this.setState({
+                firstCheckedCard: card_id
+            });
+        }
         if(!this.state.checkedCards.includes(card_id)) {
             tempCheckedCards.push(card_id);
             this.setState({
-                checkedCards: tempCheckedCards
+                checkedCards: tempCheckedCards,
             });
         } else {
             let index = this.state.checkedCards.indexOf(card_id);
             tempCheckedCards.splice(index, 1);
             this.setState({
-                checkedCards: tempCheckedCards
+                checkedCards: tempCheckedCards,
+            });
+        }
+        if(this.state.firstCheckedCard !== null && this.state.checkedCards.length === 0) {
+            this.setState({
+                firstCheckedCard: null
             });
         }
         this.showActions();
 
-        console.log(this.state.checkedCards);
+        console.log(this.state.checkedCards, this.state.firstCheckedCard);
     };
 
     isChecked = (card_id) => {
@@ -298,6 +295,7 @@ class Entries extends Component {
                             cardsPreviewData={this.state.cards}
                             changeSelectedCard={this.changeSelectedCard}
                             checkedCards={this.state.checkedCards}
+                            firstCheckedCard={this.state.firstCheckedCard}
                             showActions={this.showActions}
                             checkCard={this.checkCard}
                             isChecked={this.isChecked}

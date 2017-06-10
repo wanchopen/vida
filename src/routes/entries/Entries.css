@@ -123,12 +123,11 @@
 
 .previewListActionsShow {
     visibility: visible;
-    float: left;
+    color: #00bcd4 !important;
 }
 
 .previewListActionsHide {
     visibility: hidden;
-    float: left;
 }
 
 .rightMenuItem {
