@@ -20,6 +20,10 @@ import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigati
 import Paper from 'material-ui/Paper';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
+const customContentStyle = {
+    width: '50%',
+    maxWidth: '60%',
+};
 
 class ProfileAvatar extends Component {
     state = {
@@ -69,23 +73,37 @@ class ProfileAvatar extends Component {
                     actionsContainerClassName={s.actionsContainer}
                     onRequestClose={this.handleClose}
                     className={s.dialogWindow}
+                    contentStyle={customContentStyle}
                 >
-                    <IconButton className={s.closeButton}
-                                onTouchTap={this.handleClose}>
-                        <NavigationClose color={grey400} className={s.viewsIcon}/>
-                    </IconButton>
-                    <Card>
-                        <CardHeader title={<Link to="#" className={s.link}>Chris Martin</Link>}
-                                    subtitle="Singer, songwriter, record producer, 40, London"
-                                    avatar={AvatarImage}
-                        />
-                        <CardMedia overlay={<CardTitle title="Music, Ocean, Indian food, Big city, Studio"
-                                       subtitle="Essentials"/>}
-                                   className={s.imageContainer}
-                        >
-                            <img src={OverlayImage} />
-                        </CardMedia>
-                    </Card>
+                    <div className={s.dialogWindowContainer}>
+                        <IconButton className={s.closeButton}
+                                    onTouchTap={this.handleClose}>
+                            <NavigationClose color={grey400} className={s.viewsIcon}/>
+                        </IconButton>
+                        <Card>
+                            <CardHeader title={<Link to="#" className={s.link}>Chris Martin</Link>}
+                                        subtitle="Singer, songwriter, record producer, 40, London"
+                                        avatar={AvatarImage}
+                            />
+                            <CardMedia overlay={<CardTitle title="Music, Ocean, Indian food, Big city, Studio"
+                                                           subtitle="Essentials"/>}
+                                       className={s.imageContainer}
+                            >
+                                <img src={OverlayImage} />
+                            </CardMedia>
+                            <CardTitle title="My early life and background"/>
+                            <CardText>
+                                Martin was educated at the pre-preparatory Hylton School and the
+                                preparatory Exeter Cathedral School where he found his passion for music. After Exeter
+                                Cathedral School, Martin boarded at Sherborne School in Dorset, where he met future
+                                Coldplay manager Phil Harvey.
+                                Martin continued his studies at University College London (UCL), staying at Ramsay Hall,
+                                where he read Ancient World Studies and graduated with first-class honours in Greek and
+                                Latin. At UCL, Martin met his future Coldplay bandmates Jonny Buckland, Guy Berryman and
+                                Will Champion.
+                            </CardText>
+                        </Card>
+                    </div>
                 </Dialog>
             </div>
         );

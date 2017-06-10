@@ -7,7 +7,11 @@
 
 .dialogWindow {
     padding-top: 16px !important;
-    position: relative;
+    width: 80%;
+}
+
+.dialogWindowContainer {
+    margin: -24px;
 }
 
 .link {
