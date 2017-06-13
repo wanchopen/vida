@@ -3,6 +3,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './SortingSelect.css';
 import {grey400, cyan500} from 'material-ui/styles/colors';
 import Popover from 'material-ui/Popover';
+import IconButton from 'material-ui/IconButton';
 import ContentSort from 'material-ui/svg-icons/content/sort';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -10,6 +11,13 @@ import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import DateRange from 'material-ui/svg-icons/action/date-range';
 import PersonOutline from 'material-ui/svg-icons/social/people-outline';
 import Divider from 'material-ui/Divider';
+
+const styles = {
+    iconSize: {
+        width: 36,
+        height: 36,
+    }
+};
 
 class SortingSelect extends Component {
     constructor(props) {
@@ -39,9 +47,11 @@ class SortingSelect extends Component {
     render() {
         return (
             <div>
-                <ContentSort color={grey400}
-                             className={s.sortingSelectButton}
-                             onTouchTap={this.handleTouchTap} />
+                <IconButton iconStyle={styles.iconSize}>
+                    <ContentSort color={grey400}
+                                 className={s.sortingSelectButton}
+                                 onTouchTap={this.handleTouchTap} />
+                </IconButton>
                 <Popover
                     open={this.state.open}
                     anchorEl={this.state.anchorEl}

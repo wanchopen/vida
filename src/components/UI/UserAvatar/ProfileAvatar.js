@@ -42,22 +42,22 @@ class ProfileAvatar extends Component {
             <IconButton tooltip="Recommend"
                         tooltipPosition="top-right"
                         onTouchTap={this.handleClose}>
-                <ContentForward color={cyan500} className={s.actionIcon}/>
+                <ContentForward color={grey400} className={s.actionIcon}/>
             </IconButton>,
             <IconButton tooltip="Send a Request"
                         tooltipPosition="top-right"
                         onTouchTap={this.handleClose}>
-                <Request color={cyan500} className={s.actionIcon}/>
+                <Request color={grey400} className={s.actionIcon}/>
             </IconButton>,
             <IconButton tooltip="Write a Message"
                         tooltipPosition="top-right"
                         onTouchTap={this.handleClose}>
-                <Message color={cyan500} className={s.actionIcon}/>
+                <Message color={grey400} className={s.actionIcon}/>
             </IconButton>,
             <IconButton tooltip="Watch later"
                         tooltipPosition="top-right"
                         onTouchTap={this.handleClose}>
-                <ActionSchedule color={cyan500} className={s.actionIcon}/>
+                <ActionSchedule color={grey400} className={s.actionIcon}/>
             </IconButton>
         ];
 
@@ -76,10 +76,6 @@ class ProfileAvatar extends Component {
                     contentStyle={customContentStyle}
                 >
                     <div className={s.dialogWindowContainer}>
-                        <IconButton className={s.closeButton}
-                                    onTouchTap={this.handleClose}>
-                            <NavigationClose color={grey400} className={s.viewsIcon}/>
-                        </IconButton>
                         <Card>
                             <CardHeader title={<Link to="#" className={s.link}>Chris Martin</Link>}
                                         subtitle="Singer, songwriter, record producer, 40, London"
