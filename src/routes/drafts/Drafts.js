@@ -17,6 +17,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
+import ContentForward from 'material-ui/svg-icons/content/forward';
 import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle';
 import RadioButtonUnchecked from 'material-ui/svg-icons/toggle/radio-button-unchecked';
 import EditorPublish from 'material-ui/svg-icons/editor/publish';
@@ -139,6 +140,12 @@ class CardsPreview extends Component {
     handleClick = (card) => {
         this.props.changeSelectedCard(card);
     };
+    showActions = () => {
+        this.props.showActions();
+    };
+    checkCard = (card_id) => {
+        this.props.checkCard(card_id);
+    };
 
     render() {
         return (
@@ -152,8 +159,27 @@ class CardsPreview extends Component {
                         key={card.idPost}
                         id={card.idPost}
                         className={s.card}
-                        leftAvatar={<Avatar src={card.avatar} className={s.avatar}/>}
-                        rightIconButton={rightIconMenu}
+                        leftAvatar={<Avatar src={card.avatar}
+                                            className={this.props.isChecked(card.idPost) ? s.avatarChecked : s.avatar}
+                                            onClick={this.checkCard.bind(this, card.idPost)}/>}
+                        rightIconButton={
+                            <IconMenu
+                                iconButtonElement={
+                                    <IconButton touch={true}>
+                                        <MoreVertIcon className={this.props.firstCheckedCard === card.idPost
+                                            ? s.previewListActionsShow : this.props.showActions()
+                                                ? s.cardMenuIconDisabled : s.cardMenuIcon} />
+                                    </IconButton>
+                                }
+                                anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+                                targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                                animated={false}
+                            >
+                                <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Recommend</MenuItem>
+                                <MenuItem leftIcon={<EditorPublish className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Publish</MenuItem>
+                                <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Move to Trash</MenuItem>
+                            </IconMenu>
+                        }
                         title={card.userName}
                         primaryText={
                             <div className={s.cardHeading} onClick={this.handleClick.bind(this, card)}>
@@ -183,12 +209,48 @@ class Drafts extends Component {
     state = {
         cards: cardsData,
         selectedCard: 1,
+        checkedCards: [],
+        firstCheckedCard: null,
     };
 
     changeSelectedCard = (card) => {
         this.setState({
             selectedCard: card.idPost,
         });
+    };
+    showActions = () => {
+        return this.state.checkedCards.length !== 0;
+    };
+    checkCard = (card_id) => {
+        let tempCheckedCards = this.state.checkedCards;
+        if(this.state.firstCheckedCard === null) {
+            this.setState({
+                firstCheckedCard: card_id
+            });
+        }
+        if(!this.state.checkedCards.includes(card_id)) {
+            tempCheckedCards.push(card_id);
+            this.setState({
+                checkedCards: tempCheckedCards,
+            });
+        } else {
+            let index = this.state.checkedCards.indexOf(card_id);
+            tempCheckedCards.splice(index, 1);
+            this.setState({
+                checkedCards: tempCheckedCards,
+            });
+        }
+        if(this.state.firstCheckedCard !== null && this.state.checkedCards.length === 0) {
+            this.setState({
+                firstCheckedCard: null
+            });
+        }
+        this.showActions();
+
+        console.log(this.state.checkedCards, this.state.firstCheckedCard);
+    };
+    isChecked = (card_id) => {
+        return this.state.checkedCards.includes(card_id);
     };
 
     render() {
@@ -241,6 +303,11 @@ class Drafts extends Component {
                             selectedCard={this.state.selectedCard}
                             cardsPreviewData={this.state.cards}
                             changeSelectedCard={this.changeSelectedCard}
+                            checkedCards={this.state.checkedCards}
+                            firstCheckedCard={this.state.firstCheckedCard}
+                            showActions={this.showActions}
+                            checkCard={this.checkCard}
+                            isChecked={this.isChecked}
                         />
                     </Paper>
                     <div className={s.cardContainer}>

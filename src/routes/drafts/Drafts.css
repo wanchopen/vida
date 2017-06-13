@@ -40,6 +40,17 @@
     color: inherit !important;
     padding-top: 0.8em;
     visibility: hidden !important;
+    position: relative;
+    display: flex;
+}
+
+.avatar {
+    filter: opacity(30%);
+    cursor: pointer;
+}
+
+.avatarChecked {
+    cursor: pointer;
 }
 
 .readingListContainer:hover .cardsListSubHeading {
@@ -98,12 +109,21 @@
     color: #ffffff !important;
 }
 
+.cardMenuIconDisabled {
+    color: #ffffff !important;
+}
+
 .card:hover .cardMenuIcon {
     color: #00bcd4 !important;
 }
 
-.avatar {
-    filter: opacity(30%);
+.card:hover .cardMenuIconDisabled {
+    color: #ffffff !important;
+}
+
+.previewListActionsShow {
+    visibility: visible;
+    color: #00bcd4 !important;
 }
 
 .rightMenuItem {
