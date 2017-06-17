@@ -22,6 +22,7 @@ import entries from './entries';
 import drafts from './drafts';
 import newsbeats from './newsbeats';
 import userOverview from './userOverview';
+import events from './events';
 
 export default {
 
@@ -38,6 +39,7 @@ export default {
     drafts,
     newsbeats,
     userOverview,
+    events,
 
     // place new routes before...
     content,

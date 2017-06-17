@@ -14,8 +14,8 @@ import Divider from 'material-ui/Divider';
 
 const styles = {
     iconSize: {
-        width: 36,
-        height: 36,
+        width: 24,
+        height: 24,
     }
 };
 

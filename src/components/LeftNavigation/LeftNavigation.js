@@ -284,10 +284,11 @@ class GoingsOn extends Component {
                             <ListItem
                                 key={3}
                                 value={3}
-                                primaryText={<Link to="/#" className={s.link}>Events</Link>}
+                                primaryText={<Link to="/events" className={s.link}>Events</Link>}
                                 leftIcon={<ActionEvent className={s.menuIcon} color={cyan500}/>}
                                 rightIcon={<SettingsIcon title="Events"/>}
-                                className={s.menuItem}
+                                className={this.props.currentPage === 'events' ? s.activeLink : s.menuItem}
+                                onClick={this.setCurrentPageStyle.bind(this, 'events')}
                             />
                         ]}
                     />
