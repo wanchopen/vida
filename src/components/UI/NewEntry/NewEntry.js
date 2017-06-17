@@ -9,6 +9,13 @@ import EditorPublish from 'material-ui/svg-icons/editor/publish';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import TextField from 'material-ui/TextField';
 
+const styles = {
+    iconSize: {
+        width: 21,
+        height: 21,
+    }
+};
+
 class NewEntry extends Component {
     state = {
         open: false,
@@ -39,6 +46,7 @@ class NewEntry extends Component {
             <div>
                 <IconButton tooltip="Write an Entry"
                             tooltipPosition="bottom-right"
+                            iconStyle={styles.iconSize}
                             onTouchTap={this.handleOpen}>
                     <EditorBorderColor color={grey400} className={s.viewsIcon}/>
                 </IconButton>
