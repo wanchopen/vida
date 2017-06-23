@@ -91,6 +91,10 @@ class DialogsList extends Component {
 }
 
 class SelectedDialog extends Component {
+    sendMessage = () => {
+        console.log('Message was sent');
+    };
+
     render() {
         return (
             <Paper className={s.selectedDialog}>
@@ -139,33 +143,22 @@ class SelectedDialog extends Component {
                             Actually everything was fine. I'm very excited to show this to our team.
                         </div>
                     </div>
-                    <NewMessage />
+                    <Paper className={cx(s.chatMessage, s.clearfix)}>
+                        <TextField
+                            className={s.newMessageField}
+                            hintText="Enter your message"
+                            floatingLabelText="New message"
+                            multiLine={true}
+                            rows={2}
+                        />
+                        <IconButton tooltip="Send your message"
+                                    tooltipPosition="bottom-right"
+                                    onTouchTap={this.sendMessage}>
+                            <ContentSend color={grey400} className={s.viewsIcon}/>
+                        </IconButton>
+                    </Paper>
                 </div>
 
-            </Paper>
-        );
-    }
-}
-
-class NewMessage extends Component {
-    sendMessage = () => {
-        console.log('Message was sent');
-    };
-    render() {
-        return (
-            <Paper className={cx(s.chatMessage, s.clearfix)}>
-                <TextField
-                    className={s.newMessageField}
-                    hintText="Enter your message"
-                    floatingLabelText="New message"
-                    multiLine={true}
-                    rows={2}
-                />
-                <IconButton tooltip="Send your message"
-                            tooltipPosition="bottom-right"
-                            onTouchTap={this.sendMessage}>
-                    <ContentSend color={grey400} className={s.viewsIcon}/>
-                </IconButton>
             </Paper>
         );
     }
