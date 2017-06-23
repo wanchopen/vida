@@ -9,7 +9,6 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 import {grey400, darkBlack, lightBlack, cyan500} from 'material-ui/styles/colors';
-import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
@@ -110,7 +109,6 @@ class SelectedDialog extends Component {
                         <div className={cx(s.messageData, s.alignRight)}>
                             <span className={s.messageDataTime} >10:10 AM, Today</span>
                             <span>Clara</span>
-                            <FontIcon className="muidocs-icon-action-home" color={cyan500} />
                         </div>
                         <div className={cx(s.message, s.otherMessage, s.floatRight)}>
                             Hi Eddie, how are you? How is the project coming along?
@@ -119,7 +117,6 @@ class SelectedDialog extends Component {
                         <div className={s.messageData}>
                             <span>Ed</span>
                             <span className={s.messageDataTime} >10:10 AM, Today</span>
-                            <FontIcon className="muidocs-icon-action-home" color={cyan500} />
                         </div>
                         <div className={cx(s.message, s.myMessage)}>
                             Are we meeting today? Project has been already finished and I have results to show you.
@@ -128,7 +125,6 @@ class SelectedDialog extends Component {
                         <div className={cx(s.messageData, s.alignRight)}>
                             <span className={s.messageDataTime} >10:10 AM, Today</span>
                             <span>Clara</span>
-                            <FontIcon className="muidocs-icon-action-home" color={cyan500} />
                         </div>
                         <div className={cx(s.message, s.otherMessage, s.floatRight)}>
                             Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you
@@ -138,7 +134,6 @@ class SelectedDialog extends Component {
                         <div className={s.messageData}>
                             <span>Ed</span>
                             <span className={s.messageDataTime} >10:10 AM, Today</span>
-                            <FontIcon className="muidocs-icon-action-home" color={cyan500} />
                         </div>
                         <div className={cx(s.message, s.myMessage)}>
                             Actually everything was fine. I'm very excited to show this to our team.
