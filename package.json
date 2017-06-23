@@ -26,6 +26,7 @@
     "isomorphic-style-loader": "1.0.0",
     "jsonwebtoken": "7.1.9",
     "markdown-it": "7.0.1",
+    "material-design-icons": "^3.0.1",
     "material-ui": "^0.17.1",
     "node-fetch": "1.6.0",
     "normalize.css": "4.2.0",

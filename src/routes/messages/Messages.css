@@ -1,0 +1,166 @@
+@import '../../components/variables.css';
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+.root {
+    height: 100% !important;
+    max-height: 100%;
+    margin: -0.5em;
+}
+
+.container {
+    height: 100% !important;
+    min-height: 100%;
+    width: 70% !important;
+    margin-left: 16em;
+    padding: 0 0 40px !important;
+    border: none !important;
+    float: left;
+}
+
+.cardsListSubHeading {
+    cursor: pointer;
+    padding-top: 0.8em;
+    padding-left: 0 !important;
+    visibility: hidden !important;
+}
+
+.readingListContainer {
+    max-width: 40%;
+    height: 100%;
+    min-height: 605px;
+    display: inline-block;
+    position: relative;
+    float: left;
+    overflow: scroll;
+}
+
+.readingListContainer:hover .cardsListSubHeading {
+    visibility: visible !important;
+}
+
+.cardsContainer {
+    height: 100%;
+    overflow: scroll;
+}
+
+.cardMenuIcon {
+    color: #ffffff !important;
+}
+
+.card {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9) !important;
+}
+
+.card:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    /*cursor: inherit !important;*/
+}
+
+.card:hover .cardMenuIcon {
+    color: #00bcd4 !important;
+}
+
+.menuIcon {
+    display: none !important;
+}
+
+.rightMenuItem:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.rightMenuItem:hover .menuIcon {
+    display: block !important;
+}
+
+.selectedDialog {
+    max-width: 60%;
+    float: left;
+    /*height: 100%;*/
+    /*overflow: scroll;*/
+    /*overflow-x: hidden;*/
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.chat {
+    width: 100%;
+    float:left;
+    background: rgba(255, 255, 255, 0.9);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.chatHistory {
+    padding: 30px 30px 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    overflow-y: scroll;
+    height: 350px;
+}
+
+.messageData {
+    margin-bottom: 15px;
+}
+
+.messageDataTime {
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 0.9em;
+    font-style: italic;
+    color: rgba(64, 64, 64, 0.4);
+}
+
+.message {
+    padding: 18px 20px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 85%;
+    position: relative;
+}
+
+.otherMessage {
+    background: rgba(0, 188, 212, 0.2);
+}
+
+.myMessage {
+    background: rgba(0, 188, 212, 0.8);
+}
+
+.chatMessage {
+    padding: 16px;
+    border-top: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+.newMessageField {
+    width: 90% !important;
+}
+
+.viewsIcon {
+    position: absolute !important;
+    bottom: 10px;
+}
+
+.viewsIcon:hover {
+    color: rgba(0, 188, 212, 0.8) !important;
+    fill: rgb(0, 188, 212) !important;
+}
+
+.alignLeft {
+    text-align: left;
+}
+
+.alignRight {
+    text-align: right;
+}
+
+.floatRight {
+    float: right;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}

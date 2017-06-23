@@ -186,6 +186,9 @@ class MailBox extends Component {
             open: item.state.open,
         });
     };
+    setCurrentPageStyle = (menuItem) => {
+        this.props.setCurrentPage(menuItem);
+    };
     render() {
         return (
             <List>
@@ -209,10 +212,11 @@ class MailBox extends Component {
                             <ListItem
                                 key={2}
                                 value={2}
-                                primaryText={<Link to="/#" className={s.link}>Messages</Link>}
+                                primaryText={<Link to="/messages" className={s.link}>Messages</Link>}
                                 leftIcon={<CommunicationContactMail className={s.menuIcon} color={cyan500}/>}
                                 rightIcon={<SettingsIcon title="Messages"/>}
-                                className={s.menuItem}
+                                className={this.props.currentPage === 'messages' ? s.activeLink : s.menuItem}
+                                onClick={this.setCurrentPageStyle.bind(this, 'messages')}
                             />,
                             <ListItem
                                 key={3}
@@ -369,7 +373,7 @@ class LeftNavigation extends Component {
         return (
             <div className={s.menuPaper}>
                 <MyCupOfTea setCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
-                <MailBox />
+                <MailBox setCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
                 <GoingsOn setCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
                 <Media />
             </div>
