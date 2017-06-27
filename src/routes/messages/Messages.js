@@ -5,7 +5,6 @@ import cx from 'classnames';
 import SortingSelect from './../../components/UI/SortingSelect';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
-import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 import {grey400, darkBlack, lightBlack, cyan500} from 'material-ui/styles/colors';
@@ -13,9 +12,10 @@ import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
+import CommunicationEmail from 'material-ui/svg-icons/communication/email';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ContentForward from 'material-ui/svg-icons/content/forward';
-import SocialShare from 'material-ui/svg-icons/social/share';
+import ContentReply from 'material-ui/svg-icons/content/reply';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import TextField from 'material-ui/TextField';
 import avatarChris from './images/chris.jpg';
@@ -23,6 +23,206 @@ import avatarHuw from './images/huw.jpg';
 import avatarDev from './images/dev.jpg';
 import avatarAlice from './images/alice.jpg';
 import avatarClara from './images/clara.jpg';
+
+const dialogsData = [
+        {
+            id: 1,
+            name: 'Clara Amfo',
+            avatar: avatarClara
+        },
+        {
+            id: 2,
+            name: 'Alice Levine',
+            avatar: avatarAlice
+        },
+        {
+            id: 3,
+            name: 'Dev',
+            avatar: avatarDev
+        },
+        {
+            id: 4,
+            name: 'Huw Stephens',
+            avatar: avatarHuw
+        },
+        {
+            id: 5,
+            name: 'Chris Martin',
+            avatar: avatarChris
+        }
+],
+    messagesHistoryData = [
+        {
+            id: 1,
+            history: [
+                {
+                    messageId: 1,
+                    time: '10:10 AM, Today',
+                    name: 'Clara Amfo',
+                    isCurrentUser: false,
+                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                },
+                {
+                    messageId: 2,
+                    time: '10:11 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                },
+                {
+                    messageId: 3,
+                    time: '10:14 AM, Today',
+                    name: 'Clara Amfo',
+                    isCurrentUser: false,
+                    text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
+                    'faced any problems at the last phase of the project?'
+                },
+                {
+                    messageId: 4,
+                    time: '10-16 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                }
+            ]
+        },
+        {
+            id: 2,
+            history: [
+                {
+                    messageId: 5,
+                    time: '10:10 AM, Today',
+                    name: 'Alice Levine',
+                    isCurrentUser: false,
+                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                },
+                {
+                    messageId: 6,
+                    time: '10:11 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                },
+                {
+                    messageId: 7,
+                    time: '10:14 AM, Today',
+                    name: 'Alice Levine',
+                    isCurrentUser: false,
+                    text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
+                    'faced any problems at the last phase of the project?'
+                },
+                {
+                    messageId: 8,
+                    time: '10-16 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                }
+            ]
+        },
+        {
+            id: 3,
+            history: [
+                {
+                    messageId: 9,
+                    time: '10:10 AM, Today',
+                    name: 'Dev',
+                    isCurrentUser: false,
+                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                },
+                {
+                    messageId: 10,
+                    time: '10:11 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                },
+                {
+                    messageId: 11,
+                    time: '10:14 AM, Today',
+                    name: 'Dev',
+                    isCurrentUser: false,
+                    text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
+                    'faced any problems at the last phase of the project?'
+                },
+                {
+                    messageId: 12,
+                    time: '10:16 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                }
+            ]
+        },
+        {
+            id: 4,
+            history: [
+                {
+                    messageId: 13,
+                    time: '10:10 AM, Today',
+                    name: 'Huw Stephens',
+                    isCurrentUser: false,
+                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                },
+                {
+                    messageId: 14,
+                    time: '10:11 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                },
+                {
+                    messageId: 15,
+                    time: '10:14 AM, Today',
+                    name: 'Huw Stephens',
+                    isCurrentUser: false,
+                    text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
+                    'faced any problems at the last phase of the project?'
+                },
+                {
+                    messageId: 16,
+                    time: '10:16 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                }
+            ]
+        },
+        {
+            id: 5,
+            history: [
+                {
+                    messageId: 17,
+                    time: '10:10 AM, Today',
+                    name: 'Chris Martin',
+                    isCurrentUser: false,
+                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                },
+                {
+                    messageId: 18,
+                    time: '10:11 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                },
+                {
+                    messageId: 19,
+                    time: '10:14 AM, Today',
+                    name: 'Chris Martin',
+                    isCurrentUser: false,
+                    text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
+                    'faced any problems at the last phase of the project?'
+                },
+                {
+                    messageId: 20,
+                    time: '10:16 AM, Today',
+                    name: 'Ed Sheeran',
+                    isCurrentUser: true,
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                }
+            ]
+        }
+    ];
 
 const iconButtonElement = (
     <IconButton
@@ -39,13 +239,32 @@ const iconButtonElement = (
         targetOrigin={{horizontal: 'left', vertical: 'top'}}
         animated={false}
     >
-        <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Recommend</MenuItem>
-        <MenuItem leftIcon={<SocialShare className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Share</MenuItem>
-        <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Move to Trash</MenuItem>
+        <MenuItem
+            leftIcon={<CommunicationEmail className={s.menuIcon} color={cyan500}/>}
+            className={s.rightMenuItem}>Write a message</MenuItem>
+        <MenuItem
+            leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>}
+            className={s.rightMenuItem} >Delete this dialog</MenuItem>
     </IconMenu>
-);
+),
+    dialogIconMenu = (
+        <IconMenu
+            iconButtonElement={iconButtonElement}
+            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+            targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            animated={false}
+        >
+            <MenuItem leftIcon={<ContentForward className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem}>Forward</MenuItem>
+            <MenuItem leftIcon={<ContentReply className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Reply</MenuItem>
+            <MenuItem leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>} className={s.rightMenuItem} >Delete</MenuItem>
+        </IconMenu>
+    );
 
 class DialogsList extends Component {
+    selectDialog = (dialog_id) => {
+        this.props.changeSelectedDialog(dialog_id);
+    };
+
     render() {
         return (
             <List>
@@ -54,36 +273,19 @@ class DialogsList extends Component {
 
                 </Subheader>
                 <div className={s.cardsContainer}>
-                    <ListItem
-                        leftAvatar={<Avatar src={avatarClara} />}
-                        rightIconButton={rightIconMenu}
-                        className={s.card}
-                        primaryText="Clara Amfo"
-                    />
-                    <ListItem
-                        leftAvatar={<Avatar src={avatarAlice} />}
-                        rightIconButton={rightIconMenu}
-                        className={s.card}
-                        primaryText="Alice Levine"
-                    />
-                    <ListItem
-                        leftAvatar={<Avatar src={avatarDev} />}
-                        rightIconButton={rightIconMenu}
-                        className={s.card}
-                        primaryText="Dev"
-                    />
-                    <ListItem
-                        leftAvatar={<Avatar src={avatarHuw} />}
-                        rightIconButton={rightIconMenu}
-                        className={s.card}
-                        primaryText="Huw Stephens"
-                    />
-                    <ListItem
-                        leftAvatar={<Avatar src={avatarChris} />}
-                        rightIconButton={rightIconMenu}
-                        className={s.card}
-                        primaryText="Chris Martin"
-                    />
+                    {this.props.cardsDialogsData.map((dialog) => (
+                        <ListItem
+                            key={dialog.id}
+                            leftAvatar={<Avatar src={dialog.avatar} />}
+                            rightIconButton={rightIconMenu}
+                            className={s.card}
+                            primaryText={
+                                <span className={this.props.selectedDialog === dialog.id ? s.cardActive : ''}>
+                                    {dialog.name}
+                                </span>}
+                            onClick={this.selectDialog.bind(this, dialog.id)}
+                        />
+                    ))}
                 </div>
             </List>
         );
@@ -102,46 +304,35 @@ class SelectedDialog extends Component {
                     <div className={s.clearfix}>
                         <List>
                             <ListItem
-                                leftAvatar={<Avatar src={avatarClara} />}
-                                rightIconButton={rightIconMenu}
+                                leftAvatar={<Avatar src={this.props.selectedDialogInfo.avatar} />}
+                                rightIconButton={dialogIconMenu}
                                 className={s.card}
-                                primaryText="Clara Amfo"
+                                primaryText={this.props.selectedDialogInfo.name}
                             />
                         </List>
                     </div>
                     <div className={s.chatHistory}>
-                        <div className={cx(s.messageData, s.alignRight)}>
-                            <span className={s.messageDataTime} >10:10 AM, Today</span>
-                            <span>Clara</span>
-                        </div>
-                        <div className={cx(s.message, s.otherMessage, s.floatRight)}>
-                            Hi Eddie, how are you? How is the project coming along?
-                        </div>
-
-                        <div className={s.messageData}>
-                            <span>Ed</span>
-                            <span className={s.messageDataTime} >10:10 AM, Today</span>
-                        </div>
-                        <div className={cx(s.message, s.myMessage)}>
-                            Are we meeting today? Project has been already finished and I have results to show you.
-                        </div>
-
-                        <div className={cx(s.messageData, s.alignRight)}>
-                            <span className={s.messageDataTime} >10:10 AM, Today</span>
-                            <span>Clara</span>
-                        </div>
-                        <div className={cx(s.message, s.otherMessage, s.floatRight)}>
-                            Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you
-                            faced any problems at the last phase of the project?
-                        </div>
-
-                        <div className={s.messageData}>
-                            <span>Ed</span>
-                            <span className={s.messageDataTime} >10:10 AM, Today</span>
-                        </div>
-                        <div className={cx(s.message, s.myMessage)}>
-                            Actually everything was fine. I'm very excited to show this to our team.
-                        </div>
+                        {this.props.history.map((item) => (
+                            <div key={item.messageId}>
+                                <div className={!item.isCurrentUser ? cx(s.alignRight, s.messageData) : s.messageData}>
+                                    {!item.isCurrentUser ? (
+                                        <span>
+                                            <span className={s.messageDataTime} >{item.time}</span>
+                                            <span>{item.name}</span>
+                                        </span>
+                                        ) : (
+                                        <span>
+                                            <span className={s.messageDataName}>{item.name}</span>
+                                            <span className={s.messageDataTime} >{item.time}</span>
+                                        </span>
+                                        )}
+                                </div>
+                                <div className={!item.isCurrentUser
+                                    ? cx(s.otherMessage, s.floatRight, s.message) : cx(s.message, s.myMessage)}>
+                                    {item.text}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                     <Paper className={cx(s.chatMessage, s.clearfix)}>
                         <TextField
@@ -166,10 +357,44 @@ class SelectedDialog extends Component {
 
 class Messages extends Component {
     state = {
-        dialogs: [],
-        selectedDialog: 1,
+        dialogs: dialogsData,
+        selectedDialog: null,
+        selectedDialogInfo: null,
+        history: []
     };
-    changeSelectedDialog = () => {};
+    componentWillMount = () => {
+        let selected = this.state.dialogs[0].id,
+            info = this.state.dialogs[0];
+        messagesHistoryData.forEach((item) => {
+            if(item.id === selected) {
+                let history = item.history;
+                this.setState({
+                    history: history,
+                    selectedDialog: selected,
+                    selectedDialogInfo: info
+                });
+            }
+        });
+    };
+    changeSelectedDialog = (dialog_id) => {
+        this.state.dialogs.forEach((item) => {
+            if(item.id === dialog_id) {
+                this.setState({
+                    selectedDialogInfo: item
+                });
+            }
+        });
+        messagesHistoryData.forEach((item) => {
+            if(item.id === dialog_id) {
+                let history = item.history;
+                this.setState({
+                    history: history,
+                    selectedDialog: dialog_id,
+                });
+            }
+        });
+        // console.log(this.state.selectedDialog, this.state.history, 'updated selected dialog');
+    };
 
     render() {
         return (
@@ -177,12 +402,13 @@ class Messages extends Component {
                 <div className={s.container}>
                     <Paper className={s.readingListContainer}>
                         <DialogsList
-                            selectedDialog={this.state.selectedCard}
+                            selectedDialog={this.state.selectedDialog}
                             cardsDialogsData={this.state.dialogs}
                             changeSelectedDialog={this.changeSelectedDialog}
                         />
                     </Paper>
-                    <SelectedDialog />
+                    <SelectedDialog history={this.state.history}
+                                    selectedDialogInfo={this.state.selectedDialogInfo}/>
                 </div>
             </div>
         );

@@ -60,6 +60,11 @@
     color: #00bcd4 !important;
 }
 
+.cardActive {
+    border-bottom: 1px solid rgb(0, 188, 212) !important;
+    padding-bottom: 0.7em;
+}
+
 .menuIcon {
     display: none !important;
 }
@@ -107,6 +112,10 @@
     font-size: 0.9em;
     font-style: italic;
     color: rgba(64, 64, 64, 0.4);
+}
+
+.messageDataName {
+    display: inline-block;
 }
 
 .message {
