@@ -117,6 +117,14 @@ const dialogsData = [
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
                     text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                },
+                {
+                    messageId: 9,
+                    time: '10-17 AM, Today',
+                    name: 'Alice Levine',
+                    isCurrentUser: false,
+                    text: 'Animatronic face gear and a giant muscle suit on stilts is probably not something you would ' +
+                    'want to go out in on a Saturday night. But we can\'t speak for everyone on that...'
                 }
             ]
         },
@@ -124,21 +132,21 @@ const dialogsData = [
             id: 3,
             history: [
                 {
-                    messageId: 9,
+                    messageId: 10,
                     time: '10:10 AM, Today',
                     name: 'Dev',
                     isCurrentUser: false,
                     text: 'Hi Eddie, how are you? How is the project coming along?'
                 },
                 {
-                    messageId: 10,
+                    messageId: 11,
                     time: '10:11 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
                     text: 'Are we meeting today? Project has been already finished and I have results to show you.'
                 },
                 {
-                    messageId: 11,
+                    messageId: 12,
                     time: '10:14 AM, Today',
                     name: 'Dev',
                     isCurrentUser: false,
@@ -146,11 +154,18 @@ const dialogsData = [
                     'faced any problems at the last phase of the project?'
                 },
                 {
-                    messageId: 12,
+                    messageId: 13,
                     time: '10:16 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
                     text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                },
+                {
+                    messageId: 14,
+                    time: '10:16 AM, Today',
+                    name: 'Dev',
+                    isCurrentUser: false,
+                    text: 'I will look back on the Big Weekend with live tracks from Hull and a game of Dev Or... with Clean Bandit!'
                 }
             ]
         },
@@ -158,21 +173,21 @@ const dialogsData = [
             id: 4,
             history: [
                 {
-                    messageId: 13,
+                    messageId: 15,
                     time: '10:10 AM, Today',
                     name: 'Huw Stephens',
                     isCurrentUser: false,
                     text: 'Hi Eddie, how are you? How is the project coming along?'
                 },
                 {
-                    messageId: 14,
+                    messageId: 16,
                     time: '10:11 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
                     text: 'Are we meeting today? Project has been already finished and I have results to show you.'
                 },
                 {
-                    messageId: 15,
+                    messageId: 17,
                     time: '10:14 AM, Today',
                     name: 'Huw Stephens',
                     isCurrentUser: false,
@@ -180,11 +195,29 @@ const dialogsData = [
                     'faced any problems at the last phase of the project?'
                 },
                 {
-                    messageId: 16,
+                    messageId: 18,
                     time: '10:16 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
                     text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                },
+                {
+                    messageId: 19,
+                    time: '10:18 AM, Today',
+                    name: 'Huw Stephens',
+                    isCurrentUser: false,
+                    text: (
+                        <div>
+                            <p>
+                                My passion for discovering and championing new music was spotted when at 17 he joined
+                                Radio 1 for its Nations output to reflect the music scene in Wales.
+                            </p>
+                            <p>
+                                I run my own record label and write regularly for various publications. He became
+                                a national presenter on Radio 1 as frontman of the OneMusic show in 2005.
+                            </p>
+                        </div>
+                    )
                 }
             ]
         },
@@ -192,21 +225,21 @@ const dialogsData = [
             id: 5,
             history: [
                 {
-                    messageId: 17,
+                    messageId: 20,
                     time: '10:10 AM, Today',
                     name: 'Chris Martin',
                     isCurrentUser: false,
                     text: 'Hi Eddie, how are you? How is the project coming along?'
                 },
                 {
-                    messageId: 18,
+                    messageId: 21,
                     time: '10:11 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
                     text: 'Are we meeting today? Project has been already finished and I have results to show you.'
                 },
                 {
-                    messageId: 19,
+                    messageId: 22,
                     time: '10:14 AM, Today',
                     name: 'Chris Martin',
                     isCurrentUser: false,
@@ -214,11 +247,18 @@ const dialogsData = [
                     'faced any problems at the last phase of the project?'
                 },
                 {
-                    messageId: 20,
+                    messageId: 23,
                     time: '10:16 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
                     text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                },
+                {
+                    messageId: 24,
+                    time: '10:14 AM, Today',
+                    name: 'Chris Martin',
+                    isCurrentUser: false,
+                    text: ' I guess life is beautiful in all it\'s colors, even the darker ones, they\'re here for a reason.'
                 }
             ]
         }
@@ -293,8 +333,28 @@ class DialogsList extends Component {
 }
 
 class SelectedDialog extends Component {
+    state = {
+        textFieldValue: ''
+    };
+    handleTextFieldChange = (e) => {
+        this.setState({
+            textFieldValue: e.target.value
+        });
+    };
     sendMessage = () => {
-        console.log('Message was sent');
+        let length = this.props.history.length - 1,
+            lastMessageId = this.props.history[length].messageId;
+        let message = {
+            messageId: lastMessageId + 1,
+            time: '10:24 AM, Today',
+            name: 'Ed Sheeran',
+            isCurrentUser: true,
+            text: this.state.textFieldValue
+        };
+        this.setState({
+            textFieldValue: ''
+        });
+        this.props.sendMessage(message);
     };
 
     render() {
@@ -311,7 +371,7 @@ class SelectedDialog extends Component {
                             />
                         </List>
                     </div>
-                    <div className={s.chatHistory}>
+                    <div className={s.chatHistory} id="chat_history_wrapper">
                         {this.props.history.map((item) => (
                             <div key={item.messageId}>
                                 <div className={!item.isCurrentUser ? cx(s.alignRight, s.messageData) : s.messageData}>
@@ -341,6 +401,8 @@ class SelectedDialog extends Component {
                             floatingLabelText="New message"
                             multiLine={true}
                             rows={2}
+                            value={this.state.textFieldValue}
+                            onChange={this.handleTextFieldChange}
                         />
                         <IconButton tooltip="Send your message"
                                     tooltipPosition="bottom-right"
@@ -376,6 +438,15 @@ class Messages extends Component {
             }
         });
     };
+    componentDidMount = () => {
+        // get the messagelist container and set the scrollTop to the height of the container
+        const messages = document.getElementById('chat_history_wrapper');
+        messages.scrollTop = messages.scrollHeight;
+    };
+    componentDidUpdate = () => {
+        const messages = document.getElementById('chat_history_wrapper');
+        messages.scrollTop = messages.scrollHeight;
+    };
     changeSelectedDialog = (dialog_id) => {
         this.state.dialogs.forEach((item) => {
             if(item.id === dialog_id) {
@@ -393,7 +464,14 @@ class Messages extends Component {
                 });
             }
         });
-        // console.log(this.state.selectedDialog, this.state.history, 'updated selected dialog');
+    };
+
+    sendMessage = (message) => {
+        let tempHistory = this.state.history;
+        tempHistory.push(message);
+        this.setState({
+            history: tempHistory
+        });
     };
 
     render() {
@@ -408,7 +486,9 @@ class Messages extends Component {
                         />
                     </Paper>
                     <SelectedDialog history={this.state.history}
-                                    selectedDialogInfo={this.state.selectedDialogInfo}/>
+                                    historyLength={this.state.history.length - 1}
+                                    selectedDialogInfo={this.state.selectedDialogInfo}
+                                    sendMessage={this.sendMessage}/>
                 </div>
             </div>
         );
