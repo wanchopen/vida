@@ -320,9 +320,9 @@ class DialogsList extends Component {
                             rightIconButton={rightIconMenu}
                             className={s.card}
                             primaryText={
-                                <span className={this.props.selectedDialog === dialog.id ? s.cardActive : ''}>
+                                <div className={this.props.selectedDialog === dialog.id ? s.cardActive : s.cardName}>
                                     {dialog.name}
-                                </span>}
+                                </div>}
                             onClick={this.selectDialog.bind(this, dialog.id)}
                         />
                     ))}
