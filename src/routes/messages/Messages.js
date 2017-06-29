@@ -28,27 +28,44 @@ const dialogsData = [
         {
             id: 1,
             name: 'Clara Amfo',
-            avatar: avatarClara
+            avatar: avatarClara,
+            lastMessage: 'Actually everything was fine. I\'m very excited to show this to our team.'
         },
         {
             id: 2,
             name: 'Alice Levine',
-            avatar: avatarAlice
+            avatar: avatarAlice,
+            lastMessage: 'Animatronic face gear and a giant muscle suit on stilts is probably not something you would ' +
+            'want to go out in on a Saturday night. But we can\'t speak for everyone on that...'
         },
         {
             id: 3,
             name: 'Dev',
-            avatar: avatarDev
+            avatar: avatarDev,
+            lastMessage: 'I will look back on the Big Weekend with live tracks from Hull and a game of Dev Or... with Clean Bandit!'
         },
         {
             id: 4,
             name: 'Huw Stephens',
-            avatar: avatarHuw
+            avatar: avatarHuw,
+            lastMessage: (
+                <div>
+                    <div>
+                        My passion for discovering and championing new music was spotted when at 17 he joined
+                        Radio 1 for its Nations output to reflect the music scene in Wales.
+                    </div>
+                    <div>
+                        I run my own record label and write regularly for various publications. He became
+                        a national presenter on Radio 1 as frontman of the OneMusic show in 2005.
+                    </div>
+                </div>
+            )
         },
         {
             id: 5,
             name: 'Chris Martin',
-            avatar: avatarChris
+            avatar: avatarChris,
+            lastMessage: 'I guess life is beautiful in all it\'s colors, even the darker ones, they\'re here for a reason.'
         }
 ],
     messagesHistoryData = [
@@ -258,7 +275,7 @@ const dialogsData = [
                     time: '10:14 AM, Today',
                     name: 'Chris Martin',
                     isCurrentUser: false,
-                    text: ' I guess life is beautiful in all it\'s colors, even the darker ones, they\'re here for a reason.'
+                    text: 'I guess life is beautiful in all it\'s colors, even the darker ones, they\'re here for a reason.'
                 }
             ]
         }
@@ -323,6 +340,8 @@ class DialogsList extends Component {
                                 <div className={this.props.selectedDialog === dialog.id ? s.cardActive : s.cardName}>
                                     {dialog.name}
                                 </div>}
+                            secondaryText={dialog.lastMessage}
+                            secondaryTextLines={2}
                             onClick={this.selectDialog.bind(this, dialog.id)}
                         />
                     ))}
@@ -422,6 +441,7 @@ class Messages extends Component {
         dialogs: dialogsData,
         selectedDialog: null,
         selectedDialogInfo: null,
+        selectedDialogIndex: 0,
         history: []
     };
     componentWillMount = () => {
@@ -439,7 +459,6 @@ class Messages extends Component {
         });
     };
     componentDidMount = () => {
-        // get the messagelist container and set the scrollTop to the height of the container
         const messages = document.getElementById('chat_history_wrapper');
         messages.scrollTop = messages.scrollHeight;
     };
@@ -448,10 +467,11 @@ class Messages extends Component {
         messages.scrollTop = messages.scrollHeight;
     };
     changeSelectedDialog = (dialog_id) => {
-        this.state.dialogs.forEach((item) => {
+        this.state.dialogs.forEach((item, index) => {
             if(item.id === dialog_id) {
                 this.setState({
-                    selectedDialogInfo: item
+                    selectedDialogInfo: item,
+                    selectedDialogIndex: index
                 });
             }
         });
@@ -467,9 +487,13 @@ class Messages extends Component {
     };
 
     sendMessage = (message) => {
-        let tempHistory = this.state.history;
+        let tempHistory = this.state.history,
+            index = this.state.selectedDialogIndex,
+            tempDialogs = this.state.dialogs;
         tempHistory.push(message);
+        tempDialogs[index].lastMessage = message.text;
         this.setState({
+            dialogs: tempDialogs,
             history: tempHistory
         });
     };
