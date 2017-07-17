@@ -334,12 +334,32 @@ class DialogsList extends Component {
                         <ListItem
                             key={dialog.id}
                             leftAvatar={<Avatar src={dialog.avatar} />}
-                            rightIconButton={rightIconMenu}
-                            className={s.card}
-                            primaryText={
-                                <div className={this.props.selectedDialog === dialog.id ? s.cardActive : s.cardName}>
-                                    {dialog.name}
-                                </div>}
+                            rightIconButton={
+                                <IconMenu
+                                    iconButtonElement={
+                                        <IconButton
+                                            touch={true}
+
+                                        >
+                                            <MoreVertIcon className={this.props.selectedDialog === dialog.id
+                                                ? s.cardMenuIconActive : s.cardMenuIcon} />
+                                        </IconButton>
+                                    }
+                                    anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+                                    targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                                    animated={false}
+                                >
+                                    <MenuItem
+                                        leftIcon={<CommunicationEmail className={s.menuIcon} color={cyan500}/>}
+                                        className={s.rightMenuItem}>Write a message</MenuItem>
+                                    <MenuItem
+                                        leftIcon={<ActionDelete className={s.menuIcon} color={cyan500}/>}
+                                        className={s.rightMenuItem} >Delete this dialog</MenuItem>
+                                </IconMenu>
+                            }
+                            className={ this.props.selectedDialog === dialog.id
+                                ? s.cardActive : s.card }
+                            primaryText={dialog.name}
                             secondaryText={dialog.lastMessage}
                             secondaryTextLines={2}
                             onClick={this.selectDialog.bind(this, dialog.id)}
@@ -359,6 +379,11 @@ class SelectedDialog extends Component {
         this.setState({
             textFieldValue: e.target.value
         });
+    };
+    handleEnterKeySending = (e) => {
+        if(e.key === 'Enter') {
+            this.sendMessage();
+        }
     };
     sendMessage = () => {
         let length = this.props.history.length - 1,
@@ -422,6 +447,7 @@ class SelectedDialog extends Component {
                             rows={2}
                             value={this.state.textFieldValue}
                             onChange={this.handleTextFieldChange}
+                            onKeyPress={this.handleEnterKeySending}
                         />
                         <IconButton tooltip="Send your message"
                                     tooltipPosition="bottom-right"
@@ -492,9 +518,13 @@ class Messages extends Component {
             tempDialogs = this.state.dialogs;
         tempHistory.push(message);
         tempDialogs[index].lastMessage = message.text;
+        let newActiveDialog = tempDialogs[index];
+        tempDialogs.splice(index, 1);
+        tempDialogs.unshift(newActiveDialog);
         this.setState({
             dialogs: tempDialogs,
-            history: tempHistory
+            history: tempHistory,
+            selectedDialogIndex: 0,
         });
     };
 

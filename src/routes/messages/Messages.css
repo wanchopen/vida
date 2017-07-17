@@ -1,5 +1,5 @@
 @import '../../components/variables.css';
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+/*@import url(https://fonts.googleapis.com/css?family=Lato:400,700);*/
 
 .root {
     height: 100% !important;
@@ -31,7 +31,6 @@
     display: inline-block;
     position: relative;
     float: left;
-    overflow: scroll;
 }
 
 .readingListContainer:hover .cardsListSubHeading {
@@ -39,23 +38,25 @@
 }
 
 .cardsContainer {
-    height: 100%;
-    overflow: scroll;
+    max-height: 100%;
+    overflow-y: scroll;
 }
 
 .cardMenuIcon {
     color: #ffffff !important;
 }
 
+.cardMenuIconActive {
+    color: #00bcd4 !important;
+}
+
 .card {
     border-bottom: 1px solid rgba(255, 255, 255, 0.9) !important;
-    margin-bottom: -0.5em !important;
     margin-right: -2em;
 }
 
 .card:hover {
     background-color: rgba(255, 255, 255, 0.9) !important;
-    /*cursor: inherit !important;*/
 }
 
 .card:hover .cardMenuIcon {
@@ -63,14 +64,13 @@
 }
 
 .cardActive {
-    border-bottom: 1px solid rgb(0, 188, 212) !important;
-    padding-bottom: 0.5em;
+    background-color: rgba(0, 188, 212, 0.1) !important;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.1) !important;
     margin-right: -2em;
 }
 
-.cardName {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.9) !important;
-    padding-bottom: 0.5em;
+.cardActive:hover {
+    background-color: rgba(0, 188, 212, 0.1) !important;
 }
 
 .menuIcon {
@@ -88,9 +88,6 @@
 .selectedDialog {
     max-width: 60%;
     float: left;
-    /*height: 100%;*/
-    /*overflow: scroll;*/
-    /*overflow-x: hidden;*/
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.9) !important;
 }
