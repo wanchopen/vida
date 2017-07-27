@@ -51,12 +51,13 @@
 }
 
 .card {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.9) !important;
+    /*border-bottom: 1px solid rgba(255, 255, 255, 0.9) !important;*/
     margin-right: -2em;
 }
 
 .card:hover {
     background-color: rgba(255, 255, 255, 0.9) !important;
+    cursor: pointer;
 }
 
 .card:hover .cardMenuIcon {
@@ -64,13 +65,14 @@
 }
 
 .cardActive {
-    background-color: rgba(0, 188, 212, 0.1) !important;
-    border-bottom: 1px solid rgba(0, 188, 212, 0.1) !important;
+    /*background-color: rgba(0, 188, 212, 0.1) !important;*/
+    /*border-bottom: 1px solid rgba(0, 188, 212, 0.5) !important;*/
     margin-right: -2em;
 }
 
 .cardActive:hover {
-    background-color: rgba(0, 188, 212, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    cursor: pointer;
 }
 
 .menuIcon {
@@ -105,6 +107,10 @@
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     overflow-y: scroll;
     height: 350px;
+}
+
+.unreadMessage {
+    background-color: rgba(0, 188, 212, 0.3) !important;
 }
 
 .messageData {

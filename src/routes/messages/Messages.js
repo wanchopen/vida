@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Messages.css';
 import cx from 'classnames';
+import moment from 'moment';
 import SortingSelect from './../../components/UI/SortingSelect';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
@@ -29,20 +30,24 @@ const dialogsData = [
             id: 1,
             name: 'Clara Amfo',
             avatar: avatarClara,
-            lastMessage: 'Actually everything was fine. I\'m very excited to show this to our team.'
+            lastMessage: 'Actually everything was fine. I\'m very excited to show this to our team.',
+            lastMessageTime: '',
+            unread: false
         },
         {
             id: 2,
             name: 'Alice Levine',
             avatar: avatarAlice,
             lastMessage: 'Animatronic face gear and a giant muscle suit on stilts is probably not something you would ' +
-            'want to go out in on a Saturday night. But we can\'t speak for everyone on that...'
+            'want to go out in on a Saturday night. But we can\'t speak for everyone on that...',
+            unread: false
         },
         {
             id: 3,
             name: 'Dev',
             avatar: avatarDev,
-            lastMessage: 'I will look back on the Big Weekend with live tracks from Hull and a game of Dev Or... with Clean Bandit!'
+            lastMessage: 'I will look back on the Big Weekend with live tracks from Hull and a game of Dev Or... with Clean Bandit!',
+            unread: true
         },
         {
             id: 4,
@@ -59,13 +64,15 @@ const dialogsData = [
                         a national presenter on Radio 1 as frontman of the OneMusic show in 2005.
                     </div>
                 </div>
-            )
+            ),
+            unread: true
         },
         {
             id: 5,
             name: 'Chris Martin',
             avatar: avatarChris,
-            lastMessage: 'I guess life is beautiful in all it\'s colors, even the darker ones, they\'re here for a reason.'
+            lastMessage: 'I guess life is beautiful in all it\'s colors, even the darker ones, they\'re here for a reason.',
+            unread: true
         }
 ],
     messagesHistoryData = [
@@ -77,14 +84,16 @@ const dialogsData = [
                     time: '10:10 AM, Today',
                     name: 'Clara Amfo',
                     isCurrentUser: false,
-                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                    text: 'Hi Eddie, how are you? How is the project coming along?',
+                    unread: false
                 },
                 {
                     messageId: 2,
                     time: '10:11 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.',
+                    unread: false
                 },
                 {
                     messageId: 3,
@@ -92,14 +101,16 @@ const dialogsData = [
                     name: 'Clara Amfo',
                     isCurrentUser: false,
                     text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
-                    'faced any problems at the last phase of the project?'
+                    'faced any problems at the last phase of the project?',
+                    unread: false
                 },
                 {
                     messageId: 4,
                     time: '10-16 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.',
+                    unread: false
                 }
             ]
         },
@@ -111,14 +122,16 @@ const dialogsData = [
                     time: '10:10 AM, Today',
                     name: 'Alice Levine',
                     isCurrentUser: false,
-                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                    text: 'Hi Eddie, how are you? How is the project coming along?',
+                    unread: false
                 },
                 {
                     messageId: 6,
                     time: '10:11 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.',
+                    unread: false
                 },
                 {
                     messageId: 7,
@@ -126,14 +139,16 @@ const dialogsData = [
                     name: 'Alice Levine',
                     isCurrentUser: false,
                     text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
-                    'faced any problems at the last phase of the project?'
+                    'faced any problems at the last phase of the project?',
+                    unread: false
                 },
                 {
                     messageId: 8,
                     time: '10-16 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.',
+                    unread: false
                 },
                 {
                     messageId: 9,
@@ -141,7 +156,8 @@ const dialogsData = [
                     name: 'Alice Levine',
                     isCurrentUser: false,
                     text: 'Animatronic face gear and a giant muscle suit on stilts is probably not something you would ' +
-                    'want to go out in on a Saturday night. But we can\'t speak for everyone on that...'
+                    'want to go out in on a Saturday night. But we can\'t speak for everyone on that...',
+                    unread: false
                 }
             ]
         },
@@ -153,14 +169,16 @@ const dialogsData = [
                     time: '10:10 AM, Today',
                     name: 'Dev',
                     isCurrentUser: false,
-                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                    text: 'Hi Eddie, how are you? How is the project coming along?',
+                    unread: false
                 },
                 {
                     messageId: 11,
                     time: '10:11 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.',
+                    unread: false
                 },
                 {
                     messageId: 12,
@@ -168,21 +186,24 @@ const dialogsData = [
                     name: 'Dev',
                     isCurrentUser: false,
                     text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
-                    'faced any problems at the last phase of the project?'
+                    'faced any problems at the last phase of the project?',
+                    unread: false
                 },
                 {
                     messageId: 13,
                     time: '10:16 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.',
+                    unread: false
                 },
                 {
                     messageId: 14,
                     time: '10:16 AM, Today',
                     name: 'Dev',
                     isCurrentUser: false,
-                    text: 'I will look back on the Big Weekend with live tracks from Hull and a game of Dev Or... with Clean Bandit!'
+                    text: 'I will look back on the Big Weekend with live tracks from Hull and a game of Dev Or... with Clean Bandit!',
+                    unread: true
                 }
             ]
         },
@@ -194,14 +215,16 @@ const dialogsData = [
                     time: '10:10 AM, Today',
                     name: 'Huw Stephens',
                     isCurrentUser: false,
-                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                    text: 'Hi Eddie, how are you? How is the project coming along?',
+                    unread: false
                 },
                 {
                     messageId: 16,
                     time: '10:11 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.',
+                    unread: false
                 },
                 {
                     messageId: 17,
@@ -209,14 +232,16 @@ const dialogsData = [
                     name: 'Huw Stephens',
                     isCurrentUser: false,
                     text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
-                    'faced any problems at the last phase of the project?'
+                    'faced any problems at the last phase of the project?',
+                    unread: false
                 },
                 {
                     messageId: 18,
                     time: '10:16 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.',
+                    unread: false
                 },
                 {
                     messageId: 19,
@@ -234,7 +259,8 @@ const dialogsData = [
                                 a national presenter on Radio 1 as frontman of the OneMusic show in 2005.
                             </p>
                         </div>
-                    )
+                    ),
+                    unread: false
                 }
             ]
         },
@@ -246,14 +272,16 @@ const dialogsData = [
                     time: '10:10 AM, Today',
                     name: 'Chris Martin',
                     isCurrentUser: false,
-                    text: 'Hi Eddie, how are you? How is the project coming along?'
+                    text: 'Hi Eddie, how are you? How is the project coming along?',
+                    unread: false
                 },
                 {
                     messageId: 21,
                     time: '10:11 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Are we meeting today? Project has been already finished and I have results to show you.'
+                    text: 'Are we meeting today? Project has been already finished and I have results to show you.',
+                    unread: false
                 },
                 {
                     messageId: 22,
@@ -261,21 +289,24 @@ const dialogsData = [
                     name: 'Chris Martin',
                     isCurrentUser: false,
                     text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you ' +
-                    'faced any problems at the last phase of the project?'
+                    'faced any problems at the last phase of the project?',
+                    unread: false
                 },
                 {
                     messageId: 23,
                     time: '10:16 AM, Today',
                     name: 'Ed Sheeran',
                     isCurrentUser: true,
-                    text: 'Actually everything was fine. I\'m very excited to show this to our team.'
+                    text: 'Actually everything was fine. I\'m very excited to show this to our team.',
+                    unread: false
                 },
                 {
                     messageId: 24,
                     time: '10:14 AM, Today',
                     name: 'Chris Martin',
                     isCurrentUser: false,
-                    text: 'I guess life is beautiful in all it\'s colors, even the darker ones, they\'re here for a reason.'
+                    text: 'I guess life is beautiful in all it\'s colors, even the darker ones, they\'re here for a reason.',
+                    unread: true
                 }
             ]
         }
@@ -341,8 +372,7 @@ class DialogsList extends Component {
                                             touch={true}
 
                                         >
-                                            <MoreVertIcon className={this.props.selectedDialog === dialog.id
-                                                ? s.cardMenuIconActive : s.cardMenuIcon} />
+                                            <MoreVertIcon className={dialog.unread ? s.cardMenuIconActive : s.cardMenuIcon} />
                                         </IconButton>
                                     }
                                     anchorOrigin={{horizontal: 'left', vertical: 'top'}}
@@ -393,7 +423,8 @@ class SelectedDialog extends Component {
             time: '10:24 AM, Today',
             name: 'Ed Sheeran',
             isCurrentUser: true,
-            text: this.state.textFieldValue
+            text: this.state.textFieldValue,
+            unread: true
         };
         this.setState({
             textFieldValue: ''
@@ -471,12 +502,24 @@ class Messages extends Component {
         history: []
     };
     componentWillMount = () => {
-        let selected = this.state.dialogs[0].id,
-            info = this.state.dialogs[0];
-        messagesHistoryData.forEach((item) => {
+        let tempDialogs = dialogsData;
+        dialogsData.forEach((dialog, index) => {
+            if(dialog.unread) {
+                let dialogToMove = tempDialogs[index];
+                tempDialogs.splice(index, 1);
+                tempDialogs.unshift(dialogToMove);
+            }
+        });
+        let selected = tempDialogs[0].id,
+            info = tempDialogs[0],
+            currentDate = moment().format();
+        tempDialogs[0].unread = false;
+        console.log(currentDate, 'moment js date');
+        messagesHistoryData.forEach((item, index) => {
             if(item.id === selected) {
                 let history = item.history;
                 this.setState({
+                    dialogs: tempDialogs,
                     history: history,
                     selectedDialog: selected,
                     selectedDialogInfo: info
@@ -493,18 +536,24 @@ class Messages extends Component {
         messages.scrollTop = messages.scrollHeight;
     };
     changeSelectedDialog = (dialog_id) => {
+        let selectedIndex;
         this.state.dialogs.forEach((item, index) => {
             if(item.id === dialog_id) {
+                selectedIndex = index;
                 this.setState({
                     selectedDialogInfo: item,
                     selectedDialogIndex: index
                 });
             }
         });
-        messagesHistoryData.forEach((item) => {
-            if(item.id === dialog_id) {
-                let history = item.history;
+        messagesHistoryData.forEach((historyItem) => {
+            let tempDialogs = this.state.dialogs;
+            if(historyItem.id === dialog_id) {
+                let history = historyItem.history;
+                tempDialogs[selectedIndex].unread = false;
+
                 this.setState({
+                    dialogs: tempDialogs,
                     history: history,
                     selectedDialog: dialog_id,
                 });
@@ -521,6 +570,15 @@ class Messages extends Component {
         let newActiveDialog = tempDialogs[index];
         tempDialogs.splice(index, 1);
         tempDialogs.unshift(newActiveDialog);
+
+        tempDialogs.forEach((dialog, index) => {
+            if(dialog.unread) {
+                let dialogToMove = tempDialogs[index];
+                tempDialogs.splice(index, 1);
+                tempDialogs.splice(1, 0, dialogToMove);
+            }
+        });
+
         this.setState({
             dialogs: tempDialogs,
             history: tempHistory,
