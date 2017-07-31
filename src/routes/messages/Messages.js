@@ -387,8 +387,7 @@ class DialogsList extends Component {
                                         className={s.rightMenuItem} >Delete this dialog</MenuItem>
                                 </IconMenu>
                             }
-                            className={ this.props.selectedDialog === dialog.id
-                                ? s.cardActive : s.card }
+                            className={s.card}
                             primaryText={dialog.name}
                             secondaryText={dialog.lastMessage}
                             secondaryTextLines={2}
