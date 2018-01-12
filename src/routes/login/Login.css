@@ -19,6 +19,10 @@
   max-width: 380px;
 }
 
+.heading {
+  font-weight: 400;
+}
+
 .lead {
   font-size: 1.25em;
 }

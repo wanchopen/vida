@@ -156,16 +156,7 @@ class MyCupOfTea extends Component {
                                 className={this.props.currentPage === 'entries' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'entries')}
                             />,
-                            <ListItem
-                                key={3}
-                                value={3}
-                                primaryText={<Link to="/drafts" className={s.link}>Drafts</Link>}
-                                leftIcon={<ContentDrafts className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={<SettingsIcon title="Drafts"/>}
-                                className={this.props.currentPage === 'drafts' ? s.activeLink : s.menuItem}
-                                onClick={this.setCurrentPageStyle.bind(this, 'drafts')}
-                            />
-                                ]}
+                        ]}
                     />
                 </Subheader>
             </List>
@@ -204,34 +195,12 @@ class MailBox extends Component {
                             <ListItem
                                 key={1}
                                 value={1}
-                                primaryText={<Link to="/#" className={s.link}>Recommended</Link>}
-                                leftIcon={<ActionFace className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={<SettingsIcon title="Recommended"/>}
-                                className={s.menuItem}
-                            />,
-                            <ListItem
-                                key={2}
-                                value={2}
                                 primaryText={<Link to="/messages" className={s.link}>Messages</Link>}
                                 leftIcon={<CommunicationContactMail className={s.menuIcon} color={cyan500}/>}
                                 rightIcon={<SettingsIcon title="Messages"/>}
                                 className={this.props.currentPage === 'messages' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'messages')}
                             />,
-                            <ListItem
-                                key={3}
-                                value={3}
-                                primaryText={<Link to="/#" className={s.link}>Facebook</Link>}
-                                leftIcon={facebookIcon}
-                                className={s.menuItem}
-                            />,
-                            <ListItem
-                                key={4}
-                                value={4}
-                                primaryText={<Link to="/#" className={s.link}>Gmail</Link>}
-                                leftIcon={<CommunicationMailOutline className={s.menuIcon} color={cyan500}/>}
-                                className={s.menuItem}
-                            />
                         ]}
                     />
                 </Subheader>
@@ -270,30 +239,12 @@ class GoingsOn extends Component {
                             <ListItem
                                 key={1}
                                 value={1}
-                                primaryText={<Link to="/flow" className={s.link}>Flow</Link>}
-                                leftIcon={<PlacesAllInclusive className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={<SettingsIcon title="Flow"/>}
-                                className={this.props.currentPage === 'flow' ? s.activeLink : s.menuItem}
-                                onClick={this.setCurrentPageStyle.bind(this, 'flow')}
-                            />,
-                            <ListItem
-                                key={2}
-                                value={2}
                                 primaryText={<Link to="/newsbeats" className={s.link}>NewsBeats</Link>}
                                 leftIcon={<SocialPublic className={s.menuIcon} color={cyan500}/>}
                                 rightIcon={<SettingsIcon title="NewsBeats"/>}
                                 className={this.props.currentPage === 'newsbeats' ? s.activeLink : s.menuItem}
                                 onClick={this.setCurrentPageStyle.bind(this, 'newsbeats')}
                             />,
-                            <ListItem
-                                key={3}
-                                value={3}
-                                primaryText={<Link to="/events" className={s.link}>Events</Link>}
-                                leftIcon={<ActionEvent className={s.menuIcon} color={cyan500}/>}
-                                rightIcon={<SettingsIcon title="Events"/>}
-                                className={this.props.currentPage === 'events' ? s.activeLink : s.menuItem}
-                                onClick={this.setCurrentPageStyle.bind(this, 'events')}
-                            />
                         ]}
                     />
                 </Subheader>
@@ -373,9 +324,7 @@ class LeftNavigation extends Component {
         return (
             <div className={s.menuPaper}>
                 <MyCupOfTea setCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
-                <MailBox setCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
                 <GoingsOn setCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
-                <Media />
             </div>
         );
     }
